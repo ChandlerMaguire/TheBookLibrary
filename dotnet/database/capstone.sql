@@ -68,7 +68,7 @@ CREATE TABLE books (
 	author_id int NOT NULL,
 	isbn bigint NOT NULL,
 	genre_id tinyint NOT NULL,
-	added datetime2(0) NOT NULL,
+	added datetime NOT NULL,
 	CONSTRAINT PK_book_id PRIMARY KEY (book_id),
 	CONSTRAINT FK_author_id FOREIGN KEY (author_id) REFERENCES [author] (author_id),
 	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES [genre] (genre_id),
