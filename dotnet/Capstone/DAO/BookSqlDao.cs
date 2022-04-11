@@ -10,13 +10,43 @@ namespace Capstone.DAO
 {
     public class BookSqlDao : IBookDao 
     {
-        private readonly string connectionString;  
+        private readonly string connectionString;
+        private string sqlSearchBooks = "SELECT * FROM books WHERE title LIKE '%@title%'AND " +
+            "author_id IN(SELECT author_id FROM author WHERE first_name LIKE %@first_name% AND last_name LIKE %@last_name%) " +
+            ""
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
         }
 
-        public List<Book> GetBooks()
+        public List<Book> GetAllBooks()
+        {
+            List<Book> returnBooks = new List<Book>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM books", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Book returnBook = GetBookFromReader(reader);
+                        returnBooks.Add(returnBook);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return returnBooks;
+        }
+
+        public List<Book> GetBooks(Book searchTerms)
         {
             List<Book> returnBooks = new List<Book>();
             
@@ -25,7 +55,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM books WHERE title LIKE @title%", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM books WHERE title LIKE '@title' AND ", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while(reader.Read())
@@ -53,6 +83,7 @@ namespace Capstone.DAO
             book.Isbn = Convert.ToInt32(reader["isbn"]);
             book.GenreId = Convert.ToInt32(reader["genre_id"]);
             book.DateAdded = Convert.ToDateTime(reader["datetime_added"]);
+            
              
             return book;
         }
