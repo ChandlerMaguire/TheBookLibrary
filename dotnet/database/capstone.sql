@@ -77,20 +77,20 @@ CREATE TABLE books (
 	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES [genre] (genre_id),
 )
 
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Pride and Prejudice', '1', '0143105426', '3', '2022-04-11 12:40:50');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Transcendent Kingdom', '2', '0525658181', '3','2022-04-11 12:40:59');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('The Song of Achilles','6','00062060627','4','2022-04-11 12:41:10');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Graceling','5','0547258305','1','2022-04-11 12:41:20');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Bitterblue','5','0142426016','1','2022-04-11 12:41:30');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Fire','5','0803734611','1','2022-04-11 12:41:30');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Chamber of Secrets','3','0439064872','1','2022-04-11 12:41:12');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Prisoner of Azkaban','3','0747542155','1','2022-04-11 12:41:20');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Sorcerers Stone','3','0590353403','1','2022-04-11 12:41:20');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Deathly Hallows','3','0545010225','1','2022-04-11 12:41:20');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Goblet of Fire','3','0439139600','1','2022-04-11 12:41:29');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Half-Blood Prince','3','0747581088','1','2022-04-11 12:41:31');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('Harry Potter and the Order of the Phoenix','3','0747551006','1','2022-04-11 12:41:32');
-INSERT INTO books (title, author_id, isbn, genre_id, added) VALUES ('The Great Gatsby','4','0333791035','3','2022-04-11 12:41:40');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Pride and Prejudice', '1', '0143105426', '3', '2022-04-11 12:40:50');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Transcendent Kingdom', '2', '0525658181', '3','2022-04-11 12:40:59');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('The Song of Achilles','6','00062060627','4','2022-04-11 12:41:10');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Graceling','5','0547258305','1','2022-04-11 12:41:20');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Bitterblue','5','0142426016','1','2022-04-11 12:41:30', 'Power, Identity', 'Queen Bitterblue, Thiel, Sapphire, Teddy, Tilda, Bren, Madlen, Rood', 'Graceling Realm, Monsea');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Fire','5','0803734611','1','2022-04-11 12:41:30', 'Power, Identity', 'Lady Fire, Prince Brigan, Archer, Brocker, Cansrel, Nash, Hanna, Clara, Garan, Nax, Queen Roen, Leck', 'Graceling Realm, King City');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Chamber of Secrets','3','0439064872','1','2022-04-11 12:41:12','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Prisoner of Azkaban','3','0747542155','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Sorcerers Stone','3','0590353403','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Deathly Hallows','3','0545010225','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Goblet of Fire','3','0439139600','1','2022-04-11 12:41:29','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Half-Blood Prince','3','0747581088','1','2022-04-11 12:41:31','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('Harry Potter and the Order of the Phoenix','3','0747551006','1','2022-04-11 12:41:32','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts');
+INSERT INTO books (title, author_id, isbn, genre_id, added, keywords, characters, locations) VALUES ('The Great Gatsby','4','0333791035','3','2022-04-11 12:41:40', 'Wealth, Class, Love, Romance, Idealism', 'Nick Carraway, Jay Gatsby, Daisy Buchanan, Thomas Buchanan, Jordan Baker, George B. Wilson, Myrtle Wilson', 'New York City');
 
 CREATE TABLE user_book (
 	user_id int,
