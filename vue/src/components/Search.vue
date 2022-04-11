@@ -3,9 +3,9 @@
     <form id="search" action ="#">
     <h3>Search</h3>
     <label for="keyword">Keyword</label>
-    <input type="text" id="keyword" name="keyword" placeholder="Keyword">
+    <input type="text" id="keyword" name="keyword" placeholder="Keyword" v-model:"">
     <label for="title">Keyword</label>
-    <input type="text" id="keyword" name="keyword" placeholder="Keyword">
+    <input type="text" id="title" name="title" placeholder="Title">
     <label for="author">Author</label>
     <input type="text" id="author" name="author" placeholder="Author">
     <label for="character">Character</label>
@@ -20,21 +20,21 @@
 </template>
 
 <script>
+export default {
 name: "search",
-  //props: ["topicId"],
-  data() {
+data() {
     return {
       search: {
         keyword: "",
-        author: "",
         title: "",
-        isbn: "",
+        author: "",
         character: "",
-        loaction: "",
+        location: "",
+        isbn: ""
       }
     };
   },
-  methods: {
+  /* methods: {
     saveMessage() {
       messageService
       .post(this.message)
@@ -49,11 +49,9 @@ name: "search",
         }
       });
     }
-  }
+  } */
 };
 </script>
-
-
 
 <style>
 form { background-color: var(--yellow); }
