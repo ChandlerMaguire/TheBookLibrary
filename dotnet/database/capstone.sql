@@ -68,10 +68,18 @@ CREATE TABLE books (
 	author_id int NOT NULL,
 	isbn bigint NOT NULL,
 	genre_id tinyint NOT NULL,
+<<<<<<< HEAD
 	added datetime2(0) NOT NULL,
 	keyword nvarchar(MAX) NOT NULL,
 	[character] nvarchar(MAX) NULL,
 	[location] nvarchar(MAX) NULL,
+=======
+	added datetime NOT NULL,
+	keywords nvarchar(MAX) NOT NULL,
+	characters nvarchar(MAX) NULL,
+	locations nvarchar(MAX) NULL,
+
+>>>>>>> b7ded06a836660d6a5da27b4dc0fbb4e2443ab8a
 	CONSTRAINT PK_book_id PRIMARY KEY (book_id),
 	CONSTRAINT FK_author_id FOREIGN KEY (author_id) REFERENCES [author] (author_id),
 	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES [genre] (genre_id),
