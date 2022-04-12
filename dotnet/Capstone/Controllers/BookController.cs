@@ -20,7 +20,7 @@ namespace Capstone.Controllers
         }
 
 
-        [HttpGet("{searchTerms}")]
+        [HttpPost("{search}")]
         public ActionResult<List<Book>> SearchResult (Book searchTerms)
         {
             List<Book> result = bookDao.GetBooks(searchTerms);
