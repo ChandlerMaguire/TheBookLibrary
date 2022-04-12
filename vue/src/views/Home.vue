@@ -17,3 +17,22 @@ export default {
   components: { Search },
 };
 </script>
+
+<style>
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr;
+  grid-template-areas:
+    "home home"
+    "results search";
+}
+.search {
+  grid-area: "search";
+}
+h1 {
+  grid-area: "home";
+}
+h1 > p {
+  grid-area: "results";
+}
+</style>

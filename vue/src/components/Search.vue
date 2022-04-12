@@ -133,4 +133,7 @@ export default {
 form {
   background-color: var(--yellow);
 }
+.search {
+    display:
+}
 </style>
