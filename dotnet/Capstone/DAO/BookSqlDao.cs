@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    public class BookSqlDao : IBookDao 
+    public class BookSqlDao /*: IBookDao*/
     {
         private readonly string connectionString;
         private string sqlSearchBooks = "SELECT * FROM books b " +
             "INNER JOIN author a ON b.author_id = a.author_id " +
-            "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%@title%' AND a.first_name LIKE '%@first_name%' AND" +
+            "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%@title%' " +
+            "AND b.keyword LIKE '%@keyword%' AND b.character LIKE '%@character%'  " +
+            "AND b.location LIKE '%@location%' AND a.first_name LIKE '%@first_name%' AND" +
             " a.last_name LIKE '%@last_name%' AND b.isbn = '@isbn' AND g.genre_name LIKE '%@genre_name%'";
-        //Needs Keywords, Location, and Characters for search
+        
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -48,7 +50,7 @@ namespace Capstone.DAO
             return returnBooks;
         }
 
-        public List<Book> GetBooks(Book searchTerms)
+        public List<Book> SearchBooks(Book searchTerms)
         {
             List<Book> returnBooks = new List<Book>();
             
@@ -57,7 +59,15 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM books WHERE title LIKE '@title' AND ", conn);
+                    SqlCommand cmd = new SqlCommand(sqlSearchBooks, conn);
+                    cmd.Parameters.AddWithValue("@title", searchTerms.Title);
+                    cmd.Parameters.AddWithValue("@first_name", searchTerms.FirstName);
+                    cmd.Parameters.AddWithValue("@last_name", searchTerms.LastName);
+                    cmd.Parameters.AddWithValue("@isbn", searchTerms.Isbn);
+                    cmd.Parameters.AddWithValue("@genre_name", searchTerms.Genre);
+                    cmd.Parameters.AddWithValue("@keyword", searchTerms.Keyword);
+                    cmd.Parameters.AddWithValue("@character", searchTerms.Character);
+                    cmd.Parameters.AddWithValue("@location", searchTerms.Location);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while(reader.Read())
@@ -81,13 +91,13 @@ namespace Capstone.DAO
 
             
             book.Title = Convert.ToString(reader["b.title"]);
-            book.AuthorFirst = Convert.ToString(reader["a.first_name"]);
-            book.AuthorLast = Convert.ToString(reader["a.last_name"]);
+            book.FirstName = Convert.ToString(reader["a.first_name"]);
+            book.LastName = Convert.ToString(reader["a.last_name"]);
             book.Isbn = Convert.ToInt32(reader["b.isbn"]);
             book.Genre = Convert.ToString(reader["g.genre_name"]);
-            book.KeyWords = Convert.ToString(reader["b.keywords"]);              //Make sure these match the column names
-            book.Characters = Convert.ToString(reader["b.characters"]);
-            book.Locations = Convert.ToString(reader["b.locations"]);
+            book.Keyword = Convert.ToString(reader["b.keyword"]);              //Make sure these match the column names
+            book.Character = Convert.ToString(reader["b.character"]);
+            book.Location = Convert.ToString(reader["b.location"]);
             book.DateAdded = Convert.ToDateTime(reader["b.datetime_added"]);
             
             
