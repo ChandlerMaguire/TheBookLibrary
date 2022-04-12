@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    public class BookSqlDao : IBookDao 
+    public class BookSqlDao /*: IBookDao*/
     {
         private readonly string connectionString;
         private string sqlSearchBooks = "SELECT * FROM books b " +
