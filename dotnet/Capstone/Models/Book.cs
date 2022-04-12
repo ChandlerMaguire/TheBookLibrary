@@ -10,7 +10,7 @@ namespace Capstone.Models
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Isbn { get; set; } 
+        public string Isbn { get; set; } 
         public string Genre { get; set; } 
         public string Keyword { get; set; }
         public string Character { get; set; }

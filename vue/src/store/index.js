@@ -19,7 +19,9 @@ if (currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+
+    searchResult: [],
   },
 
   mutations: {
@@ -38,6 +40,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    GET_SEARCH_RESULT(state, searchResult) {
+      state.searchResult = searchResult;
     }
   }
 })
