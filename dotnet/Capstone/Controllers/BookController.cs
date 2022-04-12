@@ -21,9 +21,9 @@ namespace Capstone.Controllers
 
 
         [HttpGet("{searchTerms}")]
-        public ActionResult<List<Book>> SearchResult (Book searchTerms)
+        public ActionResult<List<Book>> SearchResult(Book searchTerms)
         {
-            List<Book> result = bookDao.GetBooks(searchTerms);
+            List<Book> result = bookDao.SearchBooks(searchTerms);
 
             if(result != null)
             {
