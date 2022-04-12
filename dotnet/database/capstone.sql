@@ -66,7 +66,7 @@ CREATE TABLE books (
 	book_id int IDENTITY(1,1) NOT NULL,
 	title varchar(100) NOT NULL,
 	author_id int NOT NULL,
-	isbn bigint NOT NULL,
+	isbn nvarchar(15) NOT NULL,
 	genre_id tinyint NULL,
 	added datetime NOT NULL,
 	keyword nvarchar(MAX) NOT NULL,
