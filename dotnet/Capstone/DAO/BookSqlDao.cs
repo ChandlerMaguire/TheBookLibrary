@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
+     //'%' + @first_name + '%'
+
     public class BookSqlDao : IBookDao
     {
         private readonly string connectionString;
         private string sqlSearchBooks = "SELECT * FROM books b " +
             "INNER JOIN author a ON b.author_id = a.author_id " +
-            "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%@title%' " +
-            "AND b.keyword LIKE '%@keyword%' AND b.character LIKE '%@character%'  " +
-            "AND b.location LIKE '%@location%' AND a.first_name LIKE '%@first_name%' AND" +
-            " a.last_name LIKE '%@last_name%' AND b.isbn LIKE '%@isbn%' AND g.genre_name LIKE '%@genre_name%'";
+            "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%' + '@title' + '%' + " +
+            "AND b.keyword LIKE '%' + '@keyword' + '%' + AND b.character LIKE '%' + '@character' + '%'  " +
+            "AND b.location LIKE '%' + '@location' + '%' AND a.first_name LIKE '%' + '@first_name' + '%' AND" +
+            " a.last_name LIKE '%' + '@last_name' + '%' AND b.isbn LIKE '%' + '@isbn' + '%' AND g.genre_name LIKE '%' + '@genre_name' + '%'";
         
         public BookSqlDao(string dbConnectionString)
         {
@@ -32,7 +34,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM books", conn);
+                    SqlCommand cmd = new SqlCommand(sqlSearchBooks, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -70,7 +72,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@location", searchTerms.Location);
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         Book returnBook = GetBookFromReader(reader);
                         returnBooks.Add(returnBook);
