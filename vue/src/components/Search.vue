@@ -1,17 +1,41 @@
 <template>
   <div class="search">
-    <form id="search" action ="#" @submit.prevent='searchBooks'>
-    <h3>Search</h3>
-    <label for="keyword">Keyword</label>
-    <input type="text" id="keyword" name="keyword" placeholder="Keyword" v-model='search.keyword'>
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title" placeholder="Title" v-model='search.title'>
-    <label for="author">Author</label>
-    <input type="text" id="firstName" name="firstName" placeholder="First Name" v-model='search.firstName'>
-    <input type="text" id="lastName" name="lastName" placeholder="Last Name" v-model='search.lastName'>
-    <label for="genre">Genre:</label>
-    <select id="genre" name ="genre">
-        <option value = "">Select a Genre...</option>
+    <form id="search" action="#" @submit.prevent="searchBooks">
+      <h3>Search</h3>
+      <label for="keyword">Keyword</label>
+      <input
+        type="text"
+        id="keyword"
+        name="keyword"
+        placeholder="Keyword"
+        v-model="search.keyword"
+      />
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Title"
+        v-model="search.title"
+      />
+      <label for="author">Author</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        placeholder="First Name"
+        v-model="search.firstName"
+      />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Last Name"
+        v-model="search.lastName"
+      />
+      <label for="genre">Genre:</label>
+      <select id="genre" name="genre" v-model="search.genre">
+        <option value="">Select a Genre...</option>
         <option value="Action">Action</option>
         <option value="Adventure">Adventure</option>
         <option value="Comedy">Comedy</option>
@@ -22,15 +46,39 @@
         <option value="Non-Fiction">Non-Fiction</option>
         <option value="Romance">Romance</option>
         <option value="Thriller">Thriller</option>
-    </select>
-    <label for="character">Character</label>
-    <input type="text" id="character" name="character" placeholder="Character" v-model='search.character'>
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location" placeholder="Location" v-model='search.location'>
-    <label for="isbn">ISBN</label>
-    <input type="text" inputmode="numeric" id="isbn" name="isbn" placeholder="ISBN" v-model='search.isbn'>
-    <input type="submit" value="Submit">
-   </form>
+      </select>
+      <label for="character">Character</label>
+      <input
+        type="text"
+        id="character"
+        name="character"
+        placeholder="Character"
+        v-model="search.character"
+      />
+      <label for="location">Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        placeholder="Location"
+        v-model="search.location"
+      />
+      <label for="isbn">ISBN</label>
+      <input
+        type="text"
+        inputmode="numeric"
+        id="isbn"
+        name="isbn"
+        placeholder="ISBN"
+        v-model="search.isbn"
+      />
+      <input type="submit" value="Submit" />
+      <tbody>
+        <tr v-for="book in searchResult" v-bind:key="book.isbn">
+          <td>{{ book.title }}</td>
+        </tr>
+      </tbody>
+    </form>
   </div>
 </template>
 
@@ -38,8 +86,8 @@
 import searchService from "../services/SearchService";
 
 export default {
-name: "search",
-data() {
+  name: "search",
+  data() {
     return {
       search: {
         keyword: "",
@@ -49,34 +97,40 @@ data() {
         genre: "",
         character: "",
         location: "",
-        isbn: ""
-      }
+        isbn: "",
+      },
     };
   },
+
+  computed: {
+    searchResult() {
+      return this.$store.state.searchResult;
+    },
+  },
+
   methods: {
     searchBooks() {
       searchService
         .search(this.search)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$store.commit("GET_SEARCH_RESULT", response.data);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-form { background-color: var(--yellow); }
-
+form {
+  background-color: var(--yellow);
+}
 </style>
