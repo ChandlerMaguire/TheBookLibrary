@@ -1,25 +1,42 @@
 <template>
   <div class="search">
-    <form id="search" action ="#">
+    <form id="search" action ="#" @submit.prevent='searchBooks'>
     <h3>Search</h3>
     <label for="keyword">Keyword</label>
-    <input type="text" id="keyword" name="keyword" placeholder="Keyword" v-model:"">
-    <label for="title">Keyword</label>
-    <input type="text" id="title" name="title" placeholder="Title">
+    <input type="text" id="keyword" name="keyword" placeholder="Keyword" v-model='search.keyword'>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" placeholder="Title" v-model='search.title'>
     <label for="author">Author</label>
-    <input type="text" id="author" name="author" placeholder="Author">
+    <input type="text" id="firstName" name="firstName" placeholder="First Name" v-model='search.firstName'>
+    <input type="text" id="lastName" name="lastName" placeholder="Last Name" v-model='search.lastName'>
+    <label for="genre">Genre:</label>
+    <select id="genre" name ="genre">
+        <option value = "">Select a Genre...</option>
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Historical Fiction">Historical Fiction</option>
+        <option value="Horror">Horror</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Romance">Romance</option>
+        <option value="Thriller">Thriller</option>
+    </select>
     <label for="character">Character</label>
-    <input type="text" id="character" name="character" placeholder="Character">
+    <input type="text" id="character" name="character" placeholder="Character" v-model='search.character'>
     <label for="location">Location</label>
-    <input type="text" id="location" name="location" placeholder="Location">
+    <input type="text" id="location" name="location" placeholder="Location" v-model='search.location'>
     <label for="isbn">ISBN</label>
-    <input type="number" id="isbn" name="isbn" placeholder="ISBN">
+    <input type="text" inputmode="numeric" id="isbn" name="isbn" placeholder="ISBN" v-model='search.isbn'>
     <input type="submit" value="Submit">
    </form>
   </div>
 </template>
 
 <script>
+import searchService from "../services/SearchService";
+
 export default {
 name: "search",
 data() {
@@ -27,32 +44,39 @@ data() {
       search: {
         keyword: "",
         title: "",
-        author: "",
+        firstName: "",
+        lastName: "",
+        genre: "",
         character: "",
         location: "",
         isbn: ""
       }
     };
   },
-  /* methods: {
-    saveMessage() {
-      messageService
-      .post(this.message)
-      .then(response => {
-        if (response.status == 201) {
-          this.$router.push({name: 'Messages', params:{ id: this.message.topicId }});
-        }
-      })
-      .catch(error => {
-        if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
-        }
-      });
+  methods: {
+    searchBooks() {
+      searchService
+        .search(this.search)
+        .then(response => {
+          if (response.status == 200) {
+            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+            this.$store.commit("SET_USER", response.data.user);
+            this.$router.push("/");
+          }
+        })
+        .catch(error => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
     }
-  } */
+  }
 };
 </script>
 
 <style>
 form { background-color: var(--yellow); }
+
 </style>
