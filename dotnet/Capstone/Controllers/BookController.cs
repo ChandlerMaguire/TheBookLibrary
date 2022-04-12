@@ -24,7 +24,8 @@ namespace Capstone.Controllers
         {
             List<Book> result = bookDao.SearchBooks(searchTerms);
 
-            if(result != null)
+
+            if (result != null)
             {
                 return Ok(result);
             }
@@ -32,7 +33,7 @@ namespace Capstone.Controllers
             {
                 return NotFound();
             }
-            
+
         }
         
       

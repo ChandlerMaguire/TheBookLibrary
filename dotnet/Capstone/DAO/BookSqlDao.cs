@@ -90,15 +90,15 @@ namespace Capstone.DAO
             Book book = new Book();
 
             
-            book.Title = Convert.ToString(reader["b.title"]);
-            book.FirstName = Convert.ToString(reader["a.first_name"]);
-            book.LastName = Convert.ToString(reader["a.last_name"]);
-            book.Isbn = Convert.ToString(reader["b.isbn"]);
-            book.Genre = Convert.ToString(reader["g.genre_name"]);
-            book.Keyword = Convert.ToString(reader["b.keyword"]);              //Make sure these match the column names
-            book.Character = Convert.ToString(reader["b.character"]);
-            book.Location = Convert.ToString(reader["b.location"]);
-            book.DateAdded = Convert.ToDateTime(reader["b.datetime_added"]);
+            book.Title = Convert.ToString(reader["title"]);
+            book.FirstName = Convert.ToString(reader["first_name"]);
+            book.LastName = Convert.ToString(reader["last_name"]);
+            book.Isbn = Convert.ToString(reader["isbn"]);
+            book.Genre = Convert.ToString(reader["genre_name"]);
+            book.Keyword = Convert.ToString(reader["keyword"]);              //Make sure these match the column names
+            book.Character = Convert.ToString(reader["character"]);
+            book.Location = Convert.ToString(reader["location"]);
+            book.DateAdded = Convert.ToDateTime(reader["datetime_added"]);
             
             
              
