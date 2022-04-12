@@ -16,7 +16,7 @@ namespace Capstone.DAO
             "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%@title%' " +
             "AND b.keyword LIKE '%@keyword%' AND b.character LIKE '%@character%'  " +
             "AND b.location LIKE '%@location%' AND a.first_name LIKE '%@first_name%' AND" +
-            " a.last_name LIKE '%@last_name%' AND b.isbn = '@isbn' AND g.genre_name LIKE '%@genre_name%'";
+            " a.last_name LIKE '%@last_name%' AND b.isbn LIKE '%@isbn%' AND g.genre_name LIKE '%@genre_name%'";
         
         public BookSqlDao(string dbConnectionString)
         {
@@ -93,7 +93,7 @@ namespace Capstone.DAO
             book.Title = Convert.ToString(reader["b.title"]);
             book.FirstName = Convert.ToString(reader["a.first_name"]);
             book.LastName = Convert.ToString(reader["a.last_name"]);
-            book.Isbn = Convert.ToInt32(reader["b.isbn"]);
+            book.Isbn = Convert.ToString(reader["b.isbn"]);
             book.Genre = Convert.ToString(reader["g.genre_name"]);
             book.Keyword = Convert.ToString(reader["b.keyword"]);              //Make sure these match the column names
             book.Character = Convert.ToString(reader["b.character"]);
