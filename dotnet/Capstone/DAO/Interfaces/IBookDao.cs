@@ -8,7 +8,7 @@ namespace Capstone.DAO.Interfaces
 {
     interface IBookDao
     {
-        List<Book> GetBooks();
+        List<Book> GetBooks(Book searchTerms);
 
     }
 }
