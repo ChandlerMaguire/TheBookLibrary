@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO.Interfaces
 {
-    interface IBookDao
+    public interface IBookDao
     {
         List<Book> GetBooks(Book searchTerms);
+        List<Book> GetAllBooks();
 
     }
 }
