@@ -13,9 +13,11 @@ namespace Capstone.DAO
         private readonly string connectionString;
         private string sqlSearchBooks = "SELECT * FROM books b " +
             "INNER JOIN author a ON b.author_id = a.author_id " +
-            "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%@title%' AND a.first_name LIKE '%@first_name%' AND" +
+            "INNER JOIN genre g ON g.genre_id = b.genre_id WHERE b.title LIKE '%@title%' " +
+            "AND b.keywords LIKE '%@keywords%' AND b.characters LIKE '%@characters%'  " +
+            "AND b.locations LIKE '%@locations%' AND a.first_name LIKE '%@first_name%' AND" +
             " a.last_name LIKE '%@last_name%' AND b.isbn = '@isbn' AND g.genre_name LIKE '%@genre_name%'";
-        //Needs Keywords, Location, and Characters for search
+        
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -57,7 +59,15 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM books WHERE title LIKE '@title' AND ", conn);
+                    SqlCommand cmd = new SqlCommand(sqlSearchBooks, conn);
+                    cmd.Parameters.AddWithValue("@title", searchTerms.Title);
+                    cmd.Parameters.AddWithValue("@first_name", searchTerms.AuthorFirst);
+                    cmd.Parameters.AddWithValue("@last_name", searchTerms.AuthorLast);
+                    cmd.Parameters.AddWithValue("@isbn", searchTerms.Isbn);
+                    cmd.Parameters.AddWithValue("@genre_name", searchTerms.Genre);
+                    cmd.Parameters.AddWithValue("@keywords", searchTerms.KeyWords);
+                    cmd.Parameters.AddWithValue("@characters", searchTerms.Characters);
+                    cmd.Parameters.AddWithValue("@locations", searchTerms.Locations);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while(reader.Read())
