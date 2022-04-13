@@ -5,7 +5,7 @@
     <p>
       In the initial configuration, this page can only be seen when logged in.
     </p>
-    <Search></Search>
+    <Search  class="search"></Search>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
 h1 {
   grid-area: "home";
 }
-h1 > p {
+.home p {
   grid-area: "results";
 }
 </style>
