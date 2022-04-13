@@ -20,8 +20,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-
     searchResult: [],
+    myBooks: [],
+    userBooks: {user: {}, books: []},
   },
 
   mutations: {
@@ -35,6 +36,8 @@ export default new Vuex.Store({
       localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
+      // state.userBooks.user = state.user.currentUser;
+      // state.userBooks.books = state.myBooks;
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       state.token = '';
@@ -43,6 +46,12 @@ export default new Vuex.Store({
     },
     GET_SEARCH_RESULT(state, searchResult) {
       state.searchResult = searchResult;
-    }
+    },
+    ADD_TO_MY_BOOKS(state, book){
+      state.myBooks.push(book);
+    },
+    REMOVE_FROM_MY_BOOKS(state, book){
+      state.myBooks.pop(book);
+    },
   }
 })

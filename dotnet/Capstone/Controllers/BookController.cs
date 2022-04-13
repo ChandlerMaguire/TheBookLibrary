@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Controllers
 {
-    [Route("[controller]")]
+    [Route("/")]
     [ApiController]
     public class BookController : ControllerBase
     {
