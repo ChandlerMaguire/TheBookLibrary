@@ -15,7 +15,10 @@
 --navy: #183059ff;
 --blue: #276fbfff;
 --pink: #eecfd4ff;
+
 }
+/* @import './assets/styles/yourstyles.css';
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */
 </style>
 
 
