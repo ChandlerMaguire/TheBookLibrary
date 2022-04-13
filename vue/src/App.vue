@@ -4,6 +4,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
+    <h1>The Book Library</h1>
     <router-view />
   </div>
 </template>
@@ -15,7 +16,15 @@
 --navy: #183059ff;
 --blue: #276fbfff;
 --pink: #eecfd4ff;
-
+--lightyellow: rgb(255, 211, 130);
+--button: rgb(253, 203, 110);
+}
+body {
+  background-color: var(--lightyellow);
+}
+#nav { text-align: center;}
+h1{
+  text-align: center;
 }
 /* @import './assets/styles/yourstyles.css';
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */

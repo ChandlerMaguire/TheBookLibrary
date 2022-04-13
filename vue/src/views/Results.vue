@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Results</h3>
+    
     <h3 v-if="$store.state.searchResult.length == 0">No Results Found</h3>
     <table v-if="$store.state.searchResult.length > 0">
       <tr>
@@ -48,11 +48,10 @@ table {
 }
 tr {
   border: 1px solid var(--pink);
- 
 }
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color:rgba(255, 182, 46, .8);
-}
+} */
 tr:nth-child(odd) {
   background-color:rgba(255, 182, 46, 1);
 }
@@ -63,5 +62,7 @@ th {
 img {
   width: 100px;
   margin: 10px;
+  border: 1px solid var(--blue);
 }
+
 </style>

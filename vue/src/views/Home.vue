@@ -1,7 +1,10 @@
 <template>
-  <div class="home">
-    <h1>The Book Library</h1>
-    <Search  class="search"></Search>
+  <div class ="container">
+    <div class="home">
+      </div>
+      <div>
+    <Search class="search"></Search>
+    </div>
   </div>
 </template>
 
@@ -20,22 +23,15 @@ export default {
 </script>
 
 <style>
-.home {
+.container {
   display: grid;
   grid-template-columns: 3fr 1.5fr;
-  grid-template-areas:
-    "home home"
-    "results search";
+  grid-template-areas: "... search";
+  width: 100vw;
 }
 
 .search {
   grid-area: "search";
   padding: 5%;
-}
-h1 {
-  grid-area: "home";
-}
-.home p {
-  grid-area: "results";
 }
 </style>

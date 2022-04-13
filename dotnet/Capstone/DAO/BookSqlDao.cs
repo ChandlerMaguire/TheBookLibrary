@@ -101,10 +101,8 @@ namespace Capstone.DAO
             book.Keyword = Convert.ToString(reader["keyword"]);              //Make sure these match the column names
             book.Character = Convert.ToString(reader["character"]);
             book.Location = Convert.ToString(reader["location"]);
-            book.DateAdded = Convert.ToDateTime(reader["added"]);
-
-
-
+            book.DateAdded = Convert.ToString(reader["added"]);
+            book.DateAdded = book.DateAdded.Substring(0, 9);
             return book;
         }
     }
