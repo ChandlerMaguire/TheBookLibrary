@@ -1,13 +1,7 @@
 <template>
-  <div>
-    <h1 class="home">Home</h1>
-    <div class="results">
-      <p>Welcome to your new home.</p>
-      <p>In the initial configuration, this page can only be seen when logged in.</p>
-    </div>
-      
-    
-    <Search class="search"></Search>
+  <div class="home">
+    <h1>The Book Library</h1>
+    <Search  class="search"></Search>
   </div>
 </template>
 
@@ -17,6 +11,11 @@ import Search from "@/components/Search.vue";
 export default {
   name: "Home",
   components: { Search },
+  // computed: {
+  //   resetResult() {
+  //     return this.$store.state.searchResults;
+  //   }
+  // }
 };
 </script>
 
@@ -31,11 +30,12 @@ export default {
 
 .search {
   grid-area: "search";
+  padding: 5%;
 }
 h1 {
   grid-area: "home";
 }
-p {
+.home p {
   grid-area: "results";
 }
 </style>
