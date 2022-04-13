@@ -71,11 +71,8 @@
         placeholder="ISBN"
         v-model="search.isbn"
       />
-      <input 
+      <input v-show="!emptyParams" type="submit" value="Submit" />
       
-      type="submit" 
-      value="Submit" />
-      <button></button>
     </form>
   </div>
 </template>
