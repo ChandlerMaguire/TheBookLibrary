@@ -23,12 +23,8 @@
           <td>{{ book.dateAdded }}</td>
         </tr>
       </tbody>
-<<<<<<< HEAD
       <h1 v-if="$store.state.searchResult.length == 0">No Results Found</h1>
     </table>
-=======
-      </table>
->>>>>>> ffb259c54b88292168f8739401cf66a7a3781e97
   </div>
 </template>
 
