@@ -115,6 +115,7 @@ export default {
         .then((response) => {
           if (response.status == 200) {
             this.$store.commit("GET_SEARCH_RESULT", response.data);
+            this.$router.push("results");
           }
         })
         .catch((error) => {
@@ -133,7 +134,8 @@ export default {
 form {
   background-color: var(--yellow);
 }
-.search {
-    display:
+#search {
+  display: flex;
+  flex-direction: column;   
 }
 </style>

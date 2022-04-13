@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>Welcome to your new home.</p>
-    <p>
-      In the initial configuration, this page can only be seen when logged in.
-    </p>
+    <h1>The Book Library</h1>
     <Search  class="search"></Search>
   </div>
 </template>
@@ -28,6 +24,7 @@ export default {
 }
 .search {
   grid-area: "search";
+  padding: 5%;
 }
 h1 {
   grid-area: "home";
