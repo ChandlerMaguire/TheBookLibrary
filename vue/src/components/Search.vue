@@ -77,6 +77,7 @@
         <tr v-for="book in searchResult" v-bind:key="book.isbn">
           <td>{{ book.title }}</td>
         </tr>
+        <tr v-if="this.searchResult.length == 0">-No Results Found-</tr>
       </tbody>
     </form>
   </div>

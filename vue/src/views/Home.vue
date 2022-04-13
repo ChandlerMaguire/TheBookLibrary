@@ -1,11 +1,13 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>Welcome to your new home.</p>
-    <p>
-      In the initial configuration, this page can only be seen when logged in.
-    </p>
-    <Search></Search>
+  <div>
+    <h1 class="home">Home</h1>
+    <div class="results">
+      <p>Welcome to your new home.</p>
+      <p>In the initial configuration, this page can only be seen when logged in.</p>
+    </div>
+      
+    
+    <Search class="search"></Search>
   </div>
 </template>
 
@@ -26,13 +28,14 @@ export default {
     "home home"
     "results search";
 }
+
 .search {
   grid-area: "search";
 }
 h1 {
   grid-area: "home";
 }
-h1 > p {
+p {
   grid-area: "results";
 }
 </style>
