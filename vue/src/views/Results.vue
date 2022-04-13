@@ -22,15 +22,17 @@
           <td>{{ book.dateAdded }}</td>
         </tr>
       </tbody>
-    </table>
+      <h1 v-if="$store.state.searchResult.length == 0">No Results Found</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: "results",
-  data() {},
-};
+  // data() {
+    
+  // },
+}
 </script>
 
 <style>

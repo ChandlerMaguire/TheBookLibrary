@@ -11,6 +11,11 @@ import Search from "@/components/Search.vue";
 export default {
   name: "Home",
   components: { Search },
+  // computed: {
+  //   resetResult() {
+  //     return this.$store.state.searchResults;
+  //   }
+  // }
 };
 </script>
 
@@ -22,6 +27,7 @@ export default {
     "home home"
     "results search";
 }
+
 .search {
   grid-area: "search";
   padding: 5%;

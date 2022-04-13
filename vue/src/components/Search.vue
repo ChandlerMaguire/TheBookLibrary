@@ -1,7 +1,6 @@
 <template>
   <div class="search">
     <form id="search" action="#" @submit.prevent="searchBooks">
-      <h3>Search</h3>
       <label for="keyword">Keyword</label>
       <input
         type="text"
@@ -72,12 +71,8 @@
         placeholder="ISBN"
         v-model="search.isbn"
       />
-      <input type="submit" value="Submit" />
-      <tbody>
-        <tr v-for="book in searchResult" v-bind:key="book.isbn">
-          <td>{{ book.title }}</td>
-        </tr>
-      </tbody>
+      <input v-show="!emptyParams" type="submit" value="Submit" />
+      <button></button>
     </form>
   </div>
 </template>
@@ -102,9 +97,17 @@ export default {
     };
   },
 
+  // computed: {
+  //   searchResult() {
+  //     return this.$store.state.searchResult;
+  //   },
+  // },
   computed: {
-    searchResult() {
-      return this.$store.state.searchResult;
+    emptyParams() {
+      if (this.search.keyword == "" && this.search.title == "" && this.search.firstName == "" && this.search.lastName == "" && this.search.genre == "" && this.search.character == "" && this.search.location == "" && this.search.isbn == "") {
+        return true;
+      }
+      return false;
     },
   },
 
@@ -115,7 +118,7 @@ export default {
         .then((response) => {
           if (response.status == 200) {
             this.$store.commit("GET_SEARCH_RESULT", response.data);
-            this.$router.push("results");
+            this.$router.push("/results");
           }
         })
         .catch((error) => {
@@ -126,6 +129,11 @@ export default {
           }
         });
     },
+    // sendHome() {
+    //   if (this.emptyParams) {
+    //     this.$router.push("/").catch(() => {});
+    //   }
+    // },
   },
 };
 </script>
@@ -136,6 +144,6 @@ form {
 }
 #search {
   display: flex;
-  flex-direction: column;   
+  flex-direction: column;
 }
 </style>
