@@ -25,13 +25,23 @@ export default {
 <style>
 .container {
   display: grid;
-  grid-template-columns: 3fr 1.5fr;
-  grid-template-areas: "... search";
   width: 100vw;
+  grid-template-columns: auto;
+  grid-template-areas: "content search";
+  margin: 0;
+ 
+}
+
+.home {
+  width: 75vw ;
+  grid-area: "content";
 }
 
 .search {
+  width: 25vw;
   grid-area: "search";
   padding: 5%;
+ min-width: fit-content;
+  margin-right: 20%;
 }
 </style>

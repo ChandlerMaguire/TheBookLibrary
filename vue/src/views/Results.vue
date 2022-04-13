@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <h3 v-if="$store.state.searchResult.length == 0">No Results Found</h3>
+    <h2 v-if="$store.state.searchResult.length == 0">No Results Found</h2>
     <table v-if="$store.state.searchResult.length > 0">
       <tr>
         <th></th>
@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style>
+h2 {
+text-align: center;
+}
 table {
   width: 100%;
   border: 2px solid;

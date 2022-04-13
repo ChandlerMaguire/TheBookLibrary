@@ -172,6 +172,7 @@ input, select {
   cursor: pointer;
   width: 100px;
   align-self: center;
+  
 }
 #submit:hover {
   background-color: var(--blue);

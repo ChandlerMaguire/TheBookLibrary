@@ -18,13 +18,16 @@
 --pink: #eecfd4ff;
 --lightyellow: rgb(255, 211, 130);
 --button: rgb(253, 203, 110);
+
 }
 body {
   background-color: var(--lightyellow);
+  font-family: 'Georgia', sans-serif;
 }
 #nav { text-align: center;}
 h1{
   text-align: center;
+  text-shadow: 3px 2px 3px grey;
 }
 /* @import './assets/styles/yourstyles.css';
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */
