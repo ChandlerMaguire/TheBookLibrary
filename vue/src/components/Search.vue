@@ -72,7 +72,7 @@
         v-model="search.isbn"
       />
       <input v-show="!emptyParams" type="submit" value="Submit" />
-      <button></button>
+      
     </form>
   </div>
 </template>
