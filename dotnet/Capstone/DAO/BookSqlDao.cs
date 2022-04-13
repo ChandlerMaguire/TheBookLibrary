@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Capstone.DAO
 {
@@ -20,6 +21,12 @@ namespace Capstone.DAO
         "AND b.keyword LIKE '%' + @keyword + '%' AND b.[character] LIKE '%' + @character + '%'  " +
         "AND b.[location] LIKE '%' + @location + '%' AND a.first_name LIKE '%' + @first_name + '%' AND" +
         " a.last_name LIKE '%' + @last_name + '%' AND b.isbn LIKE '%' + @isbn + '%' AND g.genre_name LIKE '%' + @genre_name + '%'";
+        
+        private string sqlGetReadingList = "select * from books b " +
+                "INNER JOIN user_book ub ON b.book_id = ub.book_id " +
+                "WHERE ub.[user_id] = @userId";
+
+        private string sqlAddToReadingList = "BEGIN TRY BEGIN TRANSACTION INSERT INTO user_book ([user_id], book_id) VALUES (@userId,(select b.book_id from books b where b.isbn = @isbn)); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
 
         public BookSqlDao(string dbConnectionString)
         {
@@ -88,6 +95,64 @@ namespace Capstone.DAO
             return returnBooks;
         }
 
+        public List<Book> GetReadingList(User currentUser)
+        {
+            List<Book> readingList = new List<Book>();
+            
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetReadingList, conn);
+                    cmd.Parameters.AddWithValue("@user_id", currentUser.UserId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        Book returnBook = GetBookFromReader(reader);
+                        readingList.Add(returnBook);
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return readingList;
+        }
+
+        public bool AddToReadingList(User currentUser, Book addedBook)
+        {
+            bool result = false;
+            
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddToReadingList, conn);
+                    cmd.Parameters.AddWithValue("@user_id", currentUser.UserId);
+                    cmd.Parameters.AddWithValue("@isbn", addedBook.Isbn);
+                    result = cmd.ExecuteNonQuery() > 0;
+
+
+                    
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
         private Book GetBookFromReader(SqlDataReader reader)
         {
             Book book = new Book();
@@ -101,10 +166,8 @@ namespace Capstone.DAO
             book.Keyword = Convert.ToString(reader["keyword"]);              //Make sure these match the column names
             book.Character = Convert.ToString(reader["character"]);
             book.Location = Convert.ToString(reader["location"]);
-            book.DateAdded = Convert.ToDateTime(reader["added"]);
-
-
-
+            book.DateAdded = Convert.ToString(reader["added"]);
+            book.DateAdded = book.DateAdded.Substring(0, 9);
             return book;
         }
     }

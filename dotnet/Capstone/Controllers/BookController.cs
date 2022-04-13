@@ -35,6 +35,36 @@ namespace Capstone.Controllers
             }
 
         }
+
+        [HttpPost("mybooks")]
+        public ActionResult<List<Book>> ReadingList(User currentUser)
+        {
+            List<Book> result = bookDao.GetReadingList(currentUser);
+            
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult<bool> AddToMyList(User currentUser, Book addedBook)
+        {
+            bool result = bookDao.AddToReadingList(currentUser, addedBook);
+
+            if (result)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
         
       
     }

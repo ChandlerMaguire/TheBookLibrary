@@ -71,7 +71,7 @@
         placeholder="ISBN"
         v-model="search.isbn"
       />
-      <input v-show="!emptyParams" type="submit" value="Submit" />
+      <button id='submit' type="submit" value="Submit">Submit</button>
       
     </form>
   </div>
@@ -104,7 +104,16 @@ export default {
   // },
   computed: {
     emptyParams() {
-      if (this.search.keyword == "" && this.search.title == "" && this.search.firstName == "" && this.search.lastName == "" && this.search.genre == "" && this.search.character == "" && this.search.location == "" && this.search.isbn == "") {
+      if (
+        this.search.keyword == "" &&
+        this.search.title == "" &&
+        this.search.firstName == "" &&
+        this.search.lastName == "" &&
+        this.search.genre == "" &&
+        this.search.character == "" &&
+        this.search.location == "" &&
+        this.search.isbn == ""
+      ) {
         return true;
       }
       return false;
@@ -113,6 +122,7 @@ export default {
 
   methods: {
     searchBooks() {
+      if (!this.emptyParams) {
       searchService
         .search(this.search)
         .then((response) => {
@@ -128,6 +138,7 @@ export default {
             this.invalidCredentials = true;
           }
         });
+      }
     },
     // sendHome() {
     //   if (this.emptyParams) {
@@ -141,9 +152,33 @@ export default {
 <style>
 form {
   background-color: var(--yellow);
+  padding: 5px;
+  border: 1px solid var(--red);
+}
+input, select {
+  margin-bottom: 5px;
 }
 #search {
   display: flex;
   flex-direction: column;
+}
+#submit {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background-color: var(--button);
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  width: 100px;
+  align-self: center;
+  
+}
+#submit:hover {
+  background-color: var(--blue);
+  box-shadow: 0px 5px 10px var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+  transition: all 0.3s ease 0s;
 }
 </style>
