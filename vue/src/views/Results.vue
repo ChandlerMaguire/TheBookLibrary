@@ -31,9 +31,9 @@
 export default {
   name: "results",
   // data() {
-    
+
   // },
-}
+};
 </script>
 
 <style>
@@ -53,7 +53,7 @@ tr {
   background-color:rgba(255, 182, 46, .8);
 } */
 tr:nth-child(odd) {
-  background-color:rgba(255, 182, 46, 1);
+  background-color: rgba(255, 182, 46, 1);
 }
 th {
   padding: 5px;
