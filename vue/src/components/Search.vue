@@ -104,7 +104,16 @@ export default {
   // },
   computed: {
     emptyParams() {
-      if (this.search.keyword == "" && this.search.title == "" && this.search.firstName == "" && this.search.lastName == "" && this.search.genre == "" && this.search.character == "" && this.search.location == "" && this.search.isbn == "") {
+      if (
+        this.search.keyword == "" &&
+        this.search.title == "" &&
+        this.search.firstName == "" &&
+        this.search.lastName == "" &&
+        this.search.genre == "" &&
+        this.search.character == "" &&
+        this.search.location == "" &&
+        this.search.isbn == ""
+      ) {
         return true;
       }
       return false;
