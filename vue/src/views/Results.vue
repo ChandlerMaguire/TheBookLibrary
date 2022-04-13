@@ -17,22 +17,31 @@
               'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
             "
           />
+          <button id="addButton" v-if="!$store.state.myBooks.includes(book)" v-on:click.prevent="addToMyBooks(book)">Add to My Books</button>
+          <button id="removeButton" v-if="$store.state.myBooks.includes(book)" v-on:click.prevent="removeFromMyBooks(book)">Remove from My Books</button>
+
           <td>{{ book.title }}</td>
           <td>{{ book.firstName }} {{ book.lastName }}</td>
           <td>{{ book.genre }}</td>
           <td>{{ book.dateAdded }}</td>
         </tr>
       </tbody>
-      </table>
+      <h1 v-if="$store.state.searchResult.length == 0">No Results Found</h1>
+    </table>
   </div>
 </template>
 
 <script>
 export default {
   name: "results",
-  // data() {
-
-  // },
+  methods: {
+        addToMyBooks(book) {
+            this.$store.commit('ADD_TO_MY_BOOKS', book);
+        },
+        removeFromMyBooks(book) {
+            this.$store.commit('REMOVE_FROM_MY_BOOKS', book);
+        }
+    }
 };
 </script>
 
@@ -67,5 +76,44 @@ img {
   margin: 10px;
   border: 1px solid var(--blue);
 }
-
+#addButton {
+  padding-bottom: 0;
+  background-color: var(--button);
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  height: 25px;
+  width: 100px;
+  font-size: 10px;
+  align-self: center;
+  
+}
+#addButton:hover {
+  background-color: var(--blue);
+  box-shadow: 0px 5px 10px var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+  transition: all 0.3s ease 0s;
+}
+#removeButton {
+  padding-bottom: 0;
+  background-color: var(--button);
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  height: 35px;
+  width: 100px;
+  font-size: 10px;
+  align-self: center;
+  
+}
+#removeButton:hover {
+  background-color: var(--blue);
+  box-shadow: 0px 5px 10px var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+  transition: all 0.3s ease 0s;
+}
 </style>
