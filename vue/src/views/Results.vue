@@ -23,6 +23,7 @@
         </tr>
       </tbody>
       <h1 v-if="$store.state.searchResult.length == 0">No Results Found</h1>
+    </table>
   </div>
 </template>
 
