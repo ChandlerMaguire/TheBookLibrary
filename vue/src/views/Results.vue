@@ -43,7 +43,7 @@ table {
   border-color: var(--red);
   color: var(--blue);
   text-align: center;
-  table-layout: auto;
+  table-layout: fixed;
   /* background-color: var(--yellow); */
 }
 tr {
