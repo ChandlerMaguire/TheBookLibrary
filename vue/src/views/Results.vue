@@ -23,6 +23,7 @@
         </tr>
       </tbody>
       <h1 v-if="$store.state.searchResult.length == 0">No Results Found</h1>
+    </table>
   </div>
 </template>
 
@@ -30,9 +31,9 @@
 export default {
   name: "results",
   // data() {
-    
+
   // },
-}
+};
 </script>
 
 <style>
@@ -46,13 +47,12 @@ table {
 }
 tr {
   border: 1px solid var(--pink);
- 
 }
 tr:nth-child(even) {
-  background-color:rgba(255, 182, 46, .8);
+  background-color: rgba(255, 182, 46, 0.8);
 }
 tr:nth-child(odd) {
-  background-color:rgba(255, 182, 46, 1);
+  background-color: rgba(255, 182, 46, 1);
 }
 th {
   padding: 5px;
