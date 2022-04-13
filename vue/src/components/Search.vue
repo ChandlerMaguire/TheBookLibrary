@@ -71,7 +71,10 @@
         placeholder="ISBN"
         v-model="search.isbn"
       />
-      <input v-show="!emptyParams" type="submit" value="Submit" />
+      <input 
+      
+      type="submit" 
+      value="Submit" />
       <button></button>
     </form>
   </div>
@@ -104,7 +107,16 @@ export default {
   // },
   computed: {
     emptyParams() {
-      if (this.search.keyword == "" && this.search.title == "" && this.search.firstName == "" && this.search.lastName == "" && this.search.genre == "" && this.search.character == "" && this.search.location == "" && this.search.isbn == "") {
+      if (
+        this.search.keyword == "" &&
+        this.search.title == "" &&
+        this.search.firstName == "" &&
+        this.search.lastName == "" &&
+        this.search.genre == "" &&
+        this.search.character == "" &&
+        this.search.location == "" &&
+        this.search.isbn == ""
+      ) {
         return true;
       }
       return false;
