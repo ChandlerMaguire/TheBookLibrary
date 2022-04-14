@@ -51,21 +51,21 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult<bool> AddToMyList(User currentUser, Book addedBook)
-        {
-            bool result = bookDao.AddToReadingList(currentUser, addedBook);
+        //[HttpPost]
+        //public ActionResult<bool> AddToMyList(User currentUser, Book addedBook)
+        //{
+        //    bool result = bookDao.AddToReadingList(currentUser, addedBook);
 
-            if (result)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
-        
-      
+        //    if (result)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else
+        //    {
+        //        return NotFound();
+        //    }
+        //}
+
+
     }
 }

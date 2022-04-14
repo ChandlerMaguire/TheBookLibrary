@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <h2 v-if="$store.state.searchResult.length == 0">No Results Found</h2>
     <table v-if="$store.state.searchResult.length > 0">
       <tr>
@@ -17,8 +16,20 @@
               'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
             "
           />
-          <button id="addButton" v-if="!$store.state.myBooks.includes(book)" v-on:click.prevent="addToMyBooks(book)">Add to My Books</button>
-          <button id="removeButton" v-if="$store.state.myBooks.includes(book)" v-on:click.prevent="removeFromMyBooks(book)">Remove from My Books</button>
+          <button
+            id="addButton"
+            v-if="!$store.state.myBooks.includes(book)"
+            v-on:click.prevent="addToMyBooks(book)"
+          >
+            Add to My Books
+          </button>
+          <button
+            id="removeButton"
+            v-if="$store.state.myBooks.includes(book)"
+            v-on:click.prevent="removeFromMyBooks(book)"
+          >
+            Remove from My Books
+          </button>
 
           <td>{{ book.title }}</td>
           <td>{{ book.firstName }} {{ book.lastName }}</td>
@@ -32,22 +43,26 @@
 </template>
 
 <script>
+import bookService from "@/services/BookService.js";
+
 export default {
   name: "results",
   methods: {
-        addToMyBooks(book) {
-            this.$store.commit('ADD_TO_MY_BOOKS', book);
-        },
-        removeFromMyBooks(book) {
-            this.$store.commit('REMOVE_FROM_MY_BOOKS', book);
-        }
-    }
+    addToMyBooks(book) {
+      this.$store.commit("ADD_TO_MY_BOOKS", book);
+      bookService
+        .updateMyBooks(this.$store.state.userBooks);
+    },
+    removeFromMyBooks(book) {
+      this.$store.commit("REMOVE_FROM_MY_BOOKS", book);
+    },
+  },
 };
 </script>
 
 <style>
 h2 {
-text-align: center;
+  text-align: center;
 }
 table {
   width: 100%;
@@ -87,7 +102,6 @@ img {
   width: 100px;
   font-size: 10px;
   align-self: center;
-  
 }
 #addButton:hover {
   background-color: var(--blue);
@@ -107,7 +121,6 @@ img {
   width: 100px;
   font-size: 10px;
   align-self: center;
-  
 }
 #removeButton:hover {
   background-color: var(--blue);
