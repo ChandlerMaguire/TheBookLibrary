@@ -98,7 +98,7 @@ namespace Capstone.DAO
             return returnBooks;
         }
 
-        public List<Book> GetReadingList(User currentUser)
+        public List<Book> GetReadingList(string userId)
         {
             List<Book> readingList = new List<Book>();
 
@@ -109,7 +109,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlGetReadingList, conn);
-                    cmd.Parameters.AddWithValue("@user_id", currentUser.UserId);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
 

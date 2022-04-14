@@ -36,10 +36,11 @@ namespace Capstone.Controllers
 
         }
 
-        [HttpPost("mybooks")]
-        public ActionResult<List<Book>> ReadingList(User currentUser)
+        [HttpGet("mybooks")]
+        public ActionResult<List<Book>> GetReadingList()
         {
-            List<Book> result = bookDao.GetReadingList(currentUser);
+            string userId = User.FindFirst("sub").Value;
+            List<Book> result = bookDao.GetReadingList(userId);
 
             if (result != null)
             {
