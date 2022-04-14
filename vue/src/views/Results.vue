@@ -18,6 +18,7 @@
           />
           <button
             id="addButton"
+            class="toggleButton"
             v-show="!isBookInStore(book.isbn)"
             v-on:click.prevent="addToMyBooks(book)"
           >
@@ -25,6 +26,7 @@
           </button>
           <button
             id="removeButton"
+            class="toggleButton"
             v-show="isBookInStore(book.isbn)"
             v-on:click.prevent="removeFromMyBooks(book)"
           >
@@ -65,26 +67,6 @@ export default {
       });
     },
   },
-  // computed:{
-  //   inMyBooks(book){
-  //     if(this.$store.state.myBooks.includes(book)){
-  //       return true;
-  //     }
-  //     else{
-  //       return false;
-  //     }
-  //   }
-  // }
-  // created(){
-  //   let inMyBooks;
-  //   if(this.$store.state.myBooks.includes(this.book)){
-  //     inMyBooks = true;
-  //   }
-  //   else{
-  //     inMyBooks = false;
-  //   }
-  //   return inMyBooks;
-  // }
 };
 </script>
 
@@ -115,44 +97,5 @@ th {
   border-bottom: 2px solid var(--red);
 }
 
-#addButton {
-  padding-bottom: 0;
-  margin-bottom: 10px;
-  background-color: var(--button);
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  height: 25px;
-  width: 100px;
-  font-size: 10px;
-  align-self: center;
-}
-#addButton:hover {
-  background-color: var(--blue);
-  box-shadow: 0px 5px 10px var(--navy);
-  color: #fff;
-  transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
-}
-#removeButton {
-  padding-bottom: 0;
-  margin-bottom: 10px;
-  background-color: var(--button);
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  height: 35px;
-  width: 100px;
-  font-size: 10px;
-  align-self: center;
-}
-#removeButton:hover {
-  background-color: var(--blue);
-  box-shadow: 0px 5px 10px var(--navy);
-  color: #fff;
-  transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
-}
+
 </style>

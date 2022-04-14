@@ -2,36 +2,65 @@
   <div>
     <h2>My Books</h2>
     <table>
-        <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
-          <img
-            v-bind:src="
-              'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
-            "
-          />
-          <h4>{{ book.title }}</h4>
-          <h5>{{ book.firstName }} {{ book.lastName }}</h5>
-        </td>
-      </table>
+      <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
+        <img
+          v-bind:src="
+            'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
+          "
+        />
+        <h4>{{ book.title }}</h4>
+        <h5>{{ book.firstName }} {{ book.lastName }}</h5>
+        <button
+          id="removeButton"
+          class="toggleButton"
+          v-show="isBookInStore(book.isbn)"
+          v-on:click.prevent="removeFromMyBooks(book)"
+        >
+          Remove from My Books
+        </button>
+      </td>
+    </table>
   </div>
 </template>
 
 <script>
+import bookService from "@/services/BookService.js";
 
 export default {
-    name: 'my-books',
-}
+  name: "my-books",
+  methods: {
+    addToMyBooks(book) {
+      this.$store.commit("ADD_TO_MY_BOOKS", book);
+      bookService
+        .updateMyBooks(this.$store.state.myBooks);
+    },
+    removeFromMyBooks(book) {
+      this.$store.commit("REMOVE_FROM_MY_BOOKS", book);
+      bookService
+        .updateMyBooks(this.$store.state.myBooks);
+    },
+    isBookInStore(isbn){
+      console.log(isbn);
+      return this.$store.state.myBooks.find(item => {
+        return item.isbn == isbn;
+      });
+    },
+  },
+};
 </script>
+
 <style scoped>
-h4, h5 {
-text-align: center;
-color: var(--blue);
+h4,
+h5 {
+  text-align: center;
+  color: var(--blue);
 }
-h4{
+h4 {
   font-size: 1.2rem;
   font-style: italic;
 }
-h5{
-  font-size: 1.0rem;
+h5 {
+  font-size: 1rem;
 }
 
 img {
@@ -55,6 +84,5 @@ table {
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
-  
 }
 </style>
