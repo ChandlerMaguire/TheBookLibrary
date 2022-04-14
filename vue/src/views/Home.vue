@@ -21,6 +21,7 @@ export default {
 .container {
   display: grid;
   width: 100vw;
+  height: 100vw;
   grid-template-columns: auto;
   grid-template-areas: "content search";
   margin: 0;

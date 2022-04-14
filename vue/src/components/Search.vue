@@ -154,6 +154,7 @@ form {
   background-color: var(--yellow);
   padding: 5px;
   border: 1px solid var(--red);
+  margin-right: 20px;
 }
 input, select {
   margin-bottom: 5px;

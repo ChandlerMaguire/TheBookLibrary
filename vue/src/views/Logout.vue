@@ -9,6 +9,7 @@
 export default {
   created() {
     this.$store.commit("LOGOUT");
+    this.$store.commit("RESET_MY_BOOKS");
     this.$router.push("/login");
   }
 };

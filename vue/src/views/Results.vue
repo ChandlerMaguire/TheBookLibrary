@@ -114,11 +114,7 @@ th {
   padding: 5px;
   border-bottom: 2px solid var(--red);
 }
-img {
-  width: 100px;
-  margin: 10px;
-  border: 1px solid var(--blue);
-}
+
 #addButton {
   padding-bottom: 0;
   margin-bottom: 10px;

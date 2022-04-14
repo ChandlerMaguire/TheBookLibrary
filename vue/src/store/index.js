@@ -52,5 +52,8 @@ export default new Vuex.Store({
     REMOVE_FROM_MY_BOOKS(state, book){
       state.myBooks.pop(book);
     },
+    RESET_MY_BOOKS(state){
+      state.myBooks = [];
+    }
   }
 })

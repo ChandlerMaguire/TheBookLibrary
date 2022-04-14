@@ -23,7 +23,7 @@ namespace Capstone.DAO
         " a.last_name LIKE '%' + @last_name + '%' AND b.isbn LIKE '%' + @isbn + '%' AND g.genre_name LIKE '%' + @genre_name + '%'";
 
         private string sqlGetReadingList = "select * from books b " +
-                "INNER JOIN user_book ub ON b.book_id = ub.book_id " +
+                "INNER JOIN user_book ub ON b.book_id = ub.book_id INNER JOIN author a ON a.author_id = b.author_id INNER JOIN genre g ON g.genre_id = b.genre_id " +
                 "WHERE ub.[user_id] = @userId";
 
         private string sqlAddToReadingList = "BEGIN TRY BEGIN TRANSACTION INSERT INTO user_book ([user_id], book_id) VALUES (@userId,(select b.book_id from books b where b.isbn = @isbn)); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
@@ -109,7 +109,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlGetReadingList, conn);
-                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
 

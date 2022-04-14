@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Results from '@/views/Results.vue'
+import MyBooks from '@/components/MyBooks.vue'
 
 Vue.use(Router)
 
@@ -60,6 +61,14 @@ const router = new Router({
       component: Results,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/mybooks",
+      name: "my-books",
+      component: MyBooks,
+      meta: {
+        requiresAuth: true
       }
     },
   ]
