@@ -18,14 +18,14 @@
           />
           <button
             id="addButton"
-            v-show="!$store.state.myBooks.includes(book)"
+            v-show="!isBookInStore(book.isbn)"
             v-on:click.prevent="addToMyBooks(book)"
           >
             Add to My Books
           </button>
           <button
             id="removeButton"
-            v-show="$store.state.myBooks.includes(book)"
+            v-show="isBookInStore(book.isbn)"
             v-on:click.prevent="removeFromMyBooks(book)"
           >
             Remove from My Books
@@ -57,6 +57,12 @@ export default {
       this.$store.commit("REMOVE_FROM_MY_BOOKS", book);
       bookService
         .updateMyBooks(this.$store.state.myBooks);
+    },
+    isBookInStore(isbn){
+      console.log(isbn);
+      return this.$store.state.myBooks.find(item => {
+        return item.isbn == isbn;
+      });
     },
   },
   // computed:{
