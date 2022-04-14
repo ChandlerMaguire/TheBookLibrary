@@ -1,0 +1,152 @@
+<template>
+  <div class="addBook">
+    <form id="addBook" action="#" @submit.prevent="insertBook">
+      <label for="keyword">Add Keywords seperated by commas</label>
+      <input
+        type="text"
+        id="keyword"
+        name="keyword"
+        placeholder="Keyword"
+        v-model="addBook.keyword"
+      />
+      <label for="title">Add Book Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Title"
+        v-model="addBook.title"
+      />
+      <label for="author">Add Author</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        placeholder="First Name"
+        v-model="addBook.firstName"
+      />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Last Name"
+        v-model="addBook.lastName"
+      />
+      <label for="genre">Select Genre:</label>
+      <select id="genre" name="genre" v-model="addBook.genre">
+        <option value="">Select a Genre...</option>
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Historical Fiction">Historical Fiction</option>
+        <option value="Horror">Horror</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Romance">Romance</option>
+        <option value="Thriller">Thriller</option>
+      </select>
+      <label for="character">Add Characters seperated by commas</label>
+      <input
+        type="text"
+        id="character"
+        name="character"
+        placeholder="Character"
+        v-model="addBook.character"
+      />
+      <label for="location">Add Location(s) seperated by commas</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        placeholder="Location"
+        v-model="addBook.location"
+      />
+      <label for="isbn">Add ISBN</label>
+      <input
+        type="text"
+        inputmode="numeric"
+        id="isbn"
+        name="isbn"
+        placeholder="ISBN"
+        v-model="addBook.isbn"
+      />
+      <button id="submit" type="submit" value="Submit">Submit</button>
+    </form>
+  </div>
+</template>
+<script>
+import addService from "../services/AddService";
+
+export default {
+  name: "addBook",
+  data() {
+    return {
+      addBook: {
+        keyword: "",
+        title: "",
+        firstName: "",
+        lastName: "",
+        genre: "",
+        character: "",
+        location: "",
+        isbn: "",
+      },
+    };
+  },
+  computed: {
+    emptyParams() {
+      if (
+        this.addBook.keyword == "" &&
+        this.addBook.title == "" &&
+        this.addBook.firstName == "" &&
+        this.addBook.lastName == "" &&
+        this.addBook.genre == "" &&
+        this.addBook.character == "" &&
+        this.addBook.location == "" &&
+        this.addBook.isbn == ""
+      ) {
+        return true;
+      }
+      return false;
+    },
+  },
+
+  methods: {
+    insertBook() {
+      if (!this.emptyParams) {
+        // this.$store.commit("ADD_BOOK", this.addBook);
+        addService
+          .add(this.addBook)
+          .then((response) => {
+            if (response.status == 201) {
+                this.addBook.keyword = "";
+                this.addBook.title = "";
+                this.addBook.firstName = "";
+                this.addBook.lastName = "";
+                this.addBook.genre = "";
+                this.addBook.character = "";
+                this.addBook.location = "";
+                this.addBook.isbn = "";
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+
+            if (response.status === 401) {
+              this.invalidCredentials = true;
+            }
+          });
+      }
+    },
+    // sendHome() {
+    //   if (this.emptyParams) {
+    //     this.$router.push("/").catch(() => {});
+    //   }
+    // },
+  },
+};
+</script>
+
+<style>
+</style>

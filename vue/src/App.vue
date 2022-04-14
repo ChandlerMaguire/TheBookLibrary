@@ -37,6 +37,7 @@ background-attachment: fixed;
   overscroll-behavior-y: none;
   
 }
+
 #nav { text-align: center;}
 h1, h2{
   text-align: center;
@@ -73,46 +74,32 @@ th {
   padding: 5px;
   border-bottom: 2px solid var(--red);
 }
+.toggleButton { 
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  background-color: var(--button);
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  width: 100px;
+  font-size: 10px;
+  align-self: center;
 
+}
+.toggleButton:hover {
+  background-color: var(--blue);
+  box-shadow: 0px 5px 10px var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+  transition: all 0.3s ease 0s;
+}
 #addButton {
-  padding-bottom: 0;
-  margin-bottom: 10px;
-  background-color: var(--button);
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
   height: 25px;
-  width: 100px;
-  font-size: 10px;
-  align-self: center;
 }
-#addButton:hover {
-  background-color: var(--blue);
-  box-shadow: 0px 5px 10px var(--navy);
-  color: #fff;
-  transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
-}
+
 #removeButton {
-  padding-bottom: 0;
-  margin-bottom: 10px;
-  background-color: var(--button);
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
   height: 35px;
-  width: 100px;
-  font-size: 10px;
-  align-self: center;
-}
-#removeButton:hover {
-  background-color: var(--blue);
-  box-shadow: 0px 5px 10px var(--navy);
-  color: #fff;
-  transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
 }
 /* @import './assets/styles/yourstyles.css';
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */

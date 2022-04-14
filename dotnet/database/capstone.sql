@@ -42,7 +42,7 @@ CREATE TABLE author (
 INSERT INTO author (first_name, last_name) VALUES ('Jane','Austen');
 INSERT INTO author (first_name, last_name) VALUES ('Yaa', 'Gyasi');
 INSERT INTO author (first_name, last_name) VALUES ('J.K', 'Rowling');
-INSERT INTO author (first_name, last_name) VALUES (' F.Scott','Fitzgerald');
+INSERT INTO author (first_name, last_name) VALUES ('F.Scott','Fitzgerald');
 INSERT INTO author (first_name, last_name) VALUES ('Kristin' ,'Cashore');
 INSERT INTO author (first_name, last_name) VALUES ('Madaline', 'Miller');
 

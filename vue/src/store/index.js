@@ -22,6 +22,17 @@ export default new Vuex.Store({
     user: currentUser || {},
     searchResult: [],
     myBooks: [],
+    allBooks: [],
+    addedBook: {
+      keyword: "",
+      title: "",
+      firstName: "",
+      lastName: "",
+      genre: "",
+      character: "",
+      location: "",
+      isbn: "",
+    },
   },
 
   mutations: {
@@ -54,6 +65,9 @@ export default new Vuex.Store({
     },
     RESET_MY_BOOKS(state){
       state.myBooks = [];
+    },
+    ADD_BOOK(state, book){
+      state.addedBook = book;
     }
   }
 })
