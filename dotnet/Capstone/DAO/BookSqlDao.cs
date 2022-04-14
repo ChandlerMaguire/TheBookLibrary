@@ -126,18 +126,18 @@ namespace Capstone.DAO
             return readingList;
         }
 
-        public bool AddToReadingList(User currentUser, Book addedBook)
+        public bool AddToReadingList(UserBook userInfo)
         {
             bool result = false;
-            
+            Book newBook = userInfo.myBooks[0];
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddToReadingList, conn);
-                    cmd.Parameters.AddWithValue("@user_id", currentUser.UserId);
-                    cmd.Parameters.AddWithValue("@isbn", addedBook.Isbn);
+                    cmd.Parameters.AddWithValue("@user_id", userInfo.currentUser.UserId);
+                    cmd.Parameters.AddWithValue("@isbn", newBook.Isbn);
                     result = cmd.ExecuteNonQuery() > 0;
 
 
