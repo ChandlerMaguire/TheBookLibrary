@@ -18,14 +18,14 @@
           />
           <button
             id="addButton"
-            v-if="!$store.state.myBooks.includes(book)"
+            v-show="!$store.state.myBooks.includes(book)"
             v-on:click.prevent="addToMyBooks(book)"
           >
             Add to My Books
           </button>
           <button
             id="removeButton"
-            v-if="$store.state.myBooks.includes(book)"
+            v-show="$store.state.myBooks.includes(book)"
             v-on:click.prevent="removeFromMyBooks(book)"
           >
             Remove from My Books
@@ -59,16 +59,26 @@ export default {
         .updateMyBooks(this.$store.state.myBooks);
     },
   },
-  computed:{
-    inMyBooks(book){
-      if(this.$store.state.myBooks.includes(book)){
-        return true;
-      }
-      else{
-        return false;
-      }
-    }
-  }
+  // computed:{
+  //   inMyBooks(book){
+  //     if(this.$store.state.myBooks.includes(book)){
+  //       return true;
+  //     }
+  //     else{
+  //       return false;
+  //     }
+  //   }
+  // }
+  // created(){
+  //   let inMyBooks;
+  //   if(this.$store.state.myBooks.includes(this.book)){
+  //     inMyBooks = true;
+  //   }
+  //   else{
+  //     inMyBooks = false;
+  //   }
+  //   return inMyBooks;
+  // }
 };
 </script>
 
@@ -105,6 +115,7 @@ img {
 }
 #addButton {
   padding-bottom: 0;
+  margin-bottom: 10px;
   background-color: var(--button);
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -124,6 +135,7 @@ img {
 }
 #removeButton {
   padding-bottom: 0;
+  margin-bottom: 10px;
   background-color: var(--button);
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
