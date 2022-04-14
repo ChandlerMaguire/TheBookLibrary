@@ -90,7 +90,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@password_hash", hash.Password);
                     cmd.Parameters.AddWithValue("@salt", hash.Salt);
                     cmd.Parameters.AddWithValue("@user_role", role);
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();               
                 }
             }
             catch (SqlException)

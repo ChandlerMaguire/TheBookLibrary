@@ -27,7 +27,7 @@
 import bookService from "@/services/BookService.js";
 
 export default {
-  name: "my-books",
+  name: "myBooks",
   methods: {
     addToMyBooks(book) {
       this.$store.commit("ADD_TO_MY_BOOKS", book);

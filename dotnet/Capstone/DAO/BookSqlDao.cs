@@ -189,9 +189,8 @@ namespace Capstone.DAO
                 cmd3.Parameters.AddWithValue("@keywords", bookToAdd.Keyword);
                 cmd3.Parameters.AddWithValue("@character", bookToAdd.Character);
                 cmd3.Parameters.AddWithValue("@location", bookToAdd.Location);
+                cmd3.Parameters.AddWithValue("@authorId", authorId);
                 cmd3.ExecuteNonQuery();
-
-
 
             }
         }

@@ -79,7 +79,7 @@
 import addService from "../services/AddService";
 
 export default {
-  name: "addBook",
+  name: "add-book",
   data() {
     return {
       addBook: {
@@ -119,7 +119,7 @@ export default {
         addService
           .add(this.addBook)
           .then((response) => {
-            if (response.status == 201) {
+            if (response.status == 200) {
                 this.addBook.keyword = "";
                 this.addBook.title = "";
                 this.addBook.firstName = "";
