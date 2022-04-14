@@ -96,7 +96,6 @@ export default {
       },
     };
   },
-
   // computed: {
   //   searchResult() {
   //     return this.$store.state.searchResult;
