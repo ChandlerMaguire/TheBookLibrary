@@ -39,6 +39,7 @@
 
 <script>
 import authService from "../services/AuthService";
+import bookService from "../services/BookService";
 
 export default {
   name: "login",
@@ -60,6 +61,15 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+            bookService
+            .getReadingList()
+            .then(response => {
+              if(response.status == 200) {
+                response.data.forEach(book => {
+                  this.$store.commit("ADD_TO_MY_BOOKS", book)
+                });
+              }
+            })
             this.$router.push("/");
           }
         })
