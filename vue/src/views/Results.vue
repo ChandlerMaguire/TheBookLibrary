@@ -51,12 +51,24 @@ export default {
     addToMyBooks(book) {
       this.$store.commit("ADD_TO_MY_BOOKS", book);
       bookService
-        .updateMyBooks(this.$store.state.userBooks);
+        .updateMyBooks(this.$store.state.myBooks);
     },
     removeFromMyBooks(book) {
       this.$store.commit("REMOVE_FROM_MY_BOOKS", book);
+      bookService
+        .updateMyBooks(this.$store.state.myBooks);
     },
   },
+  computed:{
+    inMyBooks(book){
+      if(this.$store.state.myBooks.includes(book)){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+  }
 };
 </script>
 

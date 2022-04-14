@@ -21,13 +21,16 @@ namespace Capstone.DAO
         "AND b.keyword LIKE '%' + @keyword + '%' AND b.[character] LIKE '%' + @character + '%'  " +
         "AND b.[location] LIKE '%' + @location + '%' AND a.first_name LIKE '%' + @first_name + '%' AND" +
         " a.last_name LIKE '%' + @last_name + '%' AND b.isbn LIKE '%' + @isbn + '%' AND g.genre_name LIKE '%' + @genre_name + '%'";
-        
+
         private string sqlGetReadingList = "select * from books b " +
                 "INNER JOIN user_book ub ON b.book_id = ub.book_id " +
                 "WHERE ub.[user_id] = @userId";
 
         private string sqlAddToReadingList = "BEGIN TRY BEGIN TRANSACTION INSERT INTO user_book ([user_id], book_id) VALUES (@userId,(select b.book_id from books b where b.isbn = @isbn)); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
 
+        private string sqlDeleteFromMyBooks = "DELETE FROM user_book WHERE [user_id] = @userId;";
+
+        private string sqlUpdateMyBooks = "BEGIN TRY BEGIN TRANSACTION INSERT INTO user_book ([user_id], book_id) VALUES (@userId,(select b.book_id from books b where b.isbn = @isbn)); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -98,7 +101,7 @@ namespace Capstone.DAO
         public List<Book> GetReadingList(User currentUser)
         {
             List<Book> readingList = new List<Book>();
-            
+
 
             try
             {
@@ -126,31 +129,30 @@ namespace Capstone.DAO
             return readingList;
         }
 
-        public bool AddToReadingList(UserBook userInfo)
+        public void updateMyBooks(List<Book> myBooks, string userId)
         {
-            bool result = false;
-            Book newBook = userInfo.myBooks[0];
-            try
+            List<string> isbnList = new List<string>();
+
+            foreach (Book book in myBooks)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                isbnList.Add(book.Isbn);
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlDeleteFromMyBooks, conn);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.ExecuteNonQuery();
+
+                foreach (string isbn in isbnList)
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlAddToReadingList, conn);
-                    cmd.Parameters.AddWithValue("@user_id", userInfo.currentUser.UserId);
-                    cmd.Parameters.AddWithValue("@isbn", newBook.Isbn);
-                    result = cmd.ExecuteNonQuery() > 0;
-
-
-                    
-
+                    SqlCommand cmd2 = new SqlCommand(sqlUpdateMyBooks, conn);
+                    cmd2.Parameters.AddWithValue("@isbn", isbn);
+                    cmd2.Parameters.AddWithValue("@userId", userId);
+                    cmd2.ExecuteNonQuery();
                 }
             }
-            catch (SqlException)
-            {
-                throw;
-            }
-
-            return result;
         }
 
         private Book GetBookFromReader(SqlDataReader reader)

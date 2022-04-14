@@ -20,7 +20,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("search")]
-        public ActionResult<List<Book>> SearchResult (Book searchTerms)
+        public ActionResult<List<Book>> SearchResult(Book searchTerms)
         {
             List<Book> result = bookDao.SearchBooks(searchTerms);
 
@@ -40,7 +40,7 @@ namespace Capstone.Controllers
         public ActionResult<List<Book>> ReadingList(User currentUser)
         {
             List<Book> result = bookDao.GetReadingList(currentUser);
-            
+
             if (result != null)
             {
                 return Ok(result);
@@ -51,20 +51,14 @@ namespace Capstone.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult<bool> AddToMyList(User currentUser, Book addedBook)
-        //{
-        //    bool result = bookDao.AddToReadingList(currentUser, addedBook);
+        [HttpPut("mybooks")]
+        public ActionResult UpdateMyList(List<Book> myBooks)
+        {
+            string userId = User.FindFirst("sub").Value;
+            bookDao.updateMyBooks(myBooks, userId);
 
-        //    if (result)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    else
-        //    {
-        //        return NotFound();
-        //    }
-        //}
+            return Ok();
+        }
 
 
     }

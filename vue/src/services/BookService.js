@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
 
-  updateMyBooks(userBooks) {
-    return axios.put('/mybooks', userBooks)
+  updateMyBooks(myBooks) {
+    return axios.put('/mybooks', myBooks)
   }
 }

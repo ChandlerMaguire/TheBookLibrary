@@ -22,7 +22,6 @@ export default new Vuex.Store({
     user: currentUser || {},
     searchResult: [],
     myBooks: [],
-    userBooks: {user: currentUser, books: []},
   },
 
   mutations: {
@@ -49,7 +48,6 @@ export default new Vuex.Store({
     },
     ADD_TO_MY_BOOKS(state, book){
       state.myBooks.push(book);
-      state.userBooks.books = state.myBooks;
     },
     REMOVE_FROM_MY_BOOKS(state, book){
       state.myBooks.pop(book);

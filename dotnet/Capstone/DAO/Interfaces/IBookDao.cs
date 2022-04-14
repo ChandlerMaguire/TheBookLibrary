@@ -11,7 +11,7 @@ namespace Capstone.DAO.Interfaces
         List<Book> SearchBooks(Book searchTerms);
         List<Book> GetAllBooks();
         List<Book> GetReadingList(User currentUser);
-        bool AddToReadingList(User currentUser, Book addedBook);
+        void updateMyBooks(List<Book> myBooks, string userId);
 
     }
 }
