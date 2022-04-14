@@ -61,6 +61,14 @@ namespace Capstone.Controllers
             return Ok();
         }
 
+        [HttpPost("addbook")]
+        public ActionResult AddABook(Book bookToAdd)
+        {
+            bookDao.AddBook(bookToAdd);
+
+            return Ok();
+        }
+
 
     }
 }

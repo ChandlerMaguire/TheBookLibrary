@@ -31,6 +31,12 @@ namespace Capstone.DAO
         private string sqlDeleteFromMyBooks = "DELETE FROM user_book WHERE [user_id] = @userId;";
 
         private string sqlUpdateMyBooks = "BEGIN TRY BEGIN TRANSACTION INSERT INTO user_book ([user_id], book_id) VALUES (@userId,(select b.book_id from books b where b.isbn = @isbn)); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
+
+        private string sqlCheckAuthor = "SELECT author_id FROM author WHERE first_name = @firstName AND last_name = @lastName";
+
+        private string sqlAddAuthor = "INSERT INTO author(first_name, last_name) OUTPUT inserted.author_id VALUES (@firstName, @lastName)";
+
+        private string sqlAddBook = "BEGIN TRY BEGIN TRANSACTION INSERT INTO books ([title], [author_id],[isbn],[genre_id],[added],[keyword],[character],[location]) VALUES (@title, @authorId, @isbn, (select genre_id from genre  where genre_name = @genre), GETDATE(), @keywords, @character, @location); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -152,6 +158,41 @@ namespace Capstone.DAO
                     cmd2.Parameters.AddWithValue("@userId", userId);
                     cmd2.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public void AddBook(Book bookToAdd)
+        {
+            int? authorId;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlCheckAuthor, conn);
+                cmd.Parameters.AddWithValue("@firstName", bookToAdd.FirstName);
+                cmd.Parameters.AddWithValue("@lastName", bookToAdd.LastName);
+                authorId = Convert.ToInt32(cmd.ExecuteScalar());
+                
+                if (authorId == 0)
+                {
+                    SqlCommand cmd2 = new SqlCommand(sqlAddAuthor, conn);
+                    cmd2.Parameters.AddWithValue("@firstName", bookToAdd.FirstName);
+                    cmd2.Parameters.AddWithValue("@lastName", bookToAdd.LastName);
+                    authorId = Convert.ToInt32(cmd2.ExecuteScalar());
+                }
+
+                SqlCommand cmd3 = new SqlCommand(sqlAddBook, conn);
+                cmd3.Parameters.AddWithValue("@title", bookToAdd.Title);
+                cmd3.Parameters.AddWithValue("@firstName", bookToAdd.FirstName);
+                cmd3.Parameters.AddWithValue("@LastName", bookToAdd.LastName);
+                cmd3.Parameters.AddWithValue("@isbn", bookToAdd.Isbn);
+                cmd3.Parameters.AddWithValue("@genre", bookToAdd.Genre);
+                cmd3.Parameters.AddWithValue("@keywords", bookToAdd.Keyword);
+                cmd3.Parameters.AddWithValue("@character", bookToAdd.Character);
+                cmd3.Parameters.AddWithValue("@location", bookToAdd.Location);
+                cmd3.ExecuteNonQuery();
+
+
+
             }
         }
 

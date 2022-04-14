@@ -12,6 +12,7 @@ namespace Capstone.DAO.Interfaces
         List<Book> GetAllBooks();
         List<Book> GetReadingList(string userId);
         void updateMyBooks(List<Book> myBooks, string userId);
+        void AddBook(Book bookToAdd);
 
     }
 }
