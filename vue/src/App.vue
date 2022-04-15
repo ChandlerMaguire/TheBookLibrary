@@ -8,13 +8,17 @@
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'my-books' }" v-if="$store.state.token != ''">My Books</router-link>
-      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'add-book' }" v-if="$store.state.token != ''">Add Book</router-link>
+      <span v-if="this.$store.state.user.role == 'admin'" v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link  v-bind:to="{ name: 'add-book' }" v-if="$store.state.token != '' && this.$store.state.user.role == 'admin'">Add Book</router-link>
     </div>
     <h1>The Book Library</h1>
     <router-view />
   </div>
 </template>
+
+<script>
+
+</script>
 
 <style>
 :root {
