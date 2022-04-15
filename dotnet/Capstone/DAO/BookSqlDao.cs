@@ -9,11 +9,14 @@ using System.Security.Claims;
 
 namespace Capstone.DAO
 {
-    //'%' + @first_name + '%'
+ 
 
     public class BookSqlDao : IBookDao
     {
         private readonly string connectionString;
+
+        private string sqlGetAllBooks = "select * from books b INNER JOIN author a ON b.author_id = a.author_id INNER JOIN genre g ON g.genre_id = b.genre_id";
+
         private string sqlSearchBooks = "SELECT * FROM books " +
         "b " +
         "INNER JOIN author a ON b.author_id = a.author_id " +
@@ -55,7 +58,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlSearchBooks, conn);
+                    SqlCommand cmd = new SqlCommand(sqlGetAllBooks, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

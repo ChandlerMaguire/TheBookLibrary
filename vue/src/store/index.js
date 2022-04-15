@@ -20,6 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    userSearched: false,
+    loginTime: new Date(),
     searchResult: [],
     myBooks: [],
     allBooks: [],
@@ -38,6 +40,7 @@ export default new Vuex.Store({
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
+      state.userSearched = false;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
@@ -72,6 +75,9 @@ export default new Vuex.Store({
     },
     GET_ALL_BOOKS(state, books){
       state.allBooks = books;
+    },
+    UPDATE_USER_SEARCHED(state){
+      state.userSearched = true;
     }
   }
 })

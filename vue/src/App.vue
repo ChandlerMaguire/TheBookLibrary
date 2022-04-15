@@ -47,12 +47,6 @@ import bookService from "@/services/BookService.js";
 
 export default {
   name: "app",
-  data() {
-    return {
-      userSearched: false,
-      loginTime: Date,
-    };
-  },
   created() {
     bookService
       .getAllBooks()
@@ -68,13 +62,6 @@ export default {
           this.invalidCredentials = true;
         }
       });
-  },
-  computed: {
-    didDateChange() {
-      let then = this.loginTime.getTime();
-      let now = Date.now().getTime();
-      return then < now;
-    },
   },
 };
 </script>

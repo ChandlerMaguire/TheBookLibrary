@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 v-if="$store.state.newBooks.length == 0">No New Books.</h2>
-    <table v-if="$store.state.newBooks.length > 0">
+    <h2 v-if="this.newBooks.length == 0">No New Books.</h2>
+    <table v-if="this.newBooks.length > 0">
       <tr>
         <th></th>
         <th>Title</th>
@@ -10,7 +10,7 @@
         <th>Added to Collection</th>
       </tr>
       <tbody>
-        <tr v-for="book in $store.state.newBooks" v-bind:key="book.isbn">
+        <tr v-for="book in this.newBooks" v-bind:key="book.isbn">
           <img
             v-bind:src="
               'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
@@ -39,7 +39,7 @@
           <td>{{ book.dateAdded }}</td>
         </tr>
       </tbody>
-     <!--  <h1 v-if="$store.state.newBooks.length == 0">No Results Found</h1> -->
+      <!--  <h1 v-if="$store.state.newBooks.length == 0">No Results Found</h1> -->
     </table>
   </div>
 </template>
@@ -49,16 +49,30 @@ import bookService from "@/services/BookService.js";
 import searchService from "@/services/SearchService.js";
 
 export default {
-  name: "results",
+  name: "new-books",
   data() {
     return {
-      newBooks: [],
+      newBooks: [],      
     };
   },
   created() {
-    if (this.userSearched && this.didDateChange()) {
+      this.$store.commit("UPDATE_USER_SEARCHED");
+    
+    if (this.$store.state.userSearched && this.didDateChange) {
       searchService.updateSearchTime();
+      
     }
+    this.newBooksSearch();
+    console.log("reached search");
+  },
+  computed: {
+    didDateChange() {
+      let then = this.$store.state.loginTime;
+      then.setHours(0,0,0,0);
+      let now = new Date(); 
+      now.setHours(0,0,0,0);
+      return then < now;
+    },
   },
   methods: {
     addToMyBooks(book) {
@@ -70,9 +84,8 @@ export default {
       bookService.updateMyBooks(this.$store.state.myBooks);
     },
     newBooksSearch() {
-      this.userSearched = true;
       this.newBooks = this.$store.state.allBooks.filter((book) => {
-        this.user.lastSearch < book.dateAdded;
+        this.user.lastSearch <= book.dateAdded;
       });
     },
     isBookInStore(isbn) {
@@ -84,7 +97,7 @@ export default {
   },
 };
 </script>
-
+= words.filter(word => word.length > 6);
 <style>
 h2 {
   text-align: center;
