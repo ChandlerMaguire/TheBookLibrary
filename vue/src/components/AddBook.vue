@@ -1,7 +1,7 @@
 <template>
   <div class="addBook">
     <form id="addBook" action="#" @submit.prevent="insertBook">
-      <label for="keyword">Add Keywords seperated by commas</label>
+      <label for="keyword">Add Keywords separated by commas</label>
       <input
         type="text"
         id="keyword"
