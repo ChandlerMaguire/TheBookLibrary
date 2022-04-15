@@ -40,7 +40,7 @@ namespace Capstone.DAO
 
         private string sqlCheckBook = "SELECT book_id FROM books WHERE isbn = @isbn";
 
-        
+        private string sqlUpdateLastSearch = " BEGIN TRY BEGIN TRANSACTION UPDATE users SET last_search = GETDATE() WHERE user_id = @userId; COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -165,6 +165,25 @@ namespace Capstone.DAO
             }
         }
 
+        public void UpdateLastSearch(string userId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlUpdateLastSearch, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+        }
         public bool AddBook(Book bookToAdd)
         {
             
