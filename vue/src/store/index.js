@@ -61,7 +61,8 @@ export default new Vuex.Store({
       state.myBooks.push(book);
     },
     REMOVE_FROM_MY_BOOKS(state, book){
-      state.myBooks.pop(book);
+      let index = state.myBooks.indexOf(book);
+      state.myBooks.splice(index, 1);
     },
     RESET_MY_BOOKS(state){
       state.myBooks = [];
