@@ -8,7 +8,7 @@ import store from '../store/index'
 import Results from '@/views/Results.vue'
 import MyBooks from '@/components/MyBooks.vue'
 import AddBook from '@/components/AddBook.vue'
-
+import NewBooks from '@/views/NewBooks.vue'
 Vue.use(Router)
 
 /**
@@ -76,6 +76,14 @@ const router = new Router({
       path: "/addbook",
       name: "add-book",
       component: AddBook,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/newbooks",
+      name: "new-books",
+      component: NewBooks,
       meta: {
         requiresAuth: true
       }
