@@ -18,6 +18,12 @@
         v-if="$store.state.token != ''"
         >My Books</router-link
       >
+      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link
+        v-bind:to="{ name: 'new-books' }"
+        v-if="$store.state.token != ''"
+        >New Books</router-link
+      >
       <span
         v-if="this.$store.state.user.role == 'admin'"
         v-show="$store.state.token != ''"
@@ -41,19 +47,34 @@ import bookService from "@/services/BookService.js";
 
 export default {
   name: "app",
+  data() {
+    return {
+      userSearched: false,
+      loginTime: Date,
+    };
+  },
   created() {
-    bookService.getAllBooks().then((response) => {
-      if (response.status == 200) {
-        this.$store.commit("GET_ALL_BOOKS", response.data);
-      }
-    })
-    .catch((error) => {
-          const response = error.response;
+    bookService
+      .getAllBooks()
+      .then((response) => {
+        if (response.status == 200) {
+          this.$store.commit("GET_ALL_BOOKS", response.data);
+        }
+      })
+      .catch((error) => {
+        const response = error.response;
 
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
+        if (response.status === 401) {
+          this.invalidCredentials = true;
+        }
+      });
+  },
+  computed: {
+    didDateChange() {
+      let then = this.loginTime.getTime();
+      let now = Date.now().getTime();
+      return then < now;
+    },
   },
 };
 </script>

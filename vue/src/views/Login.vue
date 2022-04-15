@@ -71,6 +71,7 @@ export default {
               }
             })
             this.$router.push("/");
+            this.loginTime = Date.now();
           }
         })
         .catch(error => {
