@@ -7,6 +7,7 @@
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public string Role { get; set; }
+        public string LastSearch { get; set; }
     }
 
     /// <summary>
