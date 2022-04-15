@@ -1,6 +1,12 @@
 <template>
   <div class="addBook">
-    <h4 id="notAuthorized" class="text-danger" v-if="this.$store.state.user.role == 'user'">You do not have authorization to view this page.</h4>
+    <h4
+      id="notAuthorized"
+      class="text-danger"
+      v-if="this.$store.state.user.role == 'user'"
+    >
+      You do not have authorization to view this page.
+    </h4>
     <form v-else id="addBook" action="#" @submit.prevent="insertBook">
       <label for="keyword">Add Keywords separated by commas:</label>
       <input
@@ -12,6 +18,7 @@
       />
       <label for="title">Add Book Title:</label>
       <input
+        required
         type="text"
         id="title"
         name="title"
@@ -20,6 +27,7 @@
       />
       <label for="author">Add Author:</label>
       <input
+        required
         type="text"
         id="firstName"
         name="firstName"
@@ -27,6 +35,7 @@
         v-model="addBook.firstName"
       />
       <input
+        required
         type="text"
         id="lastName"
         name="lastName"
@@ -34,7 +43,7 @@
         v-model="addBook.lastName"
       />
       <label for="genre">Select Genre:</label>
-      <select id="genre" name="genre" v-model="addBook.genre">
+      <select required id="genre" name="genre" v-model="addBook.genre">
         <option value="">Select a Genre...</option>
         <option value="Action">Action</option>
         <option value="Adventure">Adventure</option>
@@ -65,6 +74,7 @@
       />
       <label for="isbn">Add ISBN:</label>
       <input
+        required
         type="text"
         inputmode="numeric"
         id="isbn"
@@ -73,7 +83,12 @@
         v-model="addBook.isbn"
       />
       <button id="submit" type="submit" value="Submit">Submit</button>
-      <h4 v-show="bookExists" id="notAuthorized" class="text-danger">This book already exists in the library</h4>
+      <h4 v-show="bookExists" id="notAuthorized" class="text-danger">
+        This book already exists in the library.
+      </h4>
+      <h4 v-show="bookAdded" id="bookAdded" class="text-success">
+        Book was successfully added to the library.
+      </h4>
     </form>
   </div>
 </template>
@@ -95,6 +110,7 @@ export default {
         isbn: "",
       },
       bookExists: false,
+      bookAdded: false,
     };
   },
   computed: {
@@ -123,15 +139,16 @@ export default {
           .add(this.addBook)
           .then((response) => {
             if (response.status == 200) {
-                this.addBook.keyword = "";
-                this.addBook.title = "";
-                this.addBook.firstName = "";
-                this.addBook.lastName = "";
-                this.addBook.genre = "";
-                this.addBook.character = "";
-                this.addBook.location = "";
-                this.addBook.isbn = "";
-                this.bookExists = false;
+              this.addBook.keyword = "";
+              this.addBook.title = "";
+              this.addBook.firstName = "";
+              this.addBook.lastName = "";
+              this.addBook.genre = "";
+              this.addBook.character = "";
+              this.addBook.location = "";
+              this.addBook.isbn = "";
+              this.bookAdded = true;
+              this.bookExists = false;
             }
           })
           .catch((error) => {
@@ -140,6 +157,7 @@ export default {
             if (response.status === 400) {
               this.invalidCredentials = true;
               this.bookExists = true;
+              this.bookAdded = false;
             }
           });
       }
@@ -158,10 +176,15 @@ export default {
   width: 50%;
   margin: auto;
 }
-label{
+label {
   margin-bottom: -0.5px;
 }
-#notAuthorized{
+#notAuthorized {
   text-align: center;
+  margin-top: 5px;
+}
+#bookAdded {
+  text-align: center;
+  margin-top: 5px;
 }
 </style>

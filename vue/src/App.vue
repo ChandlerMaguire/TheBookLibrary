@@ -1,15 +1,35 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link
+        v-bind:to="{ name: 'logout' }"
+        v-if="$store.state.token != ''"
+        >Logout</router-link
+      >
       <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
+        >Login</router-link
+      >
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'my-books' }" v-if="$store.state.token != ''">My Books</router-link>
-      <span v-if="this.$store.state.user.role == 'admin'" v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link  v-bind:to="{ name: 'add-book' }" v-if="$store.state.token != '' && this.$store.state.user.role == 'admin'">Add Book</router-link>
+      <router-link
+        v-bind:to="{ name: 'my-books' }"
+        v-if="$store.state.token != ''"
+        >My Books</router-link
+      >
+      <span
+        v-if="this.$store.state.user.role == 'admin'"
+        v-show="$store.state.token != ''"
+        >&nbsp;|&nbsp;</span
+      >
+      <router-link
+        v-bind:to="{ name: 'add-book' }"
+        v-if="
+          $store.state.token != '' && this.$store.state.user.role == 'admin'
+        "
+        >Add Book</router-link
+      >
     </div>
     <h1>The Book Library</h1>
     <router-view />
@@ -17,35 +37,59 @@
 </template>
 
 <script>
+import bookService from "@/services/BookService.js";
 
+export default {
+  name: "app",
+  created() {
+    bookService.getAllBooks().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_ALL_BOOKS", response.data);
+      }
+    })
+    .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
+  },
+};
 </script>
 
 <style>
 :root {
---red: #A45151;
---yellow: #ffb62eff;
---navy: #183059ff;
---blue: #276fbfff;
---pink: #eecfd4ff;
---lightyellow: rgb(255, 211, 130);
---button: rgb(253, 203, 110);
+  --red: #a45151;
+  --yellow: #ffb62eff;
+  --navy: #183059ff;
+  --blue: #276fbfff;
+  --pink: #eecfd4ff;
+  --lightyellow: rgb(255, 211, 130);
+  --button: rgb(253, 203, 110);
 }
-html{
-height: 100vh;
+html {
+  height: 100vh;
 }
 body {
-background-image: linear-gradient(to bottom, var(--lightyellow), var(--yellow));
-background-attachment: fixed;
+  background-image: linear-gradient(
+    to bottom,
+    var(--lightyellow),
+    var(--yellow)
+  );
+  background-attachment: fixed;
   height: 100vh;
   margin: 0;
   background-repeat: no-repeat;
-  font-family: 'Georgia', sans-serif;
+  font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
-  
 }
 
-#nav { text-align: center;}
-h1, h2{
+#nav {
+  text-align: center;
+}
+h1,
+h2 {
   text-align: center;
   text-shadow: 3px 2px 3px grey;
 }
@@ -80,7 +124,7 @@ th {
   padding: 5px;
   border-bottom: 2px solid var(--red);
 }
-.toggleButton { 
+.toggleButton {
   padding-bottom: 0;
   margin-bottom: 10px;
   background-color: var(--button);
@@ -91,7 +135,6 @@ th {
   width: 100px;
   font-size: 10px;
   align-self: center;
-
 }
 .toggleButton:hover {
   background-color: var(--blue);

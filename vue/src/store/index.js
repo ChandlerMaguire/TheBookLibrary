@@ -69,6 +69,9 @@ export default new Vuex.Store({
     },
     ADD_BOOK(state, book){
       state.addedBook = book;
+    },
+    GET_ALL_BOOKS(state, books){
+      state.allBooks = books;
     }
   }
 })

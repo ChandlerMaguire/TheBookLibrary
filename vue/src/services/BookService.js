@@ -8,5 +8,8 @@ export default {
 
   getReadingList() {
     return axios.get('/mybooks')
+  },
+  getAllBooks() {
+    return axios.get('/allbooks')
   }
 }
