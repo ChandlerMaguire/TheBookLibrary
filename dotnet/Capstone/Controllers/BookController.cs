@@ -18,6 +18,7 @@ namespace Capstone.Controllers
         {
             this.bookDao = bookDao;
         }
+
         [HttpGet("allbooks")]
         public ActionResult<List<Book>> GetAll()
         {
@@ -90,6 +91,13 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpPut("newbooks")]
+        public ActionResult UpdateSearch()
+        {
+            string userId = User.FindFirst("sub").Value;
+            bookDao.UpdateLastSearch(userId);
 
+            return Ok();
+        }
     }
 }
