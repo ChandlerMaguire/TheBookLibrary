@@ -64,9 +64,15 @@ namespace Capstone.Controllers
         [HttpPost("addbook")]
         public ActionResult AddABook(Book bookToAdd)
         {
-            bookDao.AddBook(bookToAdd);
-
-            return Ok();
+            bool result = bookDao.AddBook(bookToAdd);
+            if (result)
+            {
+              return Ok();
+            }
+            else
+            {
+               return BadRequest();
+            }
         }
 
 
