@@ -1,7 +1,8 @@
 <template>
   <div class="addBook">
-    <form id="addBook" action="#" @submit.prevent="insertBook">
-      <label for="keyword">Add Keywords seperated by commas</label>
+    <h4 id="notAuthorized" class="text-danger" v-if="this.$store.state.user.role == 'user'">You do not have authorization to view this page.</h4>
+    <form v-else id="addBook" action="#" @submit.prevent="insertBook">
+      <label for="keyword">Add Keywords separated by commas:</label>
       <input
         type="text"
         id="keyword"
@@ -9,7 +10,7 @@
         placeholder="Keyword"
         v-model="addBook.keyword"
       />
-      <label for="title">Add Book Title</label>
+      <label for="title">Add Book Title:</label>
       <input
         type="text"
         id="title"
@@ -17,7 +18,7 @@
         placeholder="Title"
         v-model="addBook.title"
       />
-      <label for="author">Add Author</label>
+      <label for="author">Add Author:</label>
       <input
         type="text"
         id="firstName"
@@ -46,7 +47,7 @@
         <option value="Romance">Romance</option>
         <option value="Thriller">Thriller</option>
       </select>
-      <label for="character">Add Characters seperated by commas</label>
+      <label for="character">Add Characters separated by commas:</label>
       <input
         type="text"
         id="character"
@@ -54,7 +55,7 @@
         placeholder="Character"
         v-model="addBook.character"
       />
-      <label for="location">Add Location(s) seperated by commas</label>
+      <label for="location">Add Location(s) separated by commas:</label>
       <input
         type="text"
         id="location"
@@ -62,7 +63,7 @@
         placeholder="Location"
         v-model="addBook.location"
       />
-      <label for="isbn">Add ISBN</label>
+      <label for="isbn">Add ISBN:</label>
       <input
         type="text"
         inputmode="numeric"
@@ -72,6 +73,7 @@
         v-model="addBook.isbn"
       />
       <button id="submit" type="submit" value="Submit">Submit</button>
+      <h4 v-show="bookExists" id="notAuthorized" class="text-danger">This book already exists in the library</h4>
     </form>
   </div>
 </template>
@@ -92,6 +94,7 @@ export default {
         location: "",
         isbn: "",
       },
+      bookExists: false,
     };
   },
   computed: {
@@ -128,25 +131,37 @@ export default {
                 this.addBook.character = "";
                 this.addBook.location = "";
                 this.addBook.isbn = "";
+                this.bookExists = false;
             }
           })
           .catch((error) => {
             const response = error.response;
 
-            if (response.status === 401) {
+            if (response.status === 400) {
               this.invalidCredentials = true;
+              this.bookExists = true;
             }
           });
       }
     },
-    // sendHome() {
-    //   if (this.emptyParams) {
-    //     this.$router.push("/").catch(() => {});
-    //   }
-    // },
   },
 };
 </script>
 
 <style>
+#addBook {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--yellow);
+  padding: 5px;
+  border: 1px solid var(--red);
+  width: 50%;
+  margin: auto;
+}
+label{
+  margin-bottom: -0.5px;
+}
+#notAuthorized{
+  text-align: center;
+}
 </style>
