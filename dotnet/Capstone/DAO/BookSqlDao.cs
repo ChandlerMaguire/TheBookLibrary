@@ -180,10 +180,12 @@ namespace Capstone.DAO
                     authorId = Convert.ToInt32(cmd2.ExecuteScalar());
                 }
 
+
+
                 SqlCommand cmd3 = new SqlCommand(sqlAddBook, conn);
                 cmd3.Parameters.AddWithValue("@title", bookToAdd.Title);
                 cmd3.Parameters.AddWithValue("@firstName", bookToAdd.FirstName);
-                cmd3.Parameters.AddWithValue("@LastName", bookToAdd.LastName);
+                cmd3.Parameters.AddWithValue("@lastName", bookToAdd.LastName);
                 cmd3.Parameters.AddWithValue("@isbn", bookToAdd.Isbn);
                 cmd3.Parameters.AddWithValue("@genre", bookToAdd.Genre);
                 cmd3.Parameters.AddWithValue("@keywords", bookToAdd.Keyword);
