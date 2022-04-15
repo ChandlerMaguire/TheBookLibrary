@@ -11,6 +11,9 @@ namespace Capstone.DAO
     public class UserSqlDao : IUserDao
     {
         private readonly string connectionString;
+        private string sqlUpdateLastSearch = " BEGIN TRY BEGIN TRANSACTION UPDATE users SET last_search = GETDATE() WHERE user_id = @userId; COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
+
+        private string sqlGetUser = "SELECT * FROM users WHERE user_id = @userId";
 
         public UserSqlDao(string dbConnectionString)
         {
@@ -100,7 +103,40 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
-       
+
+        public string UpdateLastSearch(string userId)
+        {
+            string lastSearch = "";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlUpdateLastSearch, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.ExecuteNonQuery();
+
+                    SqlCommand cmd2 = new SqlCommand(sqlGetUser, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        User user = GetUserFromReader(reader);
+                        lastSearch = user.LastSearch;
+                    }
+                }
+
+                return lastSearch;
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            
+        }
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
@@ -110,7 +146,8 @@ namespace Capstone.DAO
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["user_role"]),
-            };
+                LastSearch = Convert.ToString(reader["last_search"]).Substring(0, 9),               
+        };
 
             return u;
         }

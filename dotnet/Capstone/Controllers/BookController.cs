@@ -13,10 +13,12 @@ namespace Capstone.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookDao bookDao;
+        private readonly IUserDao userDao;
 
-        public BookController(IBookDao bookDao)
+        public BookController(IBookDao bookDao, IUserDao userDao)
         {
             this.bookDao = bookDao;
+            this.userDao = userDao;
         }
 
         [HttpGet("allbooks")]
@@ -95,9 +97,9 @@ namespace Capstone.Controllers
         public ActionResult UpdateSearch()
         {
             string userId = User.FindFirst("sub").Value;
-            bookDao.UpdateLastSearch(userId);
+            string result = userDao.UpdateLastSearch(userId);
 
-            return Ok();
+            return Ok(result);
         }
     }
 }
