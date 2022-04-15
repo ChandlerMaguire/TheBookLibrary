@@ -18,6 +18,21 @@ namespace Capstone.Controllers
         {
             this.bookDao = bookDao;
         }
+        [HttpGet("allbooks")]
+        public ActionResult<List<Book>> GetAll()
+        {
+            List<Book> result = bookDao.GetAllBooks();
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+       
 
         [HttpPost("search")]
         public ActionResult<List<Book>> SearchResult(Book searchTerms)
