@@ -30,7 +30,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, last_search FROM users WHERE username = @username", conn);
                     cmd.Parameters.AddWithValue("@username", username);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -58,7 +58,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role FROM users", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, last_search FROM users", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -117,8 +117,8 @@ namespace Capstone.DAO
                     cmd.ExecuteNonQuery();
 
                     SqlCommand cmd2 = new SqlCommand(sqlGetUser, conn);
-                    cmd.Parameters.AddWithValue("@userId", userId);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    cmd2.Parameters.AddWithValue("@userId", userId);
+                    SqlDataReader reader = cmd2.ExecuteReader();
 
                     while (reader.Read())
                     {

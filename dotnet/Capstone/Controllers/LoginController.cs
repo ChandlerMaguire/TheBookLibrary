@@ -64,7 +64,7 @@ namespace Capstone.Controllers
                 string token = tokenGenerator.GenerateToken(user.UserId, user.Username, user.Role);
 
                 // Create a ReturnUser object to return to the client
-                LoginResponse retUser = new LoginResponse() { User = new ReturnUser() { UserId = user.UserId, Username = user.Username, Role = user.Role }, Token = token };
+                LoginResponse retUser = new LoginResponse() { User = new ReturnUser() { UserId = user.UserId, Username = user.Username, Role = user.Role, LastSearch=user.LastSearch}, Token = token };
 
                 // Switch to 200 OK
                 result = Ok(retUser);

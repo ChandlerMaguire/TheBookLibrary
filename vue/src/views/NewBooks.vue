@@ -84,9 +84,9 @@ export default {
       bookService.updateMyBooks(this.$store.state.myBooks);
     },
     newBooksSearch() {
-      this.newBooks = this.$store.state.allBooks.filter((book) => {
-        this.user.lastSearch <= book.dateAdded;
-      });
+      this.newBooks = this.$store.state.allBooks.filter(book => 
+        this.$store.state.user.lastSearch <= book.dateAdded
+      );
     },
     isBookInStore(isbn) {
       console.log(isbn);

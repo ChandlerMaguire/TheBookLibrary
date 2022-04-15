@@ -9,11 +9,11 @@
 import searchService from "@/services/SearchService.js";
 export default {
   created() {
-    this.$store.commit("LOGOUT");
-    this.$store.commit("RESET_MY_BOOKS");
-    if (this.userSearched) {
+    if (this.$store.state.userSearched) {
       searchService.updateSearchTime();
     }
+    this.$store.commit("LOGOUT");
+    this.$store.commit("RESET_MY_BOOKS");
     this.$router.push("/login");
   },
 };
