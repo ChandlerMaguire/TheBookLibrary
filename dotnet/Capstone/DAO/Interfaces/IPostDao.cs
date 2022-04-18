@@ -11,7 +11,7 @@ namespace Capstone.DAO.Interfaces
         List<Post> GetAllPosts();
         Post GetPostDetails(int postId);
         bool AddPost(Post postToAdd);
-        void DeletePost(int postId);
+        //void DeletePost(int postId);
 
 
     }
