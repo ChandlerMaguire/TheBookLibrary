@@ -2,11 +2,15 @@
   <div class="post-list">
     <table>
       <tbody>
-        <tr v-for="post in this.allPosts" v-bind:key="post.id">
+        <tr v-for="post in this.allPosts" v-bind:key="post.postId">
           <td>
-            <router-link v-bind:to="{ name: 'Post', params: { id: post.id } }">{{ post.title }}</router-link>
+            <router-link
+              v-bind:to="{ name: 'Post', params: { id: post.postId } }"
+              >{{ post.title }}</router-link
+            >
             <h5>{{ post.username }}</h5>
-            <p id="post-date">{{post.date}}</p>
+            <h5>{{ post.message }}</h5>
+            <p id="post-date">{{ post.postDate }}</p>
           </td>
         </tr>
       </tbody>
@@ -25,7 +29,12 @@ export default {
     };
   },
   created() {
-    this.allPosts = forumService.getAllPosts();
+    forumService.getAllPosts().then((response) => {
+      if (response.status == 200) {
+        this.allPosts = response.data;
+      }
+    });
+    // this.allPosts = forumService.getAllPosts.then((reponse));
   },
 };
 </script>

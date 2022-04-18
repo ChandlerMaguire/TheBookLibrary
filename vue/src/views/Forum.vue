@@ -14,4 +14,4 @@ export default {
     PostList
   }
 }
-</script>
+</script> 

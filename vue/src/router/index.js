@@ -93,7 +93,7 @@ const router = new Router({
     },
     {
       path: "/forum",
-      name: "forum",
+      name: "Forum",
       component: Forum,
       meta: {
         requiresAuth: true
