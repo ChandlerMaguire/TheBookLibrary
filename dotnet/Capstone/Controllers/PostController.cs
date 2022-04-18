@@ -15,6 +15,12 @@ namespace Capstone.Controllers
         private readonly IPostDao postDao;
         private readonly IUserDao userDao;
 
+        public PostController(IPostDao postDao, IUserDao userDao)
+        {
+            this.postDao = postDao;
+            this.userDao = userDao;
+        }
+
         [HttpGet("forum")]
         public ActionResult<List<Post>> GetAll()
         {
