@@ -134,7 +134,7 @@ export default {
   methods: {
     insertBook() {
       if (!this.emptyParams) {
-        // this.$store.commit("ADD_BOOK", this.addBook);
+        this.$store.commit("ADD_BOOK", this.addBook);
 
         addService
           .add(this.addBook)

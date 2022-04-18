@@ -9,6 +9,9 @@ import Results from '@/views/Results.vue'
 import MyBooks from '@/components/MyBooks.vue'
 import AddBook from '@/components/AddBook.vue'
 import NewBooks from '@/views/NewBooks.vue'
+import Forum from '@/views/Forum.vue'
+import Post from '@/views/Post.vue'
+
 Vue.use(Router)
 
 /**
@@ -84,6 +87,22 @@ const router = new Router({
       path: "/newbooks",
       name: "new-books",
       component: NewBooks,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/forum",
+      name: "forum",
+      component: Forum,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/forum/:id",
+      name: "Post",
+      component: Post,
       meta: {
         requiresAuth: true
       }
