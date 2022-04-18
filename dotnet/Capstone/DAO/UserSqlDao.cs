@@ -146,8 +146,8 @@ namespace Capstone.DAO
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["user_role"]),
-                LastSearch = Convert.ToString(reader["last_search"]).Substring(0, 9),               
-        };
+                LastSearch = Convert.ToString(reader["last_search"]).Substring(0, 9),
+            };
 
             return u;
         }
