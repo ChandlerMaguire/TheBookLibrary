@@ -21,7 +21,7 @@ CREATE TABLE users (
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL,
-	last_search datetime2(0) NULL DEFAULT '01-01-2022',
+	last_search datetime2(0) NULL DEFAULT '04-12-2022',
 	is_subscribed bit NOT NULL DEFAULT 0,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 )
