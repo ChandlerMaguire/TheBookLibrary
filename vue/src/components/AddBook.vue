@@ -136,6 +136,10 @@ export default {
     insertBook() {
       if (!this.emptyParams) {
         this.$store.commit("ADD_BOOK", this.addBook);
+<<<<<<< HEAD
+
+=======
+>>>>>>> 526b2c60b40f60be1473bc7a7fbabf18cd57bfe6
         addService
           .add(this.addBook)
           .then((response) => {
