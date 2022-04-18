@@ -66,6 +66,19 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-
+        [HttpPost("comment")]
+        public ActionResult AddAComment(Comment commentToAdd)
+        {
+            string commentorId = User.FindFirst("sub").Value;
+            bool result = commentDao.AddComment(commentToAdd, commentorId);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

@@ -44,6 +44,36 @@ namespace Capstone.DAO
 
             return returnComments;
         }
+        public bool AddComment(Comment commentToAdd, string commentorId)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddComment, conn);
+                    cmd.Parameters.AddWithValue("@post_id", commentToAdd.PostId);
+                    cmd.Parameters.AddWithValue("@commentor_id", commentorId);
+                    cmd.Parameters.AddWithValue("@comment_text", commentToAdd.CommentText);
+                    
+
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return false;
+        }
         private Comment GetCommentFromReader(SqlDataReader reader)
         {
             Comment comment = new Comment();
