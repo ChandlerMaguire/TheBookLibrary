@@ -60,7 +60,7 @@ export default {
     
     if (this.$store.state.userSearched && this.didDateChange) {
       searchService.updateSearchTime();
-      
+      this.$store.commit("UPDATE_SEARCH_TIME");
     }
     this.newBooksSearch();
     console.log("reached search");
@@ -97,7 +97,7 @@ export default {
   },
 };
 </script>
-= words.filter(word => word.length > 6);
+
 <style>
 h2 {
   text-align: center;

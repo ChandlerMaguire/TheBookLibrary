@@ -78,6 +78,9 @@ export default new Vuex.Store({
     },
     UPDATE_USER_SEARCHED(state){
       state.userSearched = true;
+    },
+    UPDATE_SEARCH_TIME(state){
+      state.user.lastSearch = Date.now();
     }
   }
 })
