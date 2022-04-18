@@ -100,4 +100,25 @@ CREATE TABLE user_book (
 	CONSTRAINT FK_book_id FOREIGN KEY (book_id) REFERENCES [books] (book_id)
 	)
 
+CREATE TABLE posts (
+	post_id int IDENTITY(1,1) NOT NULL,
+	poster_id int NOT NULL,
+	title nvarchar(MAX) NOT NULL,
+	[message] nvarchar(MAX) NOT NULL,
+	post_date datetime NOT NULL,
+	CONSTRAINT PK_post_id PRIMARY KEY (post_id),
+	CONSTRAINT FK_poster_id FOREIGN KEY (poster_id) REFERENCES [users] (user_id)
+    )
+
+CREATE TABLE comments (
+	comment_id int IDENTITY(1,1),
+	post_id int NOT NULL, 
+	commentor_id int NOT NULL,
+	comment_text nvarchar(MAX) NOT NULL,
+	comment_date datetime NOT NULL,
+	CONSTRAINT PK_comment_id PRIMARY KEY (comment_id),
+	CONSTRAINT FK_post_id FOREIGN KEY (post_id) REFERENCES [posts] (post_id),
+	CONSTRAINT FK_commentor_id FOREIGN KEY (commentor_id) REFERENCES [users] (user_id)
+)
+
 GO
