@@ -76,7 +76,7 @@ namespace Capstone.DAO
             return returnPost;
         }
 
-        public bool AddPost(Post postToAdd)
+        public bool AddPost(Post postToAdd, string posterId)
         {
             
             try
@@ -86,7 +86,7 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddPost, conn);
                     cmd.Parameters.AddWithValue("@title", postToAdd.Title);
-                    cmd.Parameters.AddWithValue("@poster_id", postToAdd.PosterId);
+                    cmd.Parameters.AddWithValue("@poster_id", posterId);
                     cmd.Parameters.AddWithValue("@message", postToAdd.Message);
                     int count = cmd.ExecuteNonQuery();
 

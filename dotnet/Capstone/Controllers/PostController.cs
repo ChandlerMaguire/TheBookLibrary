@@ -52,5 +52,20 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpPost()]
+        public ActionResult AddAPost(Post postToAdd)
+        {
+            string posterId = User.FindFirst("sub").Value;
+            bool result = postDao.AddPost(postToAdd, posterId);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }
