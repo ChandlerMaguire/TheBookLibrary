@@ -94,6 +94,7 @@
 </template>
 <script>
 import addService from "../services/AddService";
+import bookService from "../services/BookService";
 
 export default {
   name: "add-book",
@@ -134,7 +135,7 @@ export default {
   methods: {
     insertBook() {
       if (!this.emptyParams) {
-        // this.$store.commit("ADD_BOOK", this.addBook);
+        this.$store.commit("ADD_BOOK", this.addBook);
         addService
           .add(this.addBook)
           .then((response) => {
@@ -149,6 +150,20 @@ export default {
               this.addBook.isbn = "";
               this.bookAdded = true;
               this.bookExists = false;
+              bookService
+                .getAllBooks()
+                .then((response) => {
+                  if (response.status == 200) {
+                    this.$store.commit("GET_ALL_BOOKS", response.data);
+                  }
+                })
+                .catch((error) => {
+                  const response = error.response;
+
+                  if (response.status === 401) {
+                    this.invalidCredentials = true;
+                  }
+                });
             }
           })
           .catch((error) => {
