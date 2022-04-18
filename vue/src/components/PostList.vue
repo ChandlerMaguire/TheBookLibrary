@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
-    <a v-show=" this.showForm==false " href="#" @click="showForm=true">Add a Post</a>
-    <form id="newPost" v-show=" this.showForm==true" @submit.prevent="">
+    <a v-show=" this.showForm==false " @click="showForm=true">Add a Post</a>
+    <form id="newPost" v-show=" this.showForm==true" v-on:submit="addPost(newPost)">
       <label for="title">Title</label>
       <input
         type="text"
@@ -50,7 +50,7 @@ export default {
       newPost: {
         title: "",
         message: ""
-      }
+      },
     };
   },
   created() {
@@ -62,9 +62,13 @@ export default {
   },
   methods: {
     openPost(post) {
-      console.log("testing");
+      
       this.$store.commit("SET_CURRENT_POST", post);
       this.$router.push({ name: "Post", params: {id: post.postId }}); 
+    },
+    addPost(newPost) {      
+      console.log("newPost HIT");
+      forumService.addPost(newPost);
     },
   },
 };
@@ -72,3 +76,5 @@ export default {
 
 <style>
 </style>
+
+    
