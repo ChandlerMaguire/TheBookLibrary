@@ -1,12 +1,32 @@
 <template>
   <div class="post-list">
+    <a v-show=" this.showForm==false " href="#" @click="showForm=true">Add a Post</a>
+    <form id="newPost" v-show=" this.showForm==true" @submit.prevent="">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Title"
+        v-model="newPost.title"
+      />
+      <label for="message">Message</label>
+      <textarea        
+        id="message"
+        name="message"
+        placeholder="Message"
+        v-model="newPost.message"
+      ></textarea>
+      <button id='submit' type="submit" value="Submit">Submit</button>
+    </form>
     <table>
       <tbody>
         <tr v-for="post in this.allPosts" v-bind:key="post.postId">
           <td>
-            <router-link
-              v-bind:to="{ name: 'Post', params: { id: post.postId } }"
-              >{{ post.title }}</router-link
+            <h4
+              
+              v-on:click="openPost(post)"
+              >{{ post.title }}</h4
             >
             <h5>{{ post.username }}</h5>
             <h5>{{ post.message }}</h5>
@@ -26,6 +46,11 @@ export default {
   data() {
     return {
       allPosts: [],
+      showForm: false,
+      newPost: {
+        title: "",
+        message: ""
+      }
     };
   },
   created() {
@@ -34,7 +59,13 @@ export default {
         this.allPosts = response.data;
       }
     });
-    // this.allPosts = forumService.getAllPosts.then((reponse));
+  },
+  methods: {
+    openPost(post) {
+      console.log("testing");
+      this.$store.commit("SET_CURRENT_POST", post);
+      this.$router.push({ name: "Post", params: {id: post.postId }}); 
+    },
   },
 };
 </script>

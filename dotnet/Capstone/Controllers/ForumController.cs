@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace Capstone.Controllers
 {
-    [Route("/")]
+    [Route("[controller]")]
     [ApiController]
-    public class PostController : ControllerBase
+    public class ForumController : ControllerBase
     {
         private readonly IPostDao postDao;
         private readonly IUserDao userDao;
         private readonly ICommentDao commentDao;
 
-        public PostController(IPostDao postDao, IUserDao userDao, ICommentDao commentDao)
+        public ForumController(IPostDao postDao, IUserDao userDao, ICommentDao commentDao)
         {
             this.postDao = postDao;
             this.userDao = userDao;
             this.commentDao = commentDao;
         }
 
-        [HttpGet("forum")]
+        [HttpGet()]
         public ActionResult<List<Post>> GetAll()
         {
             List<Post> result = postDao.GetAllPosts();
@@ -37,7 +37,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-        [HttpGet("forum/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<List<Post>> GetAllComments(int id)
         {
             List<Comment> result = commentDao.GetCommentsById(id);
