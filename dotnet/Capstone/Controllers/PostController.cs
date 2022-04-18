@@ -14,11 +14,13 @@ namespace Capstone.Controllers
     {
         private readonly IPostDao postDao;
         private readonly IUserDao userDao;
+        private readonly ICommentDao commentDao;
 
-        public PostController(IPostDao postDao, IUserDao userDao)
+        public PostController(IPostDao postDao, IUserDao userDao, ICommentDao commentDao)
         {
             this.postDao = postDao;
             this.userDao = userDao;
+            this.commentDao = commentDao;
         }
 
         [HttpGet("forum")]
@@ -35,7 +37,20 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
+        [HttpGet("forum/{id}")]
+        public ActionResult<List<Post>> GetAllComments(int id)
+        {
+            List<Comment> result = commentDao.GetCommentsById(id);
 
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
 
     }
 }
