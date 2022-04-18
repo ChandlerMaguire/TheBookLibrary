@@ -1,13 +1,14 @@
 <template>
-
+  <div>
+      <h4></h4>
+  </div>
 </template>
 
 <script>
 export default {
- name: 'Post',
-}
+  name: "Post",
+};
 </script>
 
 <style>
-
 </style>
