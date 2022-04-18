@@ -12,6 +12,7 @@ namespace Capstone.Models
         public int CommentorId { get; set; }
         public string CommentText { get; set; }
         public string CommentDate { get; set; }
+        public string Username { get; set; }
 
     }
 }
