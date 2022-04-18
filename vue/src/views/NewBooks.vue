@@ -52,12 +52,12 @@ export default {
   name: "new-books",
   data() {
     return {
-      newBooks: [],      
+      newBooks: [],
     };
   },
   created() {
-      this.$store.commit("UPDATE_USER_SEARCHED");
-    
+    this.$store.commit("UPDATE_USER_SEARCHED");
+
     if (this.$store.state.userSearched && this.didDateChange) {
       searchService.updateSearchTime();
       this.$store.commit("UPDATE_SEARCH_TIME");
@@ -68,9 +68,9 @@ export default {
   computed: {
     didDateChange() {
       let then = this.$store.state.loginTime;
-      then.setHours(0,0,0,0);
-      let now = new Date(); 
-      now.setHours(0,0,0,0);
+      then.setHours(0, 0, 0, 0);
+      let now = new Date();
+      now.setHours(0, 0, 0, 0);
       return then < now;
     },
   },
@@ -84,8 +84,8 @@ export default {
       bookService.updateMyBooks(this.$store.state.myBooks);
     },
     newBooksSearch() {
-      this.newBooks = this.$store.state.allBooks.filter(book => 
-        this.$store.state.user.lastSearch <= book.dateAdded
+      this.newBooks = this.$store.state.allBooks.filter(
+        (book) => this.$store.state.user.lastSearch <= book.dateAdded
       );
     },
     isBookInStore(isbn) {
