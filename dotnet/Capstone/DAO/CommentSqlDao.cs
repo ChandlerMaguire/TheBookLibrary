@@ -11,8 +11,8 @@ namespace Capstone.DAO
     public class CommentSqlDao : ICommentDao
     {
         private readonly string connectionString;
-        private readonly string sqlGetAllComments = "  SELECT c.comment_text, c.comment_date, u.username FROM comments c INNER JOIN posts p ON p.post_id = c.post_id  INNER JOIN users u ON u.user_id = p.poster_id WHERE p.post_id = @postId";
-
+        private readonly string sqlGetAllComments = "  SELECT c.comment_id, c.comment_text, c.comment_date, u.username FROM comments c INNER JOIN posts p ON p.post_id = c.post_id  INNER JOIN users u ON u.user_id = p.poster_id WHERE p.post_id = @postId";
+        private string sqlAddComment = "BEGIN TRY BEGIN TRANSACTION INSERT INTO comments(post_id, commentor_id, comment_text, comment_date) VALUES (@postId, @commentorId, @commentText, GETDATE()); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
         public CommentSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -47,7 +47,7 @@ namespace Capstone.DAO
         private Comment GetCommentFromReader(SqlDataReader reader)
         {
             Comment comment = new Comment();
-
+            comment.CommentId = Convert.ToInt32(reader["comment_id"]);
             comment.Username = Convert.ToString(reader["username"]);
             comment.CommentText = Convert.ToString(reader["comment_text"]);
             comment.CommentDate = Convert.ToString(reader["comment_date"]);
