@@ -66,7 +66,7 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-        [HttpPost("comment")]
+        [HttpPost("{id}")]
         public ActionResult AddAComment(Comment commentToAdd)
         {
             string commentorId = User.FindFirst("sub").Value;

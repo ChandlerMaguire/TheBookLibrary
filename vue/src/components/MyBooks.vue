@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h2>My Books</h2>
+    <h2 v-show="$store.state.myBooks.length == 0">Search books to add them to your collection.</h2>
+    <h2 v-show="$store.state.myBooks.length > 0">My Books</h2>
     <table>
       <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
         <img
