@@ -7,7 +7,7 @@
     </div>
   </div>
 </template>
-
+faBookmark, faBookOpen, faBookOpenReader, faCirclePlus, faFireFlameCurved, faLeaf, faSpinner, faUser, faUserGear
 <script>
 import Search from "@/components/Search.vue";
 
