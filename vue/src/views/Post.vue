@@ -94,7 +94,8 @@ button {
   max-width: fit-content;
   border: none;
   background-color: var(--yellow);
-  color: var(--blue);
+  color: var(--navy);
+  /*color: rgb(128,0,32);*/
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -130,32 +131,38 @@ td.comment {
   margin-left: 10px;
   text-align: left;
   font-size: 1.5rem;
+  color: var(--navy);
 }
 #message {
   grid-area: message;
   margin-left: 10px;
   text-align: left;
+  color: var(--navy);
 }
 #date {
 text-align: right;
 grid-area: date;
 margin-right: 10px; 
+color: var(--navy);
 }
 #submit {
 margin: 10px;
 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 font-size: 1rem;
+
 }
 #commentUser {
   grid-area: commentUser;
   margin-left: 10px;
   text-align: left;
+  color: var(--navy);
 }
 td > #user {
   grid-area: user;
   margin-left: 10px;
   text-align: left;
   margin-top: -10px;
+  color: var(--navy);
 }
 table {
   border: none;

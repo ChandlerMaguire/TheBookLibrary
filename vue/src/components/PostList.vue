@@ -94,6 +94,7 @@ font-size: 1rem;
 text-align: right;
 grid-area: date;
 margin-right: 10px; 
+color: var(--navy);
 }
 #title {
   grid-area: title;
@@ -105,6 +106,7 @@ margin-right: 10px;
   grid-area: message;
   margin-left: 10px;
   text-align: left;
+  color: var(--navy);
 }
 #submit {
   margin-left: auto;
@@ -116,6 +118,7 @@ td > #user {
   margin-left: 10px;
   text-align: left;
   margin-top: -10px;
+  color: var(--navy);
 }
 #addPost:hover{
   transform: translateY(-3px);
@@ -148,7 +151,7 @@ button {
   max-width: fit-content;
   border: none;
   background-color: var(--yellow);
-  color: var(--blue);
+  color: var(--navy);
   border-radius: 10px;
   
 }

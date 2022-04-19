@@ -32,7 +32,7 @@
         required
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <button id="sign-in-submit" type="submit">Sign in</button>
     </form>
   </div>
 </template>
@@ -85,3 +85,18 @@ export default {
   }
 };
 </script>
+<style scoped>
+.form-signin{
+  width: 50%;
+ margin:auto;
+ border-radius: 5px;
+}
+#sign-in-submit{
+  border-radius: 5px;
+}
+/* #sign-in-submit:hover{
+  transform: translateY(-1px);
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 5px 10px var(--navy);
+}*/
+</style>
