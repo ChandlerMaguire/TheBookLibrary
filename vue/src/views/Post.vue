@@ -15,6 +15,17 @@
           </td>
       </tbody>
     </table>
+    <a v-show=" this.showForm==false " @click="showForm=true">Add a Comment</a>
+    <form id="newComment" v-show=" this.showForm==true" v-on:submit.prevent="addComment(newComment)">
+      <label for="comment">Comment</label>
+      <textarea        
+        id="comment"
+        name="comment"
+        placeholder="Add a comment..."
+        v-model="newComment.commentText"
+      ></textarea>
+      <button id='submit' type="submit" value="Submit">Submit</button>
+    </form>
   </div>
 </template>
 
@@ -26,6 +37,10 @@ export default {
   data() {
     return {
       comments: [],
+      showForm: false,
+      newComment: {
+        commentText: ""
+      },
     };
   },
   created() {
@@ -35,7 +50,19 @@ export default {
       }
     });
   },
- 
+  methods: {
+    addComment(newComment) {        
+      forumService.addComment(this.$store.state.post.postId, newComment);
+      forumService.getPost(this.$store.state.post.postId).then((response) => {
+      if (response.status == 200) {
+        this.comments = response.data;
+        this.newComment.commentText = "";
+
+      }
+    });
+      
+    },
+  },
 };
 </script>
 

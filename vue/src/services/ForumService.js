@@ -10,5 +10,8 @@ export default {
   },
   addPost(newPost){
     return axios.post('/forum', newPost)
+  },
+  addComment(id, comment){
+    return axios.post(`/forum/${id}`, comment)
   }
 }

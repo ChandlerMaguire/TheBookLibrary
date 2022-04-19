@@ -67,10 +67,14 @@ namespace Capstone.Controllers
             }
         }
         [HttpPost("{id}")]
+<<<<<<< HEAD
         public ActionResult AddAComment(Comment commentToAdd)
+=======
+        public ActionResult AddAComment(Comment commentToAdd, int id)
+>>>>>>> f87764b2d1ff67c85423f70a652faf57d978c5a5
         {
             string commentorId = User.FindFirst("sub").Value;
-            bool result = commentDao.AddComment(commentToAdd, commentorId);
+            bool result = commentDao.AddComment(commentToAdd, commentorId, id);
             if (result)
             {
                 return Ok();

@@ -23,10 +23,10 @@
       <tbody>
         <tr v-for="post in this.allPosts" v-bind:key="post.postId">
           <td>
-            <h4
+            <a
               
               v-on:click="openPost(post)"
-              >{{ post.title }}</h4
+              >{{ post.title }}</a
             >
             <h5>{{ post.username }}</h5>
             <h5>{{ post.message }}</h5>
