@@ -9,7 +9,7 @@ namespace Capstone.DAO.Interfaces
     public interface ICommentDao
     {
         List<Comment> GetCommentsById(int postId);
-       bool AddComment(Comment commentToAdd, string commentorId);
+       bool AddComment(Comment commentToAdd, string commentorId, int postId);
        // void DeleteComment(int commentId);
     }
 }
