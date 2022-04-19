@@ -3,8 +3,8 @@
     <table>
       <tbody>
         <td id="parentPost">
-          <span id="postUser">{{ this.$store.state.post.username }}</span>
-          <span id="postDate">{{ this.$store.state.post.postDate }}</span>
+          <span id="user">{{ this.$store.state.post.username }}</span>
+          <span id="date">{{ this.$store.state.post.postDate }}</span>
           <h4 id="title">{{ this.$store.state.post.title }}</h4>
           <h5 id="message">{{ this.$store.state.post.message }}</h5>
         </td>
@@ -13,21 +13,21 @@
           v-bind:key="comment.commentId"
           class="comment"
         >
-          <span class="commentUser">{{ comment.username }}</span>
-          <span class="commentDate">{{ comment.commentDate }}</span>
-          <p class="commentText">{{ comment.commentText }}</p>
+          <span id="commentUser">{{ comment.username }}</span>
+          <span id="date">{{ comment.commentDate }}</span>
+          <p id="message">{{ comment.commentText }}</p>
         </td>
       </tbody>
     </table>
-    <a v-show="this.showForm == false" @click="showForm = true"
-      >Add a Comment</a
+    <button v-show="this.showForm == false" @click="showForm = true"
+      >Add a Comment</button
     >
     <form
       id="newComment"
       v-show="this.showForm == true"
       v-on:submit.prevent="addComment(newComment)"
     >
-      <label for="comment">Comment</label>
+      <label for="comment"></label>
       <textarea
         id="comment"
         name="comment"
@@ -82,4 +82,89 @@ export default {
 </script>
 
 <style>
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+button {
+  max-width: fit-content;
+  border: none;
+  background-color: var(--yellow);
+  color: var(--blue);
+  border-radius: 10px;
+  margin-left: 10px;
+}
+button:hover {
+  color: #fff;
+  transition: all 0.3s ease 0s;
+}
+#parentPost {
+  margin: 10px;
+  word-break: break-word;
+  padding: 5px;
+  display: grid;
+  grid-template-areas: "title date"
+  "user user"
+  "message message";
+  background-color: rgba(255, 182, 46, 1);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+td.comment {
+   margin: 10px;
+  word-break: break-word;
+  padding: 5px;
+  display: grid;
+  grid-template-areas: "commentUser date"
+  "message message";
+  background-color: rgba(255, 182, 46, 1);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+#title {
+  grid-area: title;
+  margin-left: 10px;
+  text-align: left;
+  font-size: 1.5rem;
+}
+#message {
+  grid-area: message;
+  margin-left: 10px;
+  text-align: left;
+}
+#date {
+text-align: right;
+grid-area: date;
+margin-right: 10px; 
+}
+#submit {
+margin: 10px;
+box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+font-size: 1rem;
+}
+#commentUser {
+  grid-area: commentUser;
+  margin-left: 10px;
+  text-align: left;
+}
+td > #user {
+  grid-area: user;
+  margin-left: 10px;
+  text-align: left;
+  margin-top: -10px;
+}
+table {
+  border: none;
+}
+tr:nth-child(odd) {
+  background-color: rgba(255, 182, 46, 0);
+}
+textarea {
+  margin: 10px;
+}
+
 </style>

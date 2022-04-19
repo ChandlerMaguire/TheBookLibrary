@@ -1,6 +1,6 @@
 <template>
   <div class="post-list">
-    <a v-show="this.showForm == false" @click="showForm = true">Add a Post</a>
+    <button id="addPost" v-show="this.showForm == false" @click="showForm = true">Add a Post</button>
     <form
       id="newPost"
       v-show="this.showForm == true"
@@ -9,7 +9,7 @@
       <label for="title">Title</label>
       <input
         type="text"
-        id="title"
+        id="formTitle"
         name="title"
         placeholder="Title"
         v-model="newPost.title"
@@ -27,10 +27,10 @@
       <tbody>
         <tr v-for="post in this.allPosts" v-bind:key="post.postId">
           <td>
-            <a v-on:click="openPost(post)">{{ post.title }}</a>
-            <h5>{{ post.username }}</h5>
-            <h5>{{ post.message }}</h5>
-            <p id="post-date">{{ post.postDate }}</p>
+            <button v-on:click="openPost(post)" id="title">{{ post.title }}</button><span id="post-date">{{ post.postDate }}</span>
+            <span id="user">{{ post.username }}</span>
+            <h5 v-if="post.message.length < 200" id ="message">{{ post.message }}</h5>
+            <h5 v-if="post.message.length >= 200" id= "message">{{ post.message.substring(0, 200) + "..." }}</h5>            
           </td>
         </tr>
       </tbody>
@@ -84,7 +84,97 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#addPost {
+margin: 10px;
+box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+font-size: 1rem;
+}
+#post-date {
+text-align: right;
+grid-area: date;
+margin-right: 10px; 
+}
+#title {
+  grid-area: title;
+  margin-left: 3px;
+  text-align: left;
+  font-size: 1.5rem;
+}
+#message {
+  grid-area: message;
+  margin-left: 10px;
+  text-align: left;
+}
+#submit {
+  margin-left: auto;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+td > #user {
+  grid-area: user;
+  margin-left: 10px;
+  text-align: left;
+  margin-top: -10px;
+}
+#addPost:hover{
+  transform: translateY(-3px);
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 5px 10px var(--navy);
+}
+h5 {
+  font-size: 1rem;
+}
+td {
+  margin: 10px;
+  word-break: break-word;
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  grid-template-areas: "title date"
+  "user user"
+  "message message";
+  background-color: rgba(255, 182, 46, 1);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+td:hover {
+  box-shadow: 0px 5px 10px var(--navy);
+  transform: translateY(-3px);
+  transition: all 0.3s ease 0s;
+}
+
+button {
+  max-width: fit-content;
+  border: none;
+  background-color: var(--yellow);
+  color: var(--blue);
+  border-radius: 10px;
+  
+}
+button:hover {
+  color: #fff;
+  transition: all 0.3s ease 0s;
+}
+
+table {
+  border: none;
+}
+tr:nth-child(odd) {
+  background-color: rgba(255, 182, 46, 0);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+label {
+  margin-left: 10px;
+  margin-bottom: -10px;
+}
+textarea, #formTitle {
+  margin: 10px;
+}
 </style>
 
     
