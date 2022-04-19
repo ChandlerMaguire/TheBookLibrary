@@ -121,4 +121,9 @@ CREATE TABLE comments (
 	CONSTRAINT FK_commentor_id FOREIGN KEY (commentor_id) REFERENCES [users] (user_id)
 )
 
+INSERT INTO posts (poster_id, title, [message], post_date) VALUES (1, 'Test', 'This is a test', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (1, 1, 'This is a comment test', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (1, 1, 'This is another comment test', '04-18-2022') 
+
+
 GO
