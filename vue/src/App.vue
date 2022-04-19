@@ -4,16 +4,6 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-      <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
-        >Login</router-link
-      >
-      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link
         v-bind:to="{ name: 'my-books' }"
         v-if="$store.state.token != ''"
         >My Books</router-link
@@ -46,6 +36,16 @@
           $store.state.token != ''
         "
         >Forum</router-link
+      >
+       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link
+        v-bind:to="{ name: 'logout' }"
+        v-if="$store.state.token != ''"
+        >Logout</router-link
+      >
+      <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
+        >Login</router-link
       >
     </div>
     <h1>The Book Library</h1>
