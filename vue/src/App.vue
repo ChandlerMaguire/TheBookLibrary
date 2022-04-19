@@ -36,15 +36,8 @@
         "
         >Add Book</router-link
       >
-      <span
-        v-show="$store.state.token != ''"
-        >&nbsp;|&nbsp;</span
-      >
-      <router-link
-        v-bind:to="{ name: 'Forum' }"
-        v-if="
-          $store.state.token != ''
-        "
+      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'Forum' }" v-if="$store.state.token != ''"
         >Forum</router-link
       >
     </div>
@@ -58,6 +51,12 @@ import bookService from "@/services/BookService.js";
 
 export default {
   name: "app",
+  // data() {
+  //   return {
+  //     tempBooks[],
+  //     staffPicks: [],
+  //   };
+  // },
   created() {
     bookService
       .getAllBooks()
@@ -73,6 +72,16 @@ export default {
           this.invalidCredentials = true;
         }
       });
+    bookService.getStaffPicks().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_STAFF_PICKS", response.data);
+      }
+    });
+    bookService.getNewReleases().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_NEW_RELEASES", response.data);
+      }
+    });
   },
 };
 </script>

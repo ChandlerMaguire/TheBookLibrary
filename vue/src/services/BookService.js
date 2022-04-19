@@ -11,5 +11,11 @@ export default {
   },
   getAllBooks() {
     return axios.get('/allbooks')
-  }
+  },
+  getStaffPicks() {
+    return axios.get('/staffpicks')
+  },
+  getNewReleases() {
+    return axios.get('/newreleases')
+  },
 }
