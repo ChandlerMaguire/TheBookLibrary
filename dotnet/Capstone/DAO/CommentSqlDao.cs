@@ -44,7 +44,7 @@ namespace Capstone.DAO
 
             return returnComments;
         }
-        public bool AddComment(Comment commentToAdd, string commentorId)
+        public bool AddComment(Comment commentToAdd, string commentorId, int postId)
         {
 
             try
@@ -53,7 +53,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddComment, conn);
-                    cmd.Parameters.AddWithValue("@post_id", commentToAdd.PostId);
+                    cmd.Parameters.AddWithValue("@post_id", postId);
                     cmd.Parameters.AddWithValue("@commentor_id", commentorId);
                     cmd.Parameters.AddWithValue("@comment_text", commentToAdd.CommentText);
                     
