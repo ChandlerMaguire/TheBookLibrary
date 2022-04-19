@@ -1,28 +1,18 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>
-      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-      <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
-        >Login</router-link
-      >
+      <router-link v-bind:to="{ name: 'home' }">Home <font-awesome-icon icon="fa-solid fa-home" /></router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'my-books' }"
         v-if="$store.state.token != ''"
-        >My Books</router-link
+        >My Books <font-awesome-icon icon="fa-solid fa-book-open-reader" /></router-link
       >
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'new-books' }"
         v-if="$store.state.token != ''"
-        >New Books</router-link
+        >New Books <font-awesome-icon icon="fa-solid fa-book" /></router-link
       >
       <span
         v-if="this.$store.state.user.role == 'admin'"
@@ -34,7 +24,7 @@
         v-if="
           $store.state.token != '' && this.$store.state.user.role == 'admin'
         "
-        >Add Book</router-link
+        >Add Book <font-awesome-icon icon="fa-solid fa-circle-plus" /></router-link
       >
       <span
         v-show="$store.state.token != ''"
@@ -45,7 +35,17 @@
         v-if="
           $store.state.token != ''
         "
-        >Forum</router-link
+        >Forum <font-awesome-icon icon="fa-solid fa-people-group" /></router-link
+      >
+       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link
+        v-bind:to="{ name: 'logout' }"
+        v-if="$store.state.token != ''"
+        >Logout <font-awesome-icon icon="fa-solid fa-right-from-bracket" /></router-link
+      >
+      <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
+        >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
       >
     </div>
     <h1>The Book Library</h1>

@@ -90,4 +90,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style >
+.form-register{
+  width: 50%;
+ margin:auto;
+ border-radius: 5px;
+}
+</style>
