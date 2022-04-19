@@ -135,6 +135,7 @@ td.comment {
   grid-area: message;
   margin-left: 10px;
   text-align: left;
+  color: rgb(2, 23, 114);
 }
 #date {
 text-align: right;
