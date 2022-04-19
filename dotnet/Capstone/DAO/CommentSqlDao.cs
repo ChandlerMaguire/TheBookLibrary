@@ -53,9 +53,9 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddComment, conn);
-                    cmd.Parameters.AddWithValue("@post_id", postId);
-                    cmd.Parameters.AddWithValue("@commentor_id", commentorId);
-                    cmd.Parameters.AddWithValue("@comment_text", commentToAdd.CommentText);
+                    cmd.Parameters.AddWithValue("@postId", postId);
+                    cmd.Parameters.AddWithValue("@commentorId", commentorId);
+                    cmd.Parameters.AddWithValue("@commentText", commentToAdd.CommentText);
                     
 
                     int count = cmd.ExecuteNonQuery();
