@@ -125,7 +125,7 @@ table {
   width: 100%;
   border: 2px solid;
   border-color: var(--red);
-  color: var(--blue);
+  color: var(--navy);
   text-align: center;
   table-layout: fixed;
   /* background-color: var(--yellow); */
