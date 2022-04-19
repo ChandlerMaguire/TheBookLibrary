@@ -26,6 +26,11 @@
         "
         >Add Book <font-awesome-icon icon="fa-solid fa-circle-plus" /></router-link
       >
+<<<<<<< HEAD
+      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'Forum' }" v-if="$store.state.token != ''"
+        >Forum</router-link
+=======
       <span
         v-show="$store.state.token != ''"
         >&nbsp;|&nbsp;</span
@@ -46,6 +51,7 @@
       <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
+>>>>>>> 881e085c7d9b7c8f648200f84ed7dbf5e2d4e2c4
       >
     </div>
     <h1>The Book Library</h1>
@@ -58,6 +64,12 @@ import bookService from "@/services/BookService.js";
 
 export default {
   name: "app",
+  // data() {
+  //   return {
+  //     tempBooks[],
+  //     staffPicks: [],
+  //   };
+  // },
   created() {
     bookService
       .getAllBooks()
@@ -73,6 +85,16 @@ export default {
           this.invalidCredentials = true;
         }
       });
+    bookService.getStaffPicks().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_STAFF_PICKS", response.data);
+      }
+    });
+    bookService.getNewReleases().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_NEW_RELEASES", response.data);
+      }
+    });
   },
 };
 </script>

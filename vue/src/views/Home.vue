@@ -4,16 +4,21 @@
       </div>
       <div>
     <Search class="search"></Search>
+    <staff-picks class="staff-picks" />
+    <new-releases />
     </div>
   </div>
 </template>
 
 <script>
 import Search from "@/components/Search.vue";
+import StaffPicks from "@/components/StaffPicks.vue";
+import NewReleases from '../components/NewReleases.vue';
+
 
 export default {
   name: "Home",
-  components: { Search },
+  components: { Search, StaffPicks, NewReleases },
 };
 </script>
 
@@ -40,4 +45,5 @@ export default {
  min-width: fit-content;
   margin-right: 20%;
 }
+
 </style>

@@ -35,8 +35,34 @@ namespace Capstone.Controllers
                 return NotFound();
             }
         }
-       
+        [HttpGet("staffpicks")]
+        public ActionResult<List<Book>> StaffPicks()
+        {
+            List<Book> result = bookDao.GetStaffPicks();
 
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        [HttpGet("newreleases")]
+        public ActionResult<List<Book>> NewReleases()
+        {
+            List<Book> result = bookDao.GetNewReleases();
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
         [HttpPost("search")]
         public ActionResult<List<Book>> SearchResult(Book searchTerms)
         {

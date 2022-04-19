@@ -43,9 +43,14 @@ namespace Capstone.DAO
 
         private string sqlCheckBook = "SELECT book_id FROM books WHERE isbn = @isbn";
 
-        
+        private string sqlGetStaffPicks = "select * from books b INNER JOIN author a ON b.author_id = a.author_id INNER JOIN genre g ON g.genre_id = b.genre_id  WHERE isStaffPick = 1;";
 
-        
+        private string sqlGetNewReleases = "select * from books b INNER JOIN author a ON b.author_id = a.author_id INNER JOIN genre g ON g.genre_id = b.genre_id  WHERE isNewRelease = 1;";
+
+
+
+
+
         public BookSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -143,6 +148,62 @@ namespace Capstone.DAO
 
             return readingList;
         }
+        public List<Book> GetStaffPicks()
+        {
+            List<Book> staffPicks = new List<Book>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetStaffPicks, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        Book returnBook = GetBookFromReader(reader);
+                        staffPicks.Add(returnBook);
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return staffPicks;
+        }
+        public List<Book> GetNewReleases()
+        {
+            List<Book> newReleases = new List<Book>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetNewReleases, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        Book returnBook = GetBookFromReader(reader);
+                        newReleases.Add(returnBook);
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return newReleases;
+        }
 
         public void updateMyBooks(List<Book> myBooks, string userId)
         {
@@ -207,6 +268,7 @@ namespace Capstone.DAO
                     cmd3.Parameters.AddWithValue("@character", bookToAdd.Character);
                     cmd3.Parameters.AddWithValue("@location", bookToAdd.Location);
                     cmd3.Parameters.AddWithValue("@authorId", authorId);
+
                     cmd3.ExecuteNonQuery();
                     return true;
                 }
@@ -230,6 +292,9 @@ namespace Capstone.DAO
             book.Location = Convert.ToString(reader["location"]);
             book.DateAdded = Convert.ToString(reader["added"]);
             book.DateAdded = book.DateAdded.Substring(0, 9);
+            book.IsStaffPick = Convert.ToBoolean(reader["isStaffPick"]);
+            book.IsNewRelease = Convert.ToBoolean(reader["isNewRelease"]);
+
             return book;
         }
     }
