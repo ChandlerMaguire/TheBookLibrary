@@ -1,7 +1,11 @@
 <template>
   <div class="post-list">
-    <a v-show=" this.showForm==false " @click="showForm=true">Add a Post</a>
-    <form id="newPost" v-show=" this.showForm==true" v-on:submit="addPost(newPost)">
+    <a v-show="this.showForm == false" @click="showForm = true">Add a Post</a>
+    <form
+      id="newPost"
+      v-show="this.showForm == true"
+      v-on:submit.prevent="addPost(newPost)"
+    >
       <label for="title">Title</label>
       <input
         type="text"
@@ -11,23 +15,19 @@
         v-model="newPost.title"
       />
       <label for="message">Message</label>
-      <textarea        
+      <textarea
         id="message"
         name="message"
         placeholder="Message"
         v-model="newPost.message"
       ></textarea>
-      <button id='submit' type="submit" value="Submit">Submit</button>
+      <button id="submit" type="submit" value="Submit">Submit</button>
     </form>
     <table>
       <tbody>
         <tr v-for="post in this.allPosts" v-bind:key="post.postId">
           <td>
-            <a
-              
-              v-on:click="openPost(post)"
-              >{{ post.title }}</a
-            >
+            <a v-on:click="openPost(post)">{{ post.title }}</a>
             <h5>{{ post.username }}</h5>
             <h5>{{ post.message }}</h5>
             <p id="post-date">{{ post.postDate }}</p>
@@ -49,7 +49,7 @@ export default {
       showForm: false,
       newPost: {
         title: "",
-        message: ""
+        message: "",
       },
     };
   },
@@ -62,13 +62,23 @@ export default {
   },
   methods: {
     openPost(post) {
-      
       this.$store.commit("SET_CURRENT_POST", post);
-      this.$router.push({ name: "Post", params: {id: post.postId }}); 
+      this.$router.push({ name: "Post", params: { id: post.postId } });
     },
-    addPost(newPost) {      
+    addPost(newPost) {
       console.log("newPost HIT");
-      forumService.addPost(newPost);
+      forumService.addPost(newPost).then((response) => {
+        if (response.status == 200) {
+          forumService.getAllPosts().then((response) => {
+            if (response.status == 200) {
+              this.allPosts = response.data;
+              this.newPost.title = "";
+              this.newPost.message = "";
+              this.showForm = false;
+            }
+          });
+        }
+      });
     },
   },
 };
