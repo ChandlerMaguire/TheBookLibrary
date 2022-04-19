@@ -12,7 +12,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlGetAllPosts = "SELECT * FROM posts p INNER JOIN users u ON u.user_id = p.poster_id";
+        private string sqlGetAllPosts = "SELECT * FROM posts p INNER JOIN users u ON u.user_id = p.poster_id ORDER BY p.post_id DESC;";
         private string sqlGetPostDetails = "SELECT * FROM posts WHERE  post_id = @post_id";
         private string sqlAddPost = "BEGIN TRY BEGIN TRANSACTION INSERT INTO posts(title, poster_id, [message], post_date) VALUES (@title, @poster_id, @message, GETDATE()); COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
         
@@ -76,7 +76,7 @@ namespace Capstone.DAO
             return returnPost;
         }
 
-        public bool AddPost(Post postToAdd)
+        public bool AddPost(Post postToAdd, string posterId)
         {
             
             try
@@ -86,7 +86,7 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddPost, conn);
                     cmd.Parameters.AddWithValue("@title", postToAdd.Title);
-                    cmd.Parameters.AddWithValue("@poster_id", postToAdd.PosterId);
+                    cmd.Parameters.AddWithValue("@poster_id", posterId);
                     cmd.Parameters.AddWithValue("@message", postToAdd.Message);
                     int count = cmd.ExecuteNonQuery();
 

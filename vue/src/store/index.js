@@ -35,6 +35,7 @@ export default new Vuex.Store({
       location: "",
       isbn: "",
     },
+    post: []
   },
 
   mutations: {
@@ -60,27 +61,41 @@ export default new Vuex.Store({
     GET_SEARCH_RESULT(state, searchResult) {
       state.searchResult = searchResult;
     },
-    ADD_TO_MY_BOOKS(state, book){
+    ADD_TO_MY_BOOKS(state, book) {
       state.myBooks.push(book);
     },
-    REMOVE_FROM_MY_BOOKS(state, book){
+    REMOVE_FROM_MY_BOOKS(state, book) {
       let index = state.myBooks.indexOf(book);
       state.myBooks.splice(index, 1);
     },
-    RESET_MY_BOOKS(state){
+    RESET_MY_BOOKS(state) {
       state.myBooks = [];
     },
-    ADD_BOOK(state, book){
+    ADD_BOOK(state, book) {
       state.addedBook = book;
     },
-    GET_ALL_BOOKS(state, books){
+    GET_ALL_BOOKS(state, books) {
       state.allBooks = books;
     },
-    UPDATE_USER_SEARCHED(state){
+    UPDATE_USER_SEARCHED(state) {
       state.userSearched = true;
     },
-    UPDATE_SEARCH_TIME(state){
+    UPDATE_SEARCH_TIME(state) {
       state.user.lastSearch = Date.now();
-    }
+    },
+    SET_CURRENT_POST(state, post) {
+      state.post = post;
+    },
   }
 })
+
+
+/* {
+  postId: "",
+  posterId: "", 
+  username: "",
+  title: "",
+  message: "",
+  postDate: ""
+} */
+

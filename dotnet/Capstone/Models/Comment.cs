@@ -9,9 +9,11 @@ namespace Capstone.Models
     {
         public int CommentId { get; set; }
         public int PostId { get; set; }
+        public string Username { get; set; }
         public int CommentorId { get; set; }
         public string CommentText { get; set; }
         public string CommentDate { get; set; }
+        
 
     }
 }

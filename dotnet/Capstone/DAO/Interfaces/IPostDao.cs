@@ -10,7 +10,7 @@ namespace Capstone.DAO.Interfaces
     {
         List<Post> GetAllPosts();
         Post GetPostDetails(int postId);
-        bool AddPost(Post postToAdd);
+        bool AddPost(Post postToAdd, string posterId);
         //void DeletePost(int postId);
 
 

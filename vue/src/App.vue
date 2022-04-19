@@ -36,6 +36,17 @@
         "
         >Add Book</router-link
       >
+      <span
+        v-show="$store.state.token != ''"
+        >&nbsp;|&nbsp;</span
+      >
+      <router-link
+        v-bind:to="{ name: 'Forum' }"
+        v-if="
+          $store.state.token != ''
+        "
+        >Forum</router-link
+      >
     </div>
     <h1>The Book Library</h1>
     <router-view />

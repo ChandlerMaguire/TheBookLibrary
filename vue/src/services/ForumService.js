@@ -8,4 +8,7 @@ export default {
   getPost(id) {
     return axios.get(`/forum/${id}`);
   },
+  addPost(newPost){
+    return axios.post('/forum', newPost)
+  }
 }
