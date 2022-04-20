@@ -10,6 +10,7 @@
         <h4 class="book-title">{{ book.title }}</h4>
         <h5>{{ book.firstName }} {{ book.lastName }}</h5>
          <button
+            v-if="$store.state.token != ''"
             id="addButton"
             class="toggleButton"
             v-show="!isBookInStore(book.isbn)"
