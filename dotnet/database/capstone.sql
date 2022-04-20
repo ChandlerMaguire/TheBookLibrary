@@ -91,7 +91,7 @@ CREATE TABLE books (
 
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Pride and Prejudice', '1', '0143105426', '3', '2022-04-11 12:40:50','','','', 1, 0);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Transcendent Kingdom', '2', '0525658181', '3','2022-04-11 12:40:59','','','', 1, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('The Song of Achilles','6','0062060627','4','2022-04-11 12:41:10','','','', 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('The Song of Achilles','6','0062060627','4','2022-04-11 12:41:10','','','', 1, 0);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Graceling','5','0547258305','1','2022-04-11 12:41:20','','','', 1, 0);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease)VALUES ('Bitterblue','5','0142426016','1','2022-04-11 12:41:30', 'Power, Identity', 'Queen Bitterblue, Thiel, Sapphire, Teddy, Tilda, Bren, Madlen, Rood', 'Graceling Realm, Monsea', 0, 0);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Fire','5','0803734611','1','2022-04-11 12:41:30', 'Power, Identity', 'Lady Fire, Prince Brigan, Archer, Brocker, Cansrel, Nash, Hanna, Clara, Garan, Nax, Queen Roen, Leck', 'Graceling Realm, King City', 0, 0);
