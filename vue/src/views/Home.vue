@@ -10,6 +10,7 @@
     </div>
     <div>
       <Search class="search"></Search>
+      <newsletter class="newsletter" />
     </div>
   </div>
 </template>
@@ -18,10 +19,12 @@
 import Search from "@/components/Search.vue";
 import StaffPicks from "@/components/StaffPicks.vue";
 import NewReleases from "../components/NewReleases.vue";
+import Newsletter from "../components/Newsletter.vue";
+
 
 export default {
   name: "Home",
-  components: { Search, StaffPicks, NewReleases },
+  components: { Search, StaffPicks, NewReleases, Newsletter },
 };
 </script>
 
@@ -50,6 +53,10 @@ export default {
   padding: 5%;
   min-width: fit-content;
   margin-right: 20%;
+}
+.newsletter {
+  padding: 5%;
+  width: 25vw;
 }
 #staff-picks {
   grid-area: "staff-picks";
