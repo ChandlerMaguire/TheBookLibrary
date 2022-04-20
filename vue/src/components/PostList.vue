@@ -93,7 +93,7 @@ margin: 10px;
 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 font-size: 1rem;
 position: absolute;
-top: 120px;
+top: 145px;
 }
 #post-date {
 text-align: right;

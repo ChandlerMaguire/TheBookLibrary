@@ -15,3 +15,8 @@ export default {
   }
 }
 </script> 
+<style scoped>
+.forum {
+  margin-top: 70px;
+}
+</style>
