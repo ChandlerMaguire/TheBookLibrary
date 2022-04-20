@@ -1,11 +1,13 @@
 <template>
   <div class ="container">
     <div class="home">
+    <!-- <h2 class="staff-picks-header">Staff Picks</h2> -->
+    <staff-picks id="staff-picks" />
+    <h2 class="home-list-header">New Releases</h2>
+    <new-releases id="new-releases" />
       </div>
       <div>
     <Search class="search"></Search>
-    <staff-picks id="staff-picks" />
-    <new-releases id="new-releases" />
     </div>
   </div>
 </template>
@@ -28,8 +30,8 @@ export default {
   width: 100vw;
   height: 100vw;
   grid-template-columns: auto;
-  grid-template-areas: "staff-picks search"
-  "new-releases search";
+  grid-template-areas: "home search"
+  "home search";
   margin: 0;
  
 }
@@ -52,4 +54,8 @@ export default {
 #new-releases {
   grid-area: "new-releases";
 }
+/* .staff-picks-header{
+  position: absolute;
+  margin-top: -35px;
+} */
 </style>
