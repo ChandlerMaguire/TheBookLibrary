@@ -6,9 +6,9 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBookmark, faBookOpen, faBook, faPeopleGroup, faRightFromBracket, faRightToBracket, faBookOpenReader, faCirclePlus, faFireFlameCurved, faLeaf, faSpinner, faUser, faUserGear, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faBookOpen, faBook, faPeopleGroup, faRightFromBracket, faRightToBracket, faBookOpenReader, faCirclePlus, faCircleXmark, faFireFlameCurved, faLeaf, faSpinner, faUser, faUserGear, faHouse } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faBookOpen, faBookOpenReader, faBookmark, faUser, faRightFromBracket, faRightToBracket, faUserGear, faFireFlameCurved, faLeaf, faCirclePlus, faSpinner, faHouse, faBook, faPeopleGroup)        
+library.add(faBookOpen, faBookOpenReader, faBookmark, faUser, faRightFromBracket, faRightToBracket, faUserGear, faCircleXmark, faFireFlameCurved, faLeaf, faCirclePlus, faSpinner, faHouse, faBook, faPeopleGroup)        
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 

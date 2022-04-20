@@ -22,7 +22,7 @@
             v-show="!isBookInStore(book.isbn)"
             v-on:click.prevent="addToMyBooks(book)"
           >
-            Add to My Books
+            Add to My Books <font-awesome-icon icon="fa-solid fa-circle-plus" />
           </button>
           <button
             id="removeButton"
@@ -30,7 +30,7 @@
             v-show="isBookInStore(book.isbn)"
             v-on:click.prevent="removeFromMyBooks(book)"
           >
-            Remove from My Books
+            Remove from My Books <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </button>
 
           <td>{{ book.title }}</td>

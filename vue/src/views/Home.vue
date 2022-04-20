@@ -4,16 +4,21 @@
       </div>
       <div>
     <Search class="search"></Search>
+    <staff-picks id="staff-picks" />
+    <new-releases id="new-releases" />
     </div>
   </div>
 </template>
 
 <script>
 import Search from "@/components/Search.vue";
+import StaffPicks from "@/components/StaffPicks.vue";
+import NewReleases from '../components/NewReleases.vue';
+
 
 export default {
   name: "Home",
-  components: { Search },
+  components: { Search, StaffPicks, NewReleases },
 };
 </script>
 
@@ -23,7 +28,8 @@ export default {
   width: 100vw;
   height: 100vw;
   grid-template-columns: auto;
-  grid-template-areas: "content search";
+  grid-template-areas: "staff-picks search"
+  "new-releases search";
   margin: 0;
  
 }
@@ -39,5 +45,11 @@ export default {
   padding: 5%;
  min-width: fit-content;
   margin-right: 20%;
+}
+#staff-picks {
+  grid-area: "staff-picks";
+}
+#new-releases {
+  grid-area: "new-releases";
 }
 </style>

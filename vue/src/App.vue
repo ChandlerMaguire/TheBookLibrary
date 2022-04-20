@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home <font-awesome-icon icon="fa-solid fa-home" /></router-link>
+      <router-link v-bind:to="{ name: 'home' }">Home <font-awesome-icon icon="fa-solid fa-home"/></router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'my-books' }"
@@ -58,6 +58,12 @@ import bookService from "@/services/BookService.js";
 
 export default {
   name: "app",
+  // data() {
+  //   return {
+  //     tempBooks[],
+  //     staffPicks: [],
+  //   };
+  // },
   created() {
     bookService
       .getAllBooks()
@@ -73,6 +79,16 @@ export default {
           this.invalidCredentials = true;
         }
       });
+    bookService.getStaffPicks().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_STAFF_PICKS", response.data);
+      }
+    });
+    bookService.getNewReleases().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_NEW_RELEASES", response.data);
+      }
+    });
   },
 };
 </script>
@@ -163,12 +179,16 @@ th {
   transition: all 0.3s ease 0s;
 }
 #addButton {
-  height: 25px;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 #removeButton {
-  height: 35px;
+  
+  min-width: fit-content;
+  min-height: fit-content;
 }
+
 /* @import './assets/styles/yourstyles.css';
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */
 </style>

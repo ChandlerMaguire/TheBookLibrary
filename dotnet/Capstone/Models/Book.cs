@@ -16,6 +16,8 @@ namespace Capstone.Models
         public string Character { get; set; }
         public string Location { get; set; }
         public string DateAdded { get; set; }
+        public bool IsStaffPick { get; set; }
+        public bool IsNewRelease { get; set; }
 
     }
 }
