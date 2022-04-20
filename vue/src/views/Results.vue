@@ -69,18 +69,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h2 {
   text-align: center;
 }
 table {
+  margin-top: 70px;
   width: 100%;
   border: 2px solid;
   border-color: var(--red);
   color: var(--blue);
   text-align: center;
   table-layout: fixed;
-  /* background-color: var(--yellow); */
 }
 tr {
   border: 1px solid var(--pink);
