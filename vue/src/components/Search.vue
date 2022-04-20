@@ -1,5 +1,6 @@
 <template>
   <div class="search">
+    <h4>Search For Books</h4>
     <form id="search" action="#" @submit.prevent="searchBooks">
       <label for="keyword">Keyword</label>
       <input
@@ -163,6 +164,14 @@ input, select {
 #search {
   display: flex;
   flex-direction: column;
+}
+h4 {
+  text-align: center;
+  padding-top: 10px;
+  padding-right: 10px;
+  font-size: 22px;
+  text-shadow: 3px 2px 3px grey;
+  
 }
 #submit {
   margin-bottom: 0;
