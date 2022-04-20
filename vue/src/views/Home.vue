@@ -1,9 +1,11 @@
 <template>
   <div class="container">
     <div class="home">
-      <h2 class="staff-picks-header">Staff Picks</h2>
+      <h2 class="staff-picks-header">Staff Picks <font-awesome-icon class="flame" icon="fa-solid fa-fire-flame-curved"
+      /></h2>
       <staff-picks id="staff-picks" />
-      <h2 class="new-releases-header">New Releases</h2>
+      <h2 class="new-releases-header">New Releases <font-awesome-icon class="hand" icon="fa-solid fa-hand-sparkles"
+      /></h2>
       <new-releases id="new-releases" />
     </div>
     <div>
@@ -24,6 +26,7 @@ export default {
 </script>
 
 <style>
+
 .container {
   display: grid;
   width: 100vw;
@@ -42,7 +45,6 @@ export default {
     "staff-picks"
     "new-releases";
 }
-
 .search {
   width: 25vw;
   grid-area: "search";
@@ -51,10 +53,21 @@ export default {
   margin-right: 20%;
 }
 #staff-picks {
-  grid-area: "staff-picks"; 
+  grid-area: "staff-picks";
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white); 
+}
+.flame {
+ color: var(--red);
+ 
+ filter: opacity(1) drop-shadow(0px 5px 1px darkred) drop-shadow(3px 0px 2px darkorange) drop-shadow(-3px 0px 2px darkorange) drop-shadow(0px -4px 2px yellow); 
+}
+.hand {
+ color: var(--blue);
+ filter: drop-shadow(0px -4px 2px yellow) drop-shadow(0px 4px 2px var(--red)); 
 }
 #new-releases {
   grid-area: "new-releases";
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
   margin-top: 40px;
 }
 .staff-picks-header {
@@ -70,6 +83,7 @@ export default {
   margin-left: 10px;
   margin-top: 5px;
   font-size: 25px;
+  
 }
 
 </style>
