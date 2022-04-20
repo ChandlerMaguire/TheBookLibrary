@@ -49,7 +49,9 @@
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
       >
+      
     </div>
+    <span id="username-icon" v-show="$store.state.token != ''">{{this.$store.state.user.username}} <font-awesome-icon icon="fa-solid fa-user" /></span>
     <h1 id="library-header">The Book Library</h1>
     <router-view />
   </div>
@@ -188,5 +190,12 @@ th {
 #removeButton {
   min-width: fit-content;
   min-height: fit-content;
+}
+
+#username-icon {
+  float:right;
+  margin-top: -25px;
+  margin-right: 10px;
+  color: #007bff
 }
 </style>
