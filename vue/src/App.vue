@@ -26,20 +26,13 @@
         v-if="
           $store.state.token != '' && this.$store.state.user.role == 'admin'
         "
-        >Add Book <font-awesome-icon icon="fa-solid fa-circle-plus" /></router-link
-      >
-      <span
-        v-show="$store.state.token != ''"
-        >&nbsp;|&nbsp;</span
-      >
-      <router-link
-        v-bind:to="{ name: 'Forum' }"
-        v-if="
-          $store.state.token != ''
-        "
-        >Forum <font-awesome-icon icon="fa-solid fa-people-group" /></router-link
-      >
-       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+        >Add Book <font-awesome-icon icon="fa-solid fa-circle-plus"
+      /></router-link>
+      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+      <router-link v-bind:to="{ name: 'Forum' }" v-if="$store.state.token != ''"
+        >Forum <font-awesome-icon icon="fa-solid fa-people-group"
+      /></router-link>
+      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
@@ -47,11 +40,13 @@
       /></router-link>
       <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
-        >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
-      >
+        >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket"
+      /></router-link>
     </div>
-    <span id="user-name-icon">name</span>
-    <h1 id="library-header">The Book Library</h1>
+    <div class="title-and-pic">
+      <img class="title-pic" src="https://www.transparentpng.com/thumb/book/k1ANjs-light-book-picture-png.png" />
+      <h1 id="library-header">The Book Library</h1>
+    </div>
     <router-view />
   </div>
 </template>
@@ -122,23 +117,36 @@ body {
   font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
 }
-
 #nav {
   text-align: center;
+  text-shadow: 0px 0px 5px white, 0px 0px 5px white;
 }
 h1,
 h2 {
   text-align: center;
   text-shadow: 3px 2px 3px grey;
 }
+h1{
+  margin-top: 10px;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 3px 2px 3px grey, 0px 0px 3px white, 0px 0px 6px white, 0px 0px 3px white;
+}
+.title-pic {
+  width: auto;
+  height: auto;
+  border: none;
+  position: absolute;
+  z-index: -1;
+  margin: 0;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
 img {
   width: 150px;
   height: 230px;
   margin: 10px;
   border: 1px solid var(--blue);
-}
-h2 {
-  text-align: center;
 }
 table {
   width: 100%;
@@ -147,14 +155,8 @@ table {
   color: var(--navy);
   text-align: center;
   table-layout: fixed;
-  /* background-color: var(--yellow); */
 }
-tr {
-  border: 1px solid var(--pink);
-}
-/* tr:nth-child(even) {
-  background-color:rgba(255, 182, 46, .8);
-} */
+
 tr:nth-child(odd) {
   background-color: rgba(255, 182, 46, 1);
 }
@@ -189,9 +191,4 @@ th {
 #removeButton {
   min-width: fit-content;
   min-height: fit-content;
-}
-#user-name-icon{
-  float:right;
-  margin-top: -25px
-}
-</style>
+}</style>
