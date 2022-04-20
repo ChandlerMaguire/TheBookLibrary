@@ -45,7 +45,10 @@
     </div>
     <span id="username-icon" v-show="$store.state.token != ''">{{this.$store.state.user.username}} <font-awesome-icon icon="fa-solid fa-user" /></span>
     <div class="title-and-pic">
-      <img class="title-pic" src="https://www.transparentpng.com/thumb/book/k1ANjs-light-book-picture-png.png" />
+      <img
+        class="title-pic"
+        src="https://www.transparentpng.com/thumb/book/k1ANjs-light-book-picture-png.png"
+      />
       <h1 id="library-header">The Book Library</h1>
     </div>
     <router-view />
@@ -118,6 +121,7 @@ body {
   font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
 }
+#nav,
 #nav {
   text-align: center;
   text-shadow: 0px 0px 5px white, 0px 0px 5px white;
@@ -127,11 +131,16 @@ h2 {
   text-align: center;
   text-shadow: 3px 2px 3px grey;
 }
-h1{
+h1 {
   margin-top: 10px;
   margin-bottom: 40px;
   text-align: center;
-  text-shadow: 3px 2px 3px grey, 0px 0px 3px white, 0px 0px 6px white, 0px 0px 3px white;
+  text-shadow: 3px 2px 3px grey, 0px 0px 3px white, 0px 0px 6px white,
+    0px 0px 3px white;
+}
+.title-and-pic {
+  margin-top: 20px;
+  margin-bottom: -20px;
 }
 .title-pic {
   width: auto;
@@ -142,12 +151,14 @@ h1{
   margin: 0;
   left: 50%;
   transform: translate(-50%, -40%);
+  box-shadow: none;
 }
 img {
   width: 150px;
   height: 230px;
   margin: 10px;
   border: 1px solid var(--blue);
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
 }
 table {
   width: 100%;
@@ -182,17 +193,56 @@ th {
   box-shadow: 0px 5px 10px var(--navy);
   color: #fff;
   transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
+  transition: all 0.9s ease 0s;
 }
 #addButton {
   min-width: fit-content;
   min-height: fit-content;
 }
-
 #removeButton {
   min-width: fit-content;
   min-height: fit-content;
 }
+form {
+  margin-top: 13px;
+  background-color: var(--yellow);
+  padding: 5px;
+  border: 1px solid var(--red);
+  margin-right: 20px;
+  border-radius: 10px;
+}
+input,
+select {
+  margin-bottom: 5px;
+}
+#search {
+  display: flex;
+  flex-direction: column;
+}
+h4 {
+  text-align: center;
+  padding-top: 10px;
+  padding-right: 10px;
+  font-size: 22px;
+  text-shadow: 0px 0px 4px white;
+}
+#submit {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background-color: var(--button);
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  width: 100px;
+  align-self: center;
+}
+#submit:hover {
+  background-color: var(--blue);
+  box-shadow: 0px 5px 10px var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+  transition: all 0.3s ease 0s; }
 
 #username-icon {
   float:right;
