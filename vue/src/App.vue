@@ -188,21 +188,4 @@ th {
 #removeButton {
   min-width: fit-content;
   min-height: fit-content;
-<<<<<<< HEAD
-}
-
-
-/* @import './assets/styles/yourstyles.css';
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */
-</style>
-
-
-/* /* SCSS RGB */
-$middle-red-purple: rgba(175, 91, 91, 1);
-$honey-yellow: rgba(255, 182, 46, 1);
-$space-cadet: rgba(24, 48, 89, 1);
-$celtic-blue: rgba(39, 111, 191, 1);
-$queen-pink: rgba(238, 207, 212, 1); */
-=======
-}
->>>>>>> 55322462c75ee917babe7c4b6ee83d5d64b27848
+}</style>

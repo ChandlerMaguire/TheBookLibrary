@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-    <h4>Search For Books</h4>
     <form id="search" action="#" @submit.prevent="searchBooks">
+    <h4>Search For Books</h4>
       <label for="keyword">Keyword</label>
       <input
         type="text"
