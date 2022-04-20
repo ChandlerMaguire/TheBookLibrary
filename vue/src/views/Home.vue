@@ -55,7 +55,9 @@ export default {
   margin-right: 20%;
 }
 .newsletter {
-  padding: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: -5%;
   width: 25vw;
 }
 #staff-picks {

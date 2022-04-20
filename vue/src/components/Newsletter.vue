@@ -11,6 +11,7 @@
       <label for="email"></label>
       <input type="email" id="email" name="email" placeholder="Email" />
       <button id="signup" type="submit" value="signup">Subscribe</button>
+
     </form>
   </div>
 </template>
@@ -39,13 +40,6 @@ export default {
 .news-container {
   display: flex;
   flex-direction: column;
-}
-h4 {
-  text-align: center;
-  padding-top: 10px;
-  padding-right: 10px;
-  font-size: 22px;
-  text-shadow: 3px 2px 3px grey;
 }
 #signup {
   margin-bottom: 0;
