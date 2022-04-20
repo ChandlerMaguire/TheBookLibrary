@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <h2>Staff Picks</h2>
-    <table>
-      <td v-for="book in $store.state.staffPicks" v-bind:key="book.isbn">
+  <div class="home-bar">
+      <h2 class="staff-picks-header">Staff Picks</h2>
+    <table class="home-table">
+      <td class="home-list" v-for="book in $store.state.staffPicks" v-bind:key="book.isbn">
         <img
+        class="home-img"
           v-bind:src="
             'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
           "
@@ -75,8 +76,11 @@ img {
   align-self: center;
   justify-self: center;
 }
-td {
-  margin: 10px;
+.home-list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
   word-break: break-word;
   max-width: 180px;
   display: flex;
@@ -85,6 +89,12 @@ td {
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
+.home-img {
+  width: 150px;
+  height: 230px;
+  margin: 10px;
+  border: 1px solid var(--blue);
+}
 table {
   align-self: center;
   justify-self: center;
@@ -92,6 +102,17 @@ table {
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
+}
+.home-bar{
+  background-image: linear-gradient(
+    to bottom,
+    var(--blue),
+    var(--navy)
+  );
+  border-radius: 10px;
+}
+.staff-picks-header{
+  line-height: 10px;
 }
 
 </style>

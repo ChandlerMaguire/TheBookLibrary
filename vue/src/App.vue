@@ -1,19 +1,21 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home <font-awesome-icon icon="fa-solid fa-home"/></router-link>
+      <router-link v-bind:to="{ name: 'home' }"
+        >Home <font-awesome-icon icon="fa-solid fa-home"
+      /></router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'my-books' }"
         v-if="$store.state.token != ''"
-        >My Books <font-awesome-icon icon="fa-solid fa-book-open-reader" /></router-link
-      >
+        >My Books <font-awesome-icon icon="fa-solid fa-book-open-reader"
+      /></router-link>
       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'new-books' }"
         v-if="$store.state.token != ''"
-        >New Books <font-awesome-icon icon="fa-solid fa-book" /></router-link
-      >
+        >New Books <font-awesome-icon icon="fa-solid fa-book"
+      /></router-link>
       <span
         v-if="this.$store.state.user.role == 'admin'"
         v-show="$store.state.token != ''"
@@ -41,8 +43,8 @@
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
-        >Logout <font-awesome-icon icon="fa-solid fa-right-from-bracket" /></router-link
-      >
+        >Logout <font-awesome-icon icon="fa-solid fa-right-from-bracket"
+      /></router-link>
       <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
@@ -184,19 +186,6 @@ th {
 }
 
 #removeButton {
-  
   min-width: fit-content;
   min-height: fit-content;
 }
-
-/* @import './assets/styles/yourstyles.css';
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */
-</style>
-
-
-/* /* SCSS RGB */
-$middle-red-purple: rgba(175, 91, 91, 1);
-$honey-yellow: rgba(255, 182, 46, 1);
-$space-cadet: rgba(24, 48, 89, 1);
-$celtic-blue: rgba(39, 111, 191, 1);
-$queen-pink: rgba(238, 207, 212, 1); */
