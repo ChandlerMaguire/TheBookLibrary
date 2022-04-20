@@ -50,6 +50,7 @@
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
       >
     </div>
+    <span id="user-name-icon">name</span>
     <h1 id="library-header">The Book Library</h1>
     <router-view />
   </div>
@@ -188,4 +189,9 @@ th {
 #removeButton {
   min-width: fit-content;
   min-height: fit-content;
-}</style>
+}
+#user-name-icon{
+  float:right;
+  margin-top: -25px
+}
+</style>
