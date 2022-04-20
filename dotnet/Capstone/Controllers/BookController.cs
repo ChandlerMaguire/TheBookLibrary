@@ -128,12 +128,5 @@ namespace Capstone.Controllers
             return Ok(result);
         }
 
-        [HttpPut("newsletter")]
-        public ActionResult UpdateSubscription()
-        {
-            string userId = User.FindFirst("sub").Value;
-            bool result = userDao.UpdateIsSubscribed(userId);
-            return Ok(result);
-        }
     }
 }

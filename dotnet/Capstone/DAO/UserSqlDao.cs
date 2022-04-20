@@ -12,8 +12,6 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
         private string sqlUpdateLastSearch = " BEGIN TRY BEGIN TRANSACTION UPDATE users SET last_search = GETDATE() WHERE user_id = @userId; COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
-        private string sqlSubscribe = " BEGIN TRY BEGIN TRANSACTION UPDATE users SET is_subscribed = 1 WHERE user_id = @userId; COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
-        private string sqlUnsubscribe = " BEGIN TRY BEGIN TRANSACTION UPDATE users SET is_subscribed = 0 WHERE user_id = @userId; COMMIT TRANSACTION; END TRY BEGIN CATCH ROLLBACK; END CATCH";
 
         private string sqlGetUser = "SELECT * FROM users WHERE user_id = @userId";
 
@@ -32,7 +30,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, last_search, is_subscribed FROM users WHERE username = @username", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, last_search FROM users WHERE username = @username", conn);
                     cmd.Parameters.AddWithValue("@username", username);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -60,7 +58,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, last_search, is_subscribed FROM users", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, last_search FROM users", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -106,45 +104,6 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
-        public bool UpdateIsSubscribed(string userId)
-        {
-            User returnUser = new User();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM users WHERE user_id = @userId", conn);
-                    cmd.Parameters.AddWithValue("@userId", userId);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        returnUser = GetUserFromReader(reader);
-                    }
-
-                    if (returnUser.IsSubscribed == false)
-                    {
-                        SqlCommand cmd2 = new SqlCommand(sqlSubscribe, conn);
-                        cmd2.ExecuteNonQuery();
-                        return true;
-                    }
-                    else
-                    {
-                        SqlCommand cmd3 = new SqlCommand(sqlUnsubscribe, conn);
-                        cmd3.ExecuteNonQuery();
-                        return false;
-                    }
-
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            
-        }
-
         public string UpdateLastSearch(string userId)
         {
             string lastSearch = "";
@@ -187,8 +146,7 @@ namespace Capstone.DAO
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["user_role"]),
-                LastSearch = Convert.ToString(reader["last_search"]).Substring(0, 9),
-                IsSubscribed = Convert.ToBoolean(reader["is_subscribed"])
+                LastSearch = Convert.ToString(reader["last_search"]).Substring(0, 9),               
             };
 
             return u;
