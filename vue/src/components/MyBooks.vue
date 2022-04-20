@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 v-show="$store.state.myBooks.length == 0">Search books to add them to your collection.</h2>
+    <h2 id="no-results" v-show="$store.state.myBooks.length == 0">Search for books to add them to your collection.</h2>
     <h2 v-show="$store.state.myBooks.length > 0">My Books</h2>
     <table>
       <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
@@ -88,5 +88,8 @@ table {
 }
 .book-title{
   padding: 5px
+}
+#no-results {
+  margin-top: 100px;
 }
 </style>

@@ -71,7 +71,6 @@ h4 {
 h5 {
   font-size: 1rem;
 }
-
 img {
   align-self: center;
   justify-self: center;
@@ -112,11 +111,16 @@ img {
   );
   border-radius: 10px;
 }
-.staff-picks-header{
-  margin-top: -40px;
-  margin-left: 10px;
-}
+
 .book-title{
   padding: 5px
+}
+td:hover {
+  background-color: var(--button);
+  color: #fff;
+  transition: all 0.9s ease 0s;
+}
+td{
+  box-shadow: 0px 5px 10px var(--navy);
 }
 </style>

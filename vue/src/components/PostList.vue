@@ -1,6 +1,5 @@
 <template>
   <div class="post-list">
-    <button id="addPost" v-show="this.showForm == false" @click="showForm = true">Add a Post</button>
     <form
       id="newPost"
       v-show="this.showForm == true"
@@ -23,6 +22,9 @@
       ></textarea>
       <button id="submit" type="submit" value="Submit">Submit</button>
     </form>
+    <div>
+    <button id="addPost" v-show="this.showForm == false" @click="showForm = true">Add a Post</button>
+    </div>
     <table>
       <tbody>
         <tr v-for="post in this.allPosts" v-bind:key="post.postId">
@@ -35,6 +37,7 @@
         </tr>
       </tbody>
     </table>
+    
   </div>
 </template>
 
@@ -89,6 +92,8 @@ export default {
 margin: 10px;
 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 font-size: 1rem;
+position: absolute;
+top: 120px;
 }
 #post-date {
 text-align: right;
