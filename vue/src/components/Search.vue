@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <form id="search" action="#" @submit.prevent="searchBooks">
-    <h4>Search For Books</h4>
+      <h4>Search For Books</h4>
       <label for="keyword">Keyword</label>
       <input
         type="text"
@@ -72,8 +72,9 @@
         placeholder="ISBN"
         v-model="search.isbn"
       />
-      <button id='submit' type="submit" value="Submit">Search <font-awesome-icon icon="fa-solid fa-magnifying-glass" size=""/></button>
-      
+      <button id="submit" type="submit" value="Submit">
+        Search <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+      </button>
     </form>
   </div>
 </template>
@@ -123,73 +124,27 @@ export default {
   methods: {
     searchBooks() {
       if (!this.emptyParams) {
-      searchService
-        .search(this.search)
-        .then((response) => {
-          if (response.status == 200) {
-            this.$store.commit("GET_SEARCH_RESULT", response.data);
-            this.$router.push("/results");
-          }
-        })
-        .catch((error) => {
-          const response = error.response;
+        searchService
+          .search(this.search)
+          .then((response) => {
+            if (response.status == 200) {
+              this.$store.commit("GET_SEARCH_RESULT", response.data);
+              this.$router.push("/results");
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
 
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
+            if (response.status === 401) {
+              this.invalidCredentials = true;
+            }
+          });
       }
     },
-    // sendHome() {
-    //   if (this.emptyParams) {
-    //     this.$router.push("/").catch(() => {});
-    //   }
-    // },
   },
 };
 </script>
 
 <style>
-form {
-  margin-top: 13px;
-  background-color: var(--yellow);
-  padding: 5px;
-  border: 1px solid var(--red);
-  margin-right: 20px;
-  border-radius: 10px;
-}
-input, select {
-  margin-bottom: 5px;
-}
-#search {
-  display: flex;
-  flex-direction: column;
-}
-h4 {
-  text-align: center;
-  padding-top: 10px;
-  padding-right: 10px;
-  font-size: 22px;
-  text-shadow: 3px 2px 3px grey;
-  
-}
-#submit {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  background-color: var(--button);
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  width: 100px;
-  align-self: center;
-  
-}
-#submit:hover {
-  background-color: var(--blue);
-  box-shadow: 0px 5px 10px var(--navy);
-  color: #fff;
-  transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
-}
+
 </style>

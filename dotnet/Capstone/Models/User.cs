@@ -8,6 +8,7 @@
         public string Salt { get; set; }
         public string Role { get; set; }
         public string LastSearch { get; set; }
+        public bool IsSubscribed { get; set; }
     }
 
     /// <summary>

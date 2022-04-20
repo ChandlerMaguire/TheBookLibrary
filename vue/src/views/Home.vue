@@ -58,23 +58,25 @@ export default {
   width: 25vw;
 }
 #staff-picks {
-  grid-area: "staff-picks";
+  grid-area: "staff-picks"; 
 }
 #new-releases {
   grid-area: "new-releases";
+  margin-top: 40px;
 }
 .staff-picks-header {
   position: absolute;
-  margin-bottom: -30px;
-  margin-left: 10px;
   font-style: italic;
   font-size: 25px;
+  margin-top: -5px;
+  margin-left: 10px;
 }
-.new-releases-header{
+.new-releases-header {
   position: absolute;
   font-style: italic;
   margin-left: 10px;
-  margin-top: 2px;
+  margin-top: 5px;
   font-size: 25px;
 }
+
 </style>
