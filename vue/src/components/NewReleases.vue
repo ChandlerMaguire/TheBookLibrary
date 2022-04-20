@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>New Releases</h2>
     <table>
       <td v-for="book in $store.state.newReleases" v-bind:key="book.isbn">
         <img
