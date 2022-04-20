@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     userSearched: false,
+    isSubscribed: false,
     loginTime: new Date(),
     searchResult: [],
     myBooks: [],
@@ -80,10 +81,10 @@ export default new Vuex.Store({
     GET_ALL_BOOKS(state, books) {
       state.allBooks = books;
     },
-    GET_STAFF_PICKS(state, staffPicks){
+    GET_STAFF_PICKS(state, staffPicks) {
       state.staffPicks = staffPicks;
     },
-    GET_NEW_RELEASES(state, newReleases){
+    GET_NEW_RELEASES(state, newReleases) {
       state.newReleases = newReleases;
     },
     UPDATE_USER_SEARCHED(state) {
@@ -95,13 +96,19 @@ export default new Vuex.Store({
     SET_CURRENT_POST(state, post) {
       state.post = post;
     },
+    SUBSCRIBE(state) {
+        state.isSubscribed = true;
+    },
+    UNSUBSCRIBE(state) {
+      state.isSubscribed = false;
+  },
   }
 })
 
 
 /* {
   postId: "",
-  posterId: "", 
+  posterId: "",
   username: "",
   title: "",
   message: "",
