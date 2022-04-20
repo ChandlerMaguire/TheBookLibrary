@@ -26,13 +26,20 @@
         v-if="
           $store.state.token != '' && this.$store.state.user.role == 'admin'
         "
-        >Add Book <font-awesome-icon icon="fa-solid fa-circle-plus"
-      /></router-link>
-      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
-      <router-link v-bind:to="{ name: 'Forum' }" v-if="$store.state.token != ''"
-        >Forum <font-awesome-icon icon="fa-solid fa-people-group"
-      /></router-link>
-      <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
+        >Add Book <font-awesome-icon icon="fa-solid fa-circle-plus" /></router-link
+      >
+      <span
+        v-show="$store.state.token != ''"
+        >&nbsp;|&nbsp;</span
+      >
+      <router-link
+        v-bind:to="{ name: 'Forum' }"
+        v-if="
+          $store.state.token != ''
+        "
+        >Forum <font-awesome-icon icon="fa-solid fa-people-group" /></router-link
+      >
+       <span v-show="$store.state.token != ''">&nbsp;|&nbsp;</span>
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
@@ -40,8 +47,8 @@
       /></router-link>
       <span v-show="$store.state.token == ''">&nbsp;|&nbsp;</span>
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
-        >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket"
-      /></router-link>
+        >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
+      >
     </div>
     <h1>The Book Library</h1>
     <router-view />
@@ -182,15 +189,3 @@ th {
   min-width: fit-content;
   min-height: fit-content;
 }
-
-/* @import './assets/styles/yourstyles.css';
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> */
-</style>
-
-
-/* /* SCSS RGB */
-$middle-red-purple: rgba(175, 91, 91, 1);
-$honey-yellow: rgba(255, 182, 46, 1);
-$space-cadet: rgba(24, 48, 89, 1);
-$celtic-blue: rgba(39, 111, 191, 1);
-$queen-pink: rgba(238, 207, 212, 1); */

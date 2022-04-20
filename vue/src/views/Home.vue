@@ -4,8 +4,8 @@
       </div>
       <div>
     <Search class="search"></Search>
-    <staff-picks class="staff-picks" />
-    <new-releases />
+    <staff-picks id="staff-picks" />
+    <new-releases id="new-releases" />
     </div>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
   width: 100vw;
   height: 100vw;
   grid-template-columns: auto;
-  grid-template-areas: "content search";
+  grid-template-areas: "staff-picks search"
+  "new-releases search";
   margin: 0;
  
 }
@@ -45,5 +46,10 @@ export default {
  min-width: fit-content;
   margin-right: 20%;
 }
-
+#staff-picks {
+  grid-area: "staff-picks";
+}
+#new-releases {
+  grid-area: "new-releases";
+}
 </style>
