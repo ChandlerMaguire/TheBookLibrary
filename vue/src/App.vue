@@ -189,3 +189,4 @@ th {
   min-width: fit-content;
   min-height: fit-content;
 }
+</style>
