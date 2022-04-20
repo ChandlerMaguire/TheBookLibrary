@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <table>
-      <td v-for="book in $store.state.newReleases" v-bind:key="book.isbn">
+  <div class="home-bar">
+    <table class="home-table">
+      <td class="home-list" v-for="book in $store.state.newReleases" v-bind:key="book.isbn">
         <img
           v-bind:src="
             'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
           "
         />
-        <h4>{{ book.title }}</h4>
+        <h4 class="book-title">{{ book.title }}</h4>
         <h5>{{ book.firstName }} {{ book.lastName }}</h5>
          <button
             id="addButton"
@@ -74,8 +74,11 @@ img {
   align-self: center;
   justify-self: center;
 }
-td {
-  margin: 10px;
+.home-list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
   word-break: break-word;
   max-width: 180px;
   display: flex;
@@ -84,13 +87,30 @@ td {
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
-table {
+.home-img {
+  width: 150px;
+  height: 230px;
+  margin: 10px;
+  border: 1px solid var(--blue);
+}
+.home-table {
   align-self: center;
   justify-self: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
+  margin-top: 30px
 }
-
+.home-bar{
+  background-image: linear-gradient(
+    to bottom,
+    var(--blue),
+    var(--navy)
+  );
+  border-radius: 10px;
+}
+.book-title{
+  padding: 5px
+}
 </style>

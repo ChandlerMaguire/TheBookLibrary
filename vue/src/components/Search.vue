@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-    <h4>Search For Books</h4>
     <form id="search" action="#" @submit.prevent="searchBooks">
+    <h4>Search For Books</h4>
       <label for="keyword">Keyword</label>
       <input
         type="text"
@@ -151,10 +151,12 @@ export default {
 
 <style>
 form {
+  margin-top: 13px;
   background-color: var(--yellow);
   padding: 5px;
   border: 1px solid var(--red);
   margin-right: 20px;
+  border-radius: 10px;
 }
 input, select {
   margin-bottom: 5px;

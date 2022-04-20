@@ -50,7 +50,7 @@
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket" /></router-link
       >
     </div>
-    <h1>The Book Library</h1>
+    <h1 id="library-header">The Book Library</h1>
     <router-view />
   </div>
 </template>

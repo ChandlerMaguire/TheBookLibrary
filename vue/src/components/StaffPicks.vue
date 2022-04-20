@@ -1,7 +1,7 @@
 <template>
   <div class="home-bar">
-      <h2 class="staff-picks-header">Staff Picks</h2>
     <table class="home-table">
+    <!-- <h2 class="staff-picks-header">Staff Picks</h2> -->
       <td class="home-list" v-for="book in $store.state.staffPicks" v-bind:key="book.isbn">
         <img
         class="home-img"
@@ -9,7 +9,7 @@
             'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
           "
         />
-        <h4>{{ book.title }}</h4>
+        <h4 class="book-title">{{ book.title }}</h4>
         <h5>{{ book.firstName }} {{ book.lastName }}</h5>
          <button
             id="addButton"
@@ -95,13 +95,14 @@ img {
   margin: 10px;
   border: 1px solid var(--blue);
 }
-table {
+.home-table {
   align-self: center;
   justify-self: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
+  margin-top: 30px
 }
 .home-bar{
   background-image: linear-gradient(
@@ -112,7 +113,10 @@ table {
   border-radius: 10px;
 }
 .staff-picks-header{
-  line-height: 10px;
+  margin-top: -40px;
+  margin-left: 10px;
 }
-
+.book-title{
+  padding: 5px
+}
 </style>
