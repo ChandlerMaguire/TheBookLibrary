@@ -49,6 +49,8 @@ INSERT INTO author (first_name, last_name) VALUES ('John', 'Sandford');
 INSERT INTO author (first_name, last_name) VALUES ('Heather', 'Graham');
 INSERT INTO author (first_name, last_name) VALUES ('David', 'Baldacci');
 INSERT INTO author (first_name, last_name) VALUES ('Lisa', 'Scottoline');
+INSERT INTO author (first_name, last_name) VALUES ('Dav', 'Pilkey');
+
 
 
 
@@ -105,6 +107,8 @@ INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character]
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Crimson Summer', '8', '0778311821', '5', '2022-04-19 12:40:50','','','', 0, 1);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Dream Town', '9', '1538719770', '5', '2022-04-19 12:40:50','','','', 0, 1);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('What Happened to the Bennetts', '10', '0525539670', '5', '2022-04-19 12:40:50','','','', 0, 1);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Cat Kid Comic Club: On Purpose', '11', '1338801945', '10', '2022-04-20 12:40:50','','','', 0, 1);
+
 
 
 CREATE TABLE user_book (

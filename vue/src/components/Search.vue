@@ -150,10 +150,12 @@ export default {
 
 <style>
 form {
+  margin-top: 13px;
   background-color: var(--yellow);
   padding: 5px;
   border: 1px solid var(--red);
   margin-right: 20px;
+  border-radius: 10px;
 }
 input, select {
   margin-bottom: 5px;

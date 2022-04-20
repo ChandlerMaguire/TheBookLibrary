@@ -9,7 +9,7 @@
             'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
           "
         />
-        <h4>{{ book.title }}</h4>
+        <h4 class="book-title">{{ book.title }}</h4>
         <h5>{{ book.firstName }} {{ book.lastName }}</h5>
         <button
           id="removeButton"
@@ -85,5 +85,8 @@ table {
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
+}
+.book-title{
+  padding: 5px
 }
 </style>
