@@ -43,6 +43,7 @@
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket"
       /></router-link>
     </div>
+    <span id="username-icon" v-show="$store.state.token != ''">{{this.$store.state.user.username}} <font-awesome-icon icon="fa-solid fa-user" /></span>
     <div class="title-and-pic">
       <img
         class="title-pic"
@@ -241,6 +242,12 @@ h4 {
   box-shadow: 0px 5px 10px var(--navy);
   color: #fff;
   transform: translateY(-1px);
-  transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s; }
+
+#username-icon {
+  float:right;
+  margin-top: -25px;
+  margin-right: 10px;
+  color: #007bff
 }
 </style>
