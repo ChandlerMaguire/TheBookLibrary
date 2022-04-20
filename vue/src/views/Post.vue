@@ -155,7 +155,7 @@ font-size: 1rem;
   grid-area: commentUser;
   margin-left: 10px;
   text-align: left;
-  color: var(--navy);
+  color: var(--blue);
 }
 td > #user {
   grid-area: user;

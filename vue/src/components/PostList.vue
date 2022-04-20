@@ -118,7 +118,7 @@ td > #user {
   margin-left: 10px;
   text-align: left;
   margin-top: -10px;
-  color: var(--navy);
+  color: var(--blue);
 }
 #addPost:hover{
   transform: translateY(-3px);

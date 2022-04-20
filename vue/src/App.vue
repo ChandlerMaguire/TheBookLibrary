@@ -47,6 +47,7 @@
       <img class="title-pic" src="https://www.transparentpng.com/thumb/book/k1ANjs-light-book-picture-png.png" />
       <h1>The Book Library</h1>
     </div>
+    <h1 id="library-header">The Book Library</h1>
     <router-view />
   </div>
 </template>
@@ -191,5 +192,4 @@ th {
 #removeButton {
   min-width: fit-content;
   min-height: fit-content;
-}
-</style>
+}</style>
