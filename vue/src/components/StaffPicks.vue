@@ -82,7 +82,7 @@ img {
   margin-left: auto;
   margin-right: auto;
   word-break: break-word;
-  max-width: 180px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 182, 46, 1);
