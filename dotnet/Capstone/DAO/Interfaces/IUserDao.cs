@@ -10,5 +10,6 @@ namespace Capstone.DAO.Interfaces
         User AddUser(string username, string password, string role);
 
         string UpdateLastSearch(string userId);
+        void UpdateIsSubscribed(string userId);
     }
 }
