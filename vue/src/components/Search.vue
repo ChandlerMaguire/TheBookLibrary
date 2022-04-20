@@ -71,7 +71,7 @@
         placeholder="ISBN"
         v-model="search.isbn"
       />
-      <button id='submit' type="submit" value="Submit">Submit</button>
+      <button id='submit' type="submit" value="Submit">Search <font-awesome-icon icon="fa-solid fa-magnifying-glass" size=""/></button>
       
     </form>
   </div>
