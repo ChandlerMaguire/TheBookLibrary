@@ -132,8 +132,8 @@ namespace Capstone.Controllers
         public ActionResult UpdateSubscription()
         {
             string userId = User.FindFirst("sub").Value;
-            userDao.UpdateIsSubscribed(userId);
-            return Ok();
+            bool result = userDao.UpdateIsSubscribed(userId);
+            return Ok(result);
         }
     }
 }

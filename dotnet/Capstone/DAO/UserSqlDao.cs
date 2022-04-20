@@ -106,7 +106,7 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
-        public void UpdateIsSubscribed(string userId)
+        public bool UpdateIsSubscribed(string userId)
         {
             User returnUser = new User();
             try
@@ -127,11 +127,13 @@ namespace Capstone.DAO
                     {
                         SqlCommand cmd2 = new SqlCommand(sqlSubscribe, conn);
                         cmd2.ExecuteNonQuery();
+                        return true;
                     }
                     else
                     {
                         SqlCommand cmd3 = new SqlCommand(sqlUnsubscribe, conn);
                         cmd3.ExecuteNonQuery();
+                        return false;
                     }
 
                 }

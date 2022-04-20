@@ -43,7 +43,7 @@
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket"
       /></router-link>
     </div>
-    <span id="username-icon" v-show="$store.state.token != ''">{{this.$store.state.user.username}} <font-awesome-icon icon="fa-solid fa-user" /></span>
+    <span id="username-icon" v-show="$store.state.token != ''">Hi, {{this.$store.state.user.username}}. <font-awesome-icon icon="fa-solid fa-user" /></span>
     <div class="title-and-pic">
       <img
         class="title-pic"
@@ -121,10 +121,9 @@ body {
   font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
 }
-#nav,
 #nav {
   text-align: center;
-  text-shadow: 0px 0px 5px white, 0px 0px 5px white;
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
 }
 h1,
 h2 {
@@ -152,6 +151,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -40%);
   box-shadow: none;
+  filter: drop-shadow(0 -6mm 4mm var(--pink));
 }
 img {
   width: 150px;
@@ -168,7 +168,6 @@ table {
   text-align: center;
   table-layout: fixed;
 }
-
 tr:nth-child(odd) {
   background-color: rgba(255, 182, 46, 1);
 }
@@ -246,8 +245,9 @@ h4 {
 
 #username-icon {
   float:right;
-  margin-top: -25px;
+  margin-top: -22px;
   margin-right: 10px;
-  color: #007bff
+  color: #007bff;
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
 }
 </style>
