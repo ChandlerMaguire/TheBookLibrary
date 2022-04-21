@@ -49,6 +49,7 @@ INSERT INTO author (first_name, last_name) VALUES ('John', 'Sandford');
 INSERT INTO author (first_name, last_name) VALUES ('Heather', 'Graham');
 INSERT INTO author (first_name, last_name) VALUES ('David', 'Baldacci');
 INSERT INTO author (first_name, last_name) VALUES ('Lisa', 'Scottoline');
+
 INSERT INTO author (first_name, last_name) VALUES ('Dav', 'Pilkey');
 INSERT INTO author (first_name, last_name) VALUES ('Angie', 'Thomas');
 INSERT INTO author (first_name, last_name) VALUES ('Margaret', 'Atwood');
@@ -97,9 +98,9 @@ CREATE TABLE books (
 	keyword nvarchar(MAX) NOT NULL,
 	[character] nvarchar(MAX) NULL,
 	[location] nvarchar(MAX) NULL,
-	isStaffPick bit NOT NULL,
-	isNewRelease bit NOT NULL,
-	isHotTopic bit NOT NULL,
+	isStaffPick bit NOT NULL DEFAULT 0,
+	isNewRelease bit NOT NULL DEFAULT 0,
+	isHotTopic bit NOT NULL DEFAULT 0,
 	CONSTRAINT PK_book_id PRIMARY KEY (book_id),
 	CONSTRAINT FK_author_id FOREIGN KEY (author_id) REFERENCES [author] (author_id),
 	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES [genre] (genre_id),
@@ -167,9 +168,16 @@ CREATE TABLE comments (
 	CONSTRAINT FK_commentor_id FOREIGN KEY (commentor_id) REFERENCES [users] (user_id)
 )
 
-INSERT INTO posts (poster_id, title, [message], post_date) VALUES (1, 'Test', 'This is a test', '04-18-2022')
-INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (1, 1, 'This is a comment test', '04-18-2022')
-INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (1, 1, 'This is another comment test', '04-18-2022') 
+INSERT INTO posts (poster_id, title, [message], post_date) VALUES (2, 'WELCOME', 'Hi welcome to the book library. Share what your reading, What you want to read, give recommendations. The forum is your go to place to keep in touch with other users.', '04-18-2022')
+INSERT INTO posts (poster_id, title, [message], post_date) VALUES (1, 'The Hate U Give', 'Havent read the book but I did like the movie. I watched it with my brother who is 15 and he got emotional during the movie I think he realized that the scenario presented in the movie isnt as far fetched for him as we want to believe it is', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (2, 2, 'It Sucks that he has to worry about such things I feel for him', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (2, 2, 'Tell my guy to keep his chin up hopefully he wont ever have to be in a similar situation or witness it first hand', '04-18-2022')
+INSERT INTO posts (poster_id, title, [message], post_date) VALUES (2, 'The Handmaids Tale', 'How different is the book from the show', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (3, 1, 'It Sucks that he has to worry about such things I feel for him', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (3, 1, 'Tell my guy to keep his chin up hopefully he wont ever have to be in a similar situation or witness it first hand', '04-18-2022')
+INSERT INTO posts (poster_id, title, [message], post_date) VALUES (1, 'What is Everyone Reading', 'Hi everyone! I want to know what everyone is reading currently.', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (4, 1, 'I am currently rading 1000 years of joy and sorrows. Its a memoir of the author and his upbringing, I dont want to spoil anything but check it out', '04-18-2022')
+INSERT INTO comments (post_id, commentor_id, comment_text, comment_date) VALUES (4, 2, 'Currently reading Aftershock by Nadia Owusu', '04-18-2022')
 
 
 GO

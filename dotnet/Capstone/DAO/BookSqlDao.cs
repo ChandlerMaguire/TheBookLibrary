@@ -262,8 +262,8 @@ namespace Capstone.DAO
 
         
         public bool AddBook(Book bookToAdd)
-        {
             
+        {
             int? authorId;
             int? bookId;
             using (SqlConnection conn = new SqlConnection(connectionString))

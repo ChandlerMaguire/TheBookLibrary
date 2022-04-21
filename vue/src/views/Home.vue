@@ -68,12 +68,12 @@ export default {
     "new-releases";
 }
 .staff-picks-header {
- 
   font-style: italic;
   font-size: 25px;
-  margin-top: -5px;
+  margin-top: -1px;
   margin-left: 10px;
   text-align: left;
+  margin-bottom: 4px;
 }
 .new-releases-header {
  text-align: left;

@@ -2,8 +2,8 @@
   <div>
     <form id="topics">
     <h5 id="forum-topic">What's Your Take? <font-awesome-icon class="hot-topic-icon" icon="fa-solid fa-comments" /></h5>
-      <h6 id ="topic-2">Listed down below are some thought provoking or controversial books. What do you think? What did you take away? Share your thoughts and add a post! </h6>
-    <h6 id ="topic-2">If you haven't read these books yet 
+      <h6 id ="topic-2">Listed down below are some thought provoking or controversial books. What do you think? What did you take away? Share your thoughts and add a post!</h6>
+    <h6 id ="topic-2">If you haven't read these books yet
       Add them to your reading list today!</h6>
     <table class="table-2">
       <td class="hot-topic-td" v-for="book in $store.state.hotTopics" v-bind:key="book.isbn">
