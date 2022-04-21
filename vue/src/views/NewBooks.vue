@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class ="newBooksContainer">
     <h2 v-if="this.newBooks.length == 0">No New Books.</h2>
     <table v-if="this.newBooks.length > 0">
       <tr>
@@ -22,7 +22,7 @@
             v-show="!isBookInStore(book.isbn)"
             v-on:click.prevent="addToMyBooks(book)"
           >
-            Add to My Books <font-awesome-icon icon="fa-solid fa-circle-plus" />
+            Add to My Books <font-awesome-icon icon="fa-regular fa-circle" />
           </button>
           <button
             id="removeButton"
@@ -30,7 +30,7 @@
             v-show="isBookInStore(book.isbn)"
             v-on:click.prevent="removeFromMyBooks(book)"
           >
-            Remove from My Books <font-awesome-icon icon="fa-solid fa-circle-xmark" />
+            Remove from My Books <font-awesome-icon icon="fa-regular fa-circle-check" />
           </button>
 
           <td>{{ book.title }}</td>
@@ -99,6 +99,11 @@ export default {
 </script>
 
 <style scoped>
+.newBooksContainer {
+ margin: 10px;
+ padding-right: 10px;
+ width: 74vw;
+}
 h2 {
   text-align: center;
 }
@@ -110,14 +115,12 @@ table {
   color: var(--blue);
   text-align: center;
   table-layout: fixed;
-  /* background-color: var(--yellow); */
+
 }
 tr {
   border: 1px solid var(--pink);
+  
 }
-/* tr:nth-child(even) {
-  background-color:rgba(255, 182, 46, .8);
-} */
 tr:nth-child(odd) {
   background-color: rgba(255, 182, 46, 1);
 }

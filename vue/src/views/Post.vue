@@ -33,8 +33,9 @@
         name="comment"
         placeholder="Add a comment..."
         v-model="newComment.commentText"
-      ></textarea>
-      <button id="submit" type="submit" value="Submit">Submit</button>
+      ></textarea> 
+      <button id="submit" type="submit" value="Submit" @click="showForm = false">Submit</button>
+      <font-awesome-icon id="x" icon="fa-solid fa-xmark" @click="showForm = false"/>
     </form>
   </div>
 </template>
@@ -82,6 +83,15 @@ export default {
 </script>
 
 <style scoped>
+#x:hover{
+  color: red;
+  transition: all 0.2s ease 0s;
+}
+.post{
+   margin-top: 60px;
+
+  width: 74vw;
+}
 form {
   display: flex;
   flex-direction: column;

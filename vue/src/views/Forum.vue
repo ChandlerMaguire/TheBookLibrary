@@ -1,6 +1,6 @@
 <template>
   <div class="forum">
-    <h2>Forum</h2>
+    <h2 id="forum-title">Forum</h2>
     <post-list />
   </div>
 </template>
@@ -17,6 +17,14 @@ export default {
 </script> 
 <style scoped>
 .forum {
-  margin-top: 70px;
+  margin-top: 0px;
+  display: grid;
+  width: 74vw;
+}
+#forum-title {
+  margin-top: -15px;
+  margin-left: 10px;
+  margin-bottom: -3px;
+  text-align: left;
 }
 </style>

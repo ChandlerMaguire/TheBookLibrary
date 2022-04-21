@@ -17,7 +17,7 @@
             v-show="!isBookInStore(book.isbn)"
             v-on:click.prevent="addToMyBooks(book)"
           >
-            Add to My Books
+            Add to My Books <font-awesome-icon icon="fa-regular fa-circle" />
           </button>
         <button
           id="removeButton"
@@ -25,7 +25,7 @@
           v-show="isBookInStore(book.isbn)"
           v-on:click.prevent="removeFromMyBooks(book)"
         >
-          Remove from My Books
+          Remove from My Books <font-awesome-icon icon="fa-regular fa-circle-check" />
         </button>
       </td>
     </table>
@@ -101,7 +101,6 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
-  margin-top: 30px
 }
 .home-bar{
   background-image: linear-gradient(

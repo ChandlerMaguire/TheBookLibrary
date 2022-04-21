@@ -93,7 +93,8 @@ margin: 10px;
 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 font-size: 1rem;
 position: absolute;
-top: 145px;
+left: 121px;;
+top: 97px;
 }
 #post-date {
 text-align: right;
@@ -106,6 +107,7 @@ color: var(--navy);
   margin-left: 3px;
   text-align: left;
   font-size: 1.5rem;
+  text-shadow: 0px 0px 4px white;
 }
 #message {
   grid-area: message;

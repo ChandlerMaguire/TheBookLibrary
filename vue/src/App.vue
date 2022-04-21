@@ -51,21 +51,23 @@
       />
       <h1 id="library-header">The Book Library</h1>
     </div>
+    <div class="container">
+      <Search class="search" v-if="this.$route.name !='login' && this.$route.name !='add-book'"></Search>
+      <newsletter class="newsletter" v-if="this.$route.name !='login' && this.$route.name !='add-book'"/>
+    </div>
     <router-view />
   </div>
 </template>
 
 <script>
 import bookService from "@/services/BookService.js";
+import Search from "@/components/Search.vue";
+import Newsletter from "@/components/Newsletter.vue";
 
 export default {
+  components: { Search, Newsletter },
   name: "app",
-  // data() {
-  //   return {
-  //     tempBooks[],
-  //     staffPicks: [],
-  //   };
-  // },
+ 
   created() {
     bookService
       .getAllBooks()
@@ -160,6 +162,27 @@ img {
   border: 1px solid var(--blue);
   box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
 }
+#search {
+  width: 25vw;
+  grid-area: "search";
+  padding: 10px;
+  min-width: fit-content;
+  right: 0;
+  margin-top: 30px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+#newsletter {
+  width: 25vw;
+  grid-area: "search";
+  padding: 10px;
+  right: 0;
+  top: 680px;
+  position: absolute;
+}
+
+
 table {
   width: 100%;
   border: 2px solid;
@@ -184,7 +207,7 @@ th {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   width: 100px;
-  font-size: 10px;
+  font-size: 0.7em;
   align-self: center;
 }
 .toggleButton:hover {
@@ -195,11 +218,11 @@ th {
   transition: all 0.9s ease 0s;
 }
 #addButton {
-  min-width: fit-content;
+  
   min-height: fit-content;
 }
 #removeButton {
-  min-width: fit-content;
+  
   min-height: fit-content;
 }
 form {
@@ -207,17 +230,14 @@ form {
   background-color: var(--yellow);
   padding: 5px;
   border: 1px solid var(--red);
-  margin-right: 20px;
+  margin-right: 10px;
   border-radius: 10px;
 }
 input,
 select {
   margin-bottom: 5px;
 }
-#search {
-  display: flex;
-  flex-direction: column;
-}
+
 h4 {
   text-align: center;
   padding-top: 10px;

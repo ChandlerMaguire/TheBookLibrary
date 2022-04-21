@@ -75,9 +75,11 @@ h2 {
 }
 table {
   margin-top: 70px;
-  width: 100%;
-  border: 2px solid;
-  border-color: var(--red);
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 72vw;
+  border: 2px solid var(--red);
+  border-radius: 10px;
   color: var(--blue);
   text-align: center;
   table-layout: fixed;

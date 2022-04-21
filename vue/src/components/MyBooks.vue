@@ -1,7 +1,9 @@
 <template>
   <div>
+    <div id="myBooksTitle">
     <h2 id="no-results" v-show="$store.state.myBooks.length == 0">Search for books to add them to your collection.</h2>
     <h2 v-show="$store.state.myBooks.length > 0">My Books</h2>
+    </div>
     <table>
       <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
         <img
@@ -17,7 +19,7 @@
           v-show="isBookInStore(book.isbn)"
           v-on:click.prevent="removeFromMyBooks(book)"
         >
-          Remove from My Books
+          Remove from My Books <font-awesome-icon icon="fa-regular fa-circle-check" />
         </button>
       </td>
     </table>
@@ -51,6 +53,11 @@ export default {
 </script>
 
 <style scoped>
+#myBooksTitle {
+  width: 73vw;
+  align-self: left;
+  margin: 10px;
+}
 h4,
 h5 {
   text-align: center;
@@ -63,7 +70,9 @@ h4 {
 h5 {
   font-size: 1rem;
 }
-
+h2{
+  margin-top: 70px;
+}
 img {
   align-self: center;
   justify-self: center;
@@ -79,12 +88,14 @@ td {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 table {
-  align-self: center;
+  width: 73vw;
+  align-self: left;
   justify-self: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   border: 0;
+  margin: 10px;
 }
 .book-title{
   padding: 5px
