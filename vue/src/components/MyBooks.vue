@@ -2,7 +2,7 @@
   <div>
     <div id="myBooksTitle">
     <h2 id="no-results" v-show="$store.state.myBooks.length == 0">Search for books to add them to your collection.</h2>
-    <h2 id="my-books-header" v-show="$store.state.myBooks.length > 0">My Books</h2>
+    <h2 id="my-books-header" v-show="$store.state.myBooks.length > 0">My Books</h2></div>
     <table>
       <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
         <img
