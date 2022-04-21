@@ -61,20 +61,11 @@
     <div class="container">
       <Search
         class="search"
-<<<<<<< HEAD
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
-      ></Search>
-      <newsletter
-        class="newsletter"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
-      />
-=======
         v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage' && this.$route.name !='Forum' && this.$route.name !='Post'"
       ></Search>
       <newsletter
         class="newsletter"
         v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'  && this.$route.name !='Forum' && this.$route.name !='Post'"/>
->>>>>>> 3b86ecd34b8ff46601d65a9bf14436c269f3ff9c
     </div>
     <router-view />
   </div>

@@ -11,6 +11,7 @@
       <div id="signup">
         <button
           id="signup"
+          v-if="$store.state.token != ''"
           v-show="!this.$store.state.isSubscribed"
           v-on:click.prevent="subscribe"
           value="signup"
