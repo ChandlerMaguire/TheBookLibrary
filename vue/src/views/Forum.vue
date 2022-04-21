@@ -23,8 +23,8 @@ export default {
   width: 74vw;
 }
 #forum-title {
-  margin-top: -15px;
-  margin-left: 10px;
+  margin-top: 20px;
+  margin-left: 12px;
   margin-bottom: -3px;
   text-align: left;
 }

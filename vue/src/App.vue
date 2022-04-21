@@ -52,8 +52,8 @@
       <h1 id="library-header">The Book Library</h1>
     </div>
     <div class="container">
-      <Search class="search" v-if="this.$route.name !='login' && this.$route.name !='add-book'"></Search>
-      <newsletter class="newsletter" v-if="this.$route.name !='login' && this.$route.name !='add-book'"/>
+      <Search class="search" v-if="this.$route.name !='login' && this.$route.name !='add-book' && this.$route.name !='Forum' && this.$route.name !='Post'"></Search>
+      <newsletter class="newsletter" v-if="this.$route.name !='login' && this.$route.name !='add-book' && this.$route.name !='Forum' && this.$route.name !='Post'"/>
     </div>
     <router-view />
   </div>
@@ -171,7 +171,6 @@ img {
   width: 25vw;
   grid-area: "search";
   padding: 10px;
-  min-width: fit-content;
   right: 0;
   margin-top: 30px;
   position: absolute;
