@@ -61,7 +61,6 @@
     <div class="container">
       <Search
         class="search"
-<<<<<<< HEAD
         v-if="
           this.$route.name != 'login' &&
           this.$route.name != 'add-book' &&
@@ -80,22 +79,6 @@
           this.$route.name != 'Post'
         "
       />
-=======
-<<<<<<< HEAD
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
-      ></Search>
-      <newsletter
-        class="newsletter"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
-      />
-=======
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage' && this.$route.name !='Forum' && this.$route.name !='Post'"
-      ></Search>
-      <newsletter
-        class="newsletter"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'  && this.$route.name !='Forum' && this.$route.name !='Post'"/>
->>>>>>> 3b86ecd34b8ff46601d65a9bf14436c269f3ff9c
->>>>>>> 645d4555442ecc5f4bf4f373630d16418eda12ab
     </div>
     <router-view />
   </div>
@@ -288,12 +271,8 @@ th {
   transition: all 0.9s ease 0s;
 }
 #addButton {
-<<<<<<< HEAD
-  min-height: fit-content; 
-=======
   min-height: fit-content;
   margin-top: auto;
->>>>>>> 645d4555442ecc5f4bf4f373630d16418eda12ab
 }
 #removeButton {
   min-height: fit-content;
