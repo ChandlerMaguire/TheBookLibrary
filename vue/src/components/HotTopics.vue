@@ -97,12 +97,10 @@ color: var(--navy);
   flex-wrap: wrap;
   border-color: none;
 }
-form {
-  margin-top: 13px;
-  
+#topics {
+  margin-top: 68px;
   padding: 5px;
   border: 1px solid var(--red);
-    margin-top: 10px;
   margin-right: 50px;
   margin-left: 50px;
   border-radius: 10px;

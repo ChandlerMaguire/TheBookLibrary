@@ -43,8 +43,6 @@
     <hot-topics id="hot-topics" />
    </div>
   </div>
-  
-  
 </template>
 
 <script>
@@ -98,10 +96,11 @@ export default {
 <style scoped>
 #addPost {
 margin: 10px;
+margin-top: -30px;
 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 font-size: 1rem;
 position: absolute;
-left: 121px;;
+left: 1px;;
 top: 97px;
 }
 #post-date {
@@ -176,6 +175,7 @@ button:hover {
 }
 
 table {
+  margin-top: 90px;
   border: none;
   
 }
@@ -196,9 +196,10 @@ textarea, #formTitle {
 }
 .forum-container{
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:"post-list post-list hot-topics"
-  "post-list post-list hot-topics";
+  position: absolute;
+  grid-template-columns: 3fr 1fr ;
+  grid-template-areas:"post-list  hot-topics"
+  "post-list hot-topics";
 }
 .topics-list{
   grid-area: topics-list;
@@ -207,6 +208,7 @@ textarea, #formTitle {
 .post-list{
   grid-area: post-list;
 }
+
 </style>
 
     
