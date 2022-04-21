@@ -109,13 +109,12 @@ h2 {
 }
 table {
   margin-top: 70px;
-  width: 100%;
+  width: 98%;
   border: 2px solid;
   border-color: var(--red);
   color: var(--blue);
   text-align: center;
   table-layout: fixed;
-
 }
 tr {
   border: 1px solid var(--pink);

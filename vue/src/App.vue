@@ -43,7 +43,10 @@
         >Login <font-awesome-icon icon="fa-solid fa-right-to-bracket"
       /></router-link>
     </div>
-    <span id="username-icon" v-show="$store.state.token != ''">Hi, {{this.$store.state.user.username}}. <font-awesome-icon icon="fa-solid fa-user" /></span>
+    <span id="username-icon" v-show="$store.state.token != ''"
+      >Hi, {{ this.$store.state.user.username }}.
+      <font-awesome-icon icon="fa-solid fa-user"
+    /></span>
     <div class="title-and-pic">
       <img
         class="title-pic"
@@ -52,8 +55,14 @@
       <h1 id="library-header">The Book Library</h1>
     </div>
     <div class="container">
-      <Search class="search" v-if="this.$route.name !='login' && this.$route.name !='add-book'"></Search>
-      <newsletter class="newsletter" v-if="this.$route.name !='login' && this.$route.name !='add-book'"/>
+      <Search
+        class="search"
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage'"
+      ></Search>
+      <newsletter
+        class="newsletter"
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'"
+      />
     </div>
     <router-view />
   </div>
@@ -67,7 +76,7 @@ import Newsletter from "@/components/Newsletter.vue";
 export default {
   components: { Search, Newsletter },
   name: "app",
- 
+
   created() {
     bookService
       .getAllBooks()
@@ -93,7 +102,7 @@ export default {
         this.$store.commit("GET_NEW_RELEASES", response.data);
       }
     });
-      bookService.getHotTopics().then((response) => {
+    bookService.getHotTopics().then((response) => {
       if (response.status == 200) {
         this.$store.commit("GET_HOT_TOPICS", response.data);
       }
@@ -128,6 +137,7 @@ body {
   font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
 }
+
 #nav {
   text-align: center;
   filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
@@ -187,7 +197,6 @@ img {
   position: absolute;
 }
 
-
 table {
   width: 100%;
   border: 2px solid;
@@ -223,11 +232,9 @@ th {
   transition: all 0.9s ease 0s;
 }
 #addButton {
-  
   min-height: fit-content;
 }
 #removeButton {
-  
   min-height: fit-content;
 }
 form {
@@ -266,10 +273,12 @@ h4 {
   box-shadow: 0px 5px 10px var(--navy);
   color: #fff;
   transform: translateY(-1px);
-  transition: all 0.3s ease 0s; }
+  transition: all 0.3s ease 0s;
+}
+
 
 #username-icon {
-  float:right;
+  float: right;
   margin-top: -22px;
   margin-right: 10px;
   color: #007bff;
