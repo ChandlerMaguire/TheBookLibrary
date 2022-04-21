@@ -18,4 +18,7 @@ export default {
   getNewReleases() {
     return axios.get('/newreleases')
   },
+  getHotTopics() {
+    return axios.get('/hottopics')
+  }
 }

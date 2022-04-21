@@ -13,12 +13,14 @@ namespace Capstone.Controllers
     public class ForumController : ControllerBase
     {
         private readonly IPostDao postDao;
+        private readonly IBookDao bookDao;
         private readonly IUserDao userDao;
         private readonly ICommentDao commentDao;
 
-        public ForumController(IPostDao postDao, IUserDao userDao, ICommentDao commentDao)
+        public ForumController(IPostDao postDao, IBookDao bookDao, IUserDao userDao, ICommentDao commentDao)
         {
             this.postDao = postDao;
+            this.bookDao = bookDao;
             this.userDao = userDao;
             this.commentDao = commentDao;
         }
@@ -80,5 +82,6 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
+        
     }
 }

@@ -1,4 +1,5 @@
 <template>
+<div class="forum-container">
   <div class="post-list">
     <button id="addPost" v-show="this.showForm == false" @click="showForm = true">Add a Post</button>
     <form
@@ -35,11 +36,18 @@
         </tr>
       </tbody>
     </table>
+   </div>
+   <div class = "topic-list">
+    <hot-topics id="hot-topics" />
+   </div>
   </div>
+  
+  
 </template>
 
 <script>
 import forumService from "@/services/ForumService.js";
+import HotTopics from "@/components/HotTopics.vue";
 
 export default {
   name: "post-list",
@@ -53,6 +61,7 @@ export default {
       },
     };
   },
+  components: {HotTopics},
   created() {
     forumService.getAllPosts().then((response) => {
       if (response.status == 200) {
@@ -118,7 +127,7 @@ td > #user {
   margin-left: 10px;
   text-align: left;
   margin-top: -10px;
-  color: var(--blue);
+  color: var(--navy);
 }
 #addPost:hover{
   transform: translateY(-3px);
@@ -162,6 +171,7 @@ button:hover {
 
 table {
   border: none;
+  
 }
 tr:nth-child(odd) {
   background-color: rgba(255, 182, 46, 0);
@@ -177,6 +187,19 @@ label {
 }
 textarea, #formTitle {
   margin: 10px;
+}
+.forum-container{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:"post-list post-list hot-topics"
+  "post-list post-list hot-topics";
+}
+.topics-list{
+  grid-area: topics-list;
+
+}
+.post-list{
+  grid-area: post-list;
 }
 </style>
 

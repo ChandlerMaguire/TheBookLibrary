@@ -127,5 +127,19 @@ namespace Capstone.Controllers
 
             return Ok(result);
         }
+        [HttpGet("hottopics")]
+        public ActionResult<List<Book>> HotTopics()
+        {
+            List<Book> result = bookDao.GetHotTopics();
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

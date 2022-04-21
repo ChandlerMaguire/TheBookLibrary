@@ -27,6 +27,7 @@ export default new Vuex.Store({
     allBooks: [],
     staffPicks: [],
     newReleases: [],
+    hotTopics: [],
     addedBook: {
       keyword: "",
       title: "",
@@ -84,6 +85,9 @@ export default new Vuex.Store({
     },
     GET_NEW_RELEASES(state, newReleases){
       state.newReleases = newReleases;
+    },
+    GET_HOT_TOPICS(state, hotTopics){
+      state.hotTopics = hotTopics;
     },
     UPDATE_USER_SEARCHED(state) {
       state.userSearched = true;

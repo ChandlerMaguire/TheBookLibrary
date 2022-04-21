@@ -2,6 +2,7 @@
   <div class="forum">
     <h1>Forum</h1>
     <post-list />
+    <hot-topics/>
   </div>
 </template>
 
