@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <img
+      class="liner"
+      src="https://i.pinimg.com/originals/82/8d/dd/828dddd2d589db12239013ff67c209db.png"
+    />
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }"
         >Home <font-awesome-icon icon="fa-solid fa-home"
@@ -57,11 +61,20 @@
     <div class="container">
       <Search
         class="search"
+<<<<<<< HEAD
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
+      ></Search>
+      <newsletter
+        class="newsletter"
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
+      />
+=======
         v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage' && this.$route.name !='Forum' && this.$route.name !='Post'"
       ></Search>
       <newsletter
         class="newsletter"
         v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'  && this.$route.name !='Forum' && this.$route.name !='Post'"/>
+>>>>>>> 3b86ecd34b8ff46601d65a9bf14436c269f3ff9c
     </div>
     <router-view />
   </div>
@@ -136,7 +149,30 @@ body {
   font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
 }
-
+.liner {
+  opacity: 1;
+  border: none;
+  width: 100vw;
+  height: 100%;  
+  bottom: 0;
+  border: none;
+  box-shadow: none;
+  position: fixed;
+  margin: 0;
+  z-index: -2; 
+}
+.notBook {
+  width: initial;
+  height: initial;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  margin: 0;
+  z-index: -2; 
+}
+#nothing {
+  transform: rotate(0deg) translate(0%, 100%);
+}
 #nav {
   text-align: center;
   filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
@@ -180,6 +216,7 @@ img {
   width: 25vw;
   grid-area: "search";
   padding: 10px;
+  /* min-width: fit-content; */
   right: 0;
   margin-top: 30px;
   position: absolute;
