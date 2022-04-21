@@ -49,6 +49,7 @@ INSERT INTO author (first_name, last_name) VALUES ('John', 'Sandford');
 INSERT INTO author (first_name, last_name) VALUES ('Heather', 'Graham');
 INSERT INTO author (first_name, last_name) VALUES ('David', 'Baldacci');
 INSERT INTO author (first_name, last_name) VALUES ('Lisa', 'Scottoline');
+
 INSERT INTO author (first_name, last_name) VALUES ('Dav', 'Pilkey');
 INSERT INTO author (first_name, last_name) VALUES ('Angie', 'Thomas');
 INSERT INTO author (first_name, last_name) VALUES ('Margaret', 'Atwood');
@@ -126,10 +127,10 @@ INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character]
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Cat Kid Comic Club: On Purpose', '11', '1338801945', '10', '2022-04-20 12:40:50','','','', 0, 1, 0);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('The Hate U Give', '12', '0062498533', '11', '2022-04-20 12:40:50','','','', 0, 0, 1);
 INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('The Handmaids Tale', '13', '0307264602', '1', '2022-04-20 12:40:50','','','', 0, 0, 1);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('No Plan B: A Jack Reacher Novel', '14', '1984818546', '9', '2022-04-25 12:40:50','','','', 0, 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('On This Day in History Sh!t Went Down', '15', '177757420X', '6', '2022-04-25 12:40:50','','','', 0, 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('Sick in the Head', '16', '9780812987287', '2', '2022-04-25 12:40:50','','','', 0, 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('The Last Thing He Told Me', '17', '1501171348', '7', '2022-04-25 12:40:50','','','', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('Running Blind: A Jack Reacher Novel', '16', '1410429407', '9', '2022-04-25 12:40:50','','','', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('On This Day in History Sh!t Went Down', '17', '177757420X', '6', '2022-04-25 12:40:50','','','', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('Sicker in the Head', '18', '0525509410', '2', '2022-04-25 12:40:50','','','', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('The Last Thing He Told Me', '19', '1501171348', '7', '2022-04-25 12:40:50','','','', 0, 0, 0);
 
 
 
