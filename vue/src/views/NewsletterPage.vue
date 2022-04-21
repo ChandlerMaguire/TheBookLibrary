@@ -1,6 +1,7 @@
 <template>
   <div class="newsletterpage">
     <h2 id="news-header">Newsletter</h2>
+    <h3 id="story-title"> {{ "V" + this.$store.state.newsletterText.substring(465, 500) + "?"}}</h3>
     <img
       class="news-img"
       v-bind:src="'https://westervillelibrary.org/wp-content/uploads/sites/116/2021/12/Westerville-Public-Library-1930-1949.jpg'"
@@ -48,6 +49,7 @@ export default {
 #news-text {
   width: 50%;
   margin: auto;
+  text-indent: 50px;
 }
 .news-img {
   height: auto;
@@ -55,12 +57,16 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  border: 1px solid var(--blue);
+  border-radius: 2px;
 }
 .description {
   width: 50%;
   margin-right: 50%;
   margin-left: 43%;
   margin-top: -10px;font-style: italic;
-  
+}
+#story-title{
+  text-align: center;
 }
 </style>

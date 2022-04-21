@@ -2,7 +2,7 @@
   <div class="newsletter">
     <form id="newsletter" action="#">
       <h4>Newsletter</h4>
-      <h5>
+      <h5 id="news-preview">
         {{ this.$store.state.newsletterText.substring(0, 120) + "..."
         }}<router-link to='/newsletter'
           >read more</router-link
@@ -40,7 +40,9 @@ export default {
   margin-right: 20px;
   border-radius: 10px;
 }
-
+#news-preview{
+  text-indent: 20px;
+}
 #email {
   width: 100%;
   margin-bottom: 5px;
