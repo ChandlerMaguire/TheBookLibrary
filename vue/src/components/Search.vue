@@ -129,6 +129,14 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               this.$store.commit("GET_SEARCH_RESULT", response.data);
+              this.search.keyword = "";
+              this.search.title = "";
+              this.search.firstName = "";
+              this.search.lastName = "";
+              this.search.genre = "";
+              this.search.character = "";
+              this.search.location = "";
+              this.search.isbn = "";
               this.$router.push("/results");
             }
           })
@@ -146,5 +154,4 @@ export default {
 </script>
 
 <style>
-
 </style>

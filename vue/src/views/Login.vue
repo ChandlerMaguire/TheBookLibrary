@@ -90,6 +90,7 @@ export default {
   width: 50%;
  margin:auto;
  border-radius: 5px;
+ margin-top: 70px;
 }
 #sign-in-submit{
   border-radius: 5px;

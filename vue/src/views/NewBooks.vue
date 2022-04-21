@@ -137,9 +137,11 @@ th {
   margin-left: 33%;
 }
 #new-books-title{
-  margin-top: 20px;
-  margin-left: 12px;
-  margin-bottom: -70px;
+ font-style: italic;
+  font-size: 25px;
+  margin-top: -5px;
+  margin-left: 10px;
+  margin-bottom: -68px;
   text-align: left;
 }
 .new-books-title-icon {

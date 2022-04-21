@@ -3,8 +3,8 @@
     <form id="newsletter" action="#">
       <h4>Newsletter</h4>
       <h5 id="news-preview">
-        {{ this.$store.state.newsletterText.substring(0, 120) + "..."
-        }}<router-link to="/newsletter">read more</router-link>
+        Library history is a subdiscipline within library science and library and information science focusing on the history of libraries and their role in societies and cultures.[1] Some see the field as a subset of information history.[2] Library...
+        <router-link to="/newsletter">read more</router-link>
       </h5>
       <!-- <label for="email"></label>
       <input type="email" id="email" name="email" placeholder="Email" /> -->

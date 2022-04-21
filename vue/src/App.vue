@@ -171,7 +171,7 @@ body {
 .blur {
 transform: rotate(180deg) translateY(66%);
 filter: blur(200px);
-opacity: 1;
+opacity: 0.2;
 }
 .liner-bottom {
   transform: translateY(20%);
