@@ -1,6 +1,8 @@
 <template>
   <div class ="newBooksContainer">
     <h2 id="no-new-books" v-if="this.newBooks.length == 0">No New Books.</h2>
+    <h2 id="new-books-title" v-if="this.newBooks.length > 0">New Books <font-awesome-icon class="new-books-title-icon" icon="fa-solid fa-book"
+      /></h2>
     <table v-if="this.newBooks.length > 0">
       <tr>
         <th></th>
@@ -120,7 +122,10 @@ tr {
   border: 1px solid var(--pink);
 }
 tr:nth-child(odd) {
-  background-color: rgba(255, 182, 46, 1);
+  background-color: rgba(255, 182, 46, .9);
+}
+tr:nth-child(even) {
+  background-color: rgba(255, 195, 82, 0.9);
 }
 th {
   padding: 5px;
@@ -130,5 +135,16 @@ th {
   margin-top: 70px;
   font-size: 25px;
   margin-left: 33%;
+}
+#new-books-title{
+  margin-top: 20px;
+  margin-left: 12px;
+  margin-bottom: -70px;
+  text-align: left;
+}
+.new-books-title-icon {
+ color: var(--blue);
+ font-size: 25px;
+ filter: opacity(1) drop-shadow(0px 3px 1px rgb(219, 182, 102)) drop-shadow(3px 0px 2px rgb(82, 125, 218)) drop-shadow(-3px 0px 2px rgb(255, 255, 255)) drop-shadow(0px -4px 2px rgb(218, 201, 201));
 }
 </style>
