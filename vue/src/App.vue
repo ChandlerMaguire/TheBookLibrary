@@ -231,9 +231,11 @@ th {
 }
 #addButton {
   min-height: fit-content;
+  margin-top: auto;
 }
 #removeButton {
   min-height: fit-content;
+  margin-top: auto;
 }
 form {
   margin-top: 13px;
