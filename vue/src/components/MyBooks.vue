@@ -2,8 +2,7 @@
   <div>
     <div id="myBooksTitle">
     <h2 id="no-results" v-show="$store.state.myBooks.length == 0">Search for books to add them to your collection.</h2>
-    <h2 v-show="$store.state.myBooks.length > 0">My Books</h2>
-    </div>
+    <h2 id="my-books-header" v-show="$store.state.myBooks.length > 0">My Books</h2>
     <table>
       <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
         <img
@@ -87,6 +86,11 @@ td {
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
+td:hover {
+  background-color: var(--button);
+  color: #fff;
+  transition: all 0.9s ease 0s;
+}
 table {
   width: 73vw;
   align-self: left;
@@ -102,5 +106,8 @@ table {
 }
 #no-results {
   margin-top: 100px;
+}
+#my-books-header{
+  margin-top: 60px;
 }
 </style>
