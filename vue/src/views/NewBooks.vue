@@ -98,11 +98,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h2 {
   text-align: center;
 }
 table {
+  margin-top: 70px;
   width: 100%;
   border: 2px solid;
   border-color: var(--red);

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 v-if="$store.state.searchResult.length == 0">No Results Found</h2>
     <table v-if="$store.state.searchResult.length > 0">
       <tr>
         <th></th>
@@ -39,8 +38,8 @@
           <td>{{ book.dateAdded }}</td>
         </tr>
       </tbody>
-      <h1 v-if="$store.state.searchResult.length == 0">No Results Found</h1>
     </table>
+    <h2 id="no-results" v-if="$store.state.searchResult.length == 0">No Results Found</h2>
   </div>
 </template>
 
@@ -70,25 +69,22 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h2 {
   text-align: center;
 }
 table {
+  margin-top: 70px;
   width: 100%;
   border: 2px solid;
   border-color: var(--red);
   color: var(--blue);
   text-align: center;
   table-layout: fixed;
-  /* background-color: var(--yellow); */
 }
 tr {
   border: 1px solid var(--pink);
 }
-/* tr:nth-child(even) {
-  background-color:rgba(255, 182, 46, .8);
-} */
 tr:nth-child(odd) {
   background-color: rgba(255, 182, 46, 1);
 }
@@ -96,6 +92,7 @@ th {
   padding: 5px;
   border-bottom: 2px solid var(--red);
 }
-
-
+#no-results {
+  margin-top: 100px;
+}
 </style>

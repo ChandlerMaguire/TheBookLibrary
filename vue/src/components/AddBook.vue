@@ -190,6 +190,7 @@ export default {
   border: 1px solid var(--red);
   width: 50%;
   margin: auto;
+  margin-top: 70px;
 }
 label {
   margin-bottom: -0.5px;

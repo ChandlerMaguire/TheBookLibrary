@@ -10,6 +10,7 @@
         <h4 class="book-title">{{ book.title }}</h4>
         <h5>{{ book.firstName }} {{ book.lastName }}</h5>
          <button
+            v-if="$store.state.token != ''"
             id="addButton"
             class="toggleButton"
             v-show="!isBookInStore(book.isbn)"
@@ -112,5 +113,13 @@ img {
 }
 .book-title{
   padding: 5px
+}
+td:hover {
+  background-color: var(--button);
+  color: #fff;
+  transition: all 0.9s ease 0s;
+}
+td{
+  box-shadow: 0px 5px 10px var(--navy);
 }
 </style>
