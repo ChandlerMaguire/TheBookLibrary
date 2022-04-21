@@ -30,6 +30,36 @@ export default {
 
 <style>
 
+.container {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: auto;
+  grid-template-areas:
+    "home search"
+    "home search";
+  margin: 0;
+}
+
+.home {
+  width: 75vw;
+  grid-area: "home";
+  grid-template-areas:
+    "staff-picks"
+    "new-releases";
+}
+.search {
+  width: 25vw;
+  grid-area: "search";
+  padding: 5%;
+  min-width: fit-content;
+  margin-right: 20%;
+}
+.newsletter {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: -5%;
+  width: 25vw;
+}
 #staff-picks {
   grid-area: "staff-picks";
   filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white); 

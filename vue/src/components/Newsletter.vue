@@ -1,16 +1,17 @@
 <template>
   <div class="newsletter">
-    <form id="newsletter" action="#" @submit.prevent="signUp">
+    <form id="newsletter" action="#">
       <h4>Newsletter</h4>
       <h5>
         {{ this.$store.state.newsletterText.substring(0, 120) + "..."
-        }}<router-link id="readmore" v-bind:to="{ name: 'newsletterpage' }"
+        }}<router-link to='/newsletter'
           >read more</router-link
         >
       </h5>
-      <label for="email"></label>
-      <input type="email" id="email" name="email" placeholder="Email" />
-      <button id="signup" type="submit" value="signup">Subscribe</button>
+      <!-- <label for="email"></label>
+      <input type="email" id="email" name="email" placeholder="Email" /> -->
+      <button v-show="!this.$store.state.isSubscribed" v-on:click.prevent="subscribe" id="signup" value="signup">Subscribe</button>
+      <button v-show="this.$store.state.isSubscribed" v-on:click.prevent="unsubscribe" id="signup" value="signup">Unsubscribe</button>
     </form>
   </div>
 </template>
@@ -18,6 +19,14 @@
 <script>
 export default {
   name: "newsletter",
+  methods: {
+    subscribe(){
+      this.$store.commit("SUBSCRIBE");
+    },
+    unsubscribe(){
+      this.$store.commit("UNSUBSCRIBE");
+    }
+  }, 
   
 };
 </script>
@@ -39,13 +48,6 @@ export default {
 .news-container {
   display: flex;
   flex-direction: column;
-}
-h4 {
-  text-align: center;
-  padding-top: 10px;
-  padding-right: 10px;
-  font-size: 22px;
-  text-shadow: 3px 2px 3px grey;
 }
 #signup {
   margin-bottom: 0;

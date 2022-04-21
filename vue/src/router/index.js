@@ -11,6 +11,7 @@ import AddBook from '@/components/AddBook.vue'
 import NewBooks from '@/views/NewBooks.vue'
 import Forum from '@/views/Forum.vue'
 import Post from '@/views/Post.vue'
+import NewsletterPage from '@/views/NewsletterPage'
 
 Vue.use(Router)
 
@@ -105,6 +106,14 @@ const router = new Router({
       component: Post,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: "/newsletter",
+      name: "newsletterpage",
+      component: NewsletterPage,
+      meta: {
+        requiresAuth: false
       }
     },
   ]
