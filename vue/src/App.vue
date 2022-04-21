@@ -64,11 +64,24 @@
     <div class="container">
       <Search
         class="search"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage' && this.$route.name !='Forum' && this.$route.name !='Post'"
+        v-if="
+          this.$route.name != 'login' &&
+          this.$route.name != 'add-book' &&
+          this.$route.name != 'newsletterpage' &&
+          this.$route.name != 'Forum' &&
+          this.$route.name != 'Post'
+        "
       ></Search>
       <newsletter
         class="newsletter"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'  && this.$route.name !='Forum' && this.$route.name !='Post'"/>
+        v-if="
+          this.$route.name != 'login' &&
+          this.$route.name != 'add-book' &&
+          this.$route.name != 'newsletterpage' &&
+          this.$route.name != 'Forum' &&
+          this.$route.name != 'Post'
+        "
+      />
     </div>
     <router-view />
   </div>
@@ -280,9 +293,11 @@ th {
 }
 #addButton {
   min-height: fit-content;
+  margin-top: auto;
 }
 #removeButton {
   min-height: fit-content;
+  margin-top: auto;
 }
 form {
   margin-top: 13px;
@@ -322,7 +337,6 @@ h4 {
   transform: translateY(-1px);
   transition: all 0.3s ease 0s;
 }
-
 
 #username-icon {
   float: right;
