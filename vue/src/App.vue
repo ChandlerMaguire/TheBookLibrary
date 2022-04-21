@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+    
+    <img class="liner-top blur" src="http://www.westbowmanvilledental.com/wp-content/uploads/2020/02/background.png" />
+    <img class="liner-top" src="http://www.westbowmanvilledental.com/wp-content/uploads/2020/02/background.png" />
     <img
-      class="liner"
+      class="liner-bottom"
       src="https://i.pinimg.com/originals/82/8d/dd/828dddd2d589db12239013ff67c209db.png"
     />
     <div id="nav">
@@ -153,7 +156,25 @@ body {
   font-family: "Georgia", sans-serif;
   overscroll-behavior-y: none;
 }
-.liner {
+.liner-top {
+  transform: rotate(180deg) translateY(71%);
+  border: none;
+  width: 100vw;  
+  height: auto;
+  top: 0;
+  right: 0;
+  border: none;
+  position: fixed;
+  margin: 0;
+  z-index: -2; 
+}
+.blur {
+transform: rotate(180deg) translateY(66%);
+filter: blur(200px);
+opacity: 1;
+}
+.liner-bottom {
+  transform: translateY(20%);
   opacity: 1;
   border: none;
   width: 100vw;
@@ -179,7 +200,7 @@ body {
 }
 #nav {
   text-align: center;
-  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
 }
 h1,
 h2 {
@@ -322,6 +343,6 @@ h4 {
   margin-top: -22px;
   margin-right: 10px;
   color: #007bff;
-  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white) drop-shadow(0 0 2px white);
 }
 </style>

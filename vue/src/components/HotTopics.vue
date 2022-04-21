@@ -66,8 +66,9 @@ export default {
 
 #forum-topic{
   text-align: center;
-  text-decoration: underline;
   color: var(--navy);
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 4px white;
 }
 #topic-2{
   text-align: center;
