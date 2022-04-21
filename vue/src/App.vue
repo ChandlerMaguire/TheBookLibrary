@@ -55,19 +55,13 @@
       <h1 id="library-header">The Book Library</h1>
     </div>
     <div class="container">
-<<<<<<< HEAD
       <Search
         class="search"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage'"
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage' && this.$route.name !='Forum' && this.$route.name !='Post'"
       ></Search>
       <newsletter
         class="newsletter"
-        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'"
-      />
-=======
-      <Search class="search" v-if="this.$route.name !='login' && this.$route.name !='add-book' && this.$route.name !='Forum' && this.$route.name !='Post'"></Search>
-      <newsletter class="newsletter" v-if="this.$route.name !='login' && this.$route.name !='add-book' && this.$route.name !='Forum' && this.$route.name !='Post'"/>
->>>>>>> c1de80ccc03b27e2346fc32a74ba292edb848fd5
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'  && this.$route.name !='Forum' && this.$route.name !='Post'"/>
     </div>
     <router-view />
   </div>
