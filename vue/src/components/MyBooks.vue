@@ -109,7 +109,7 @@ td:hover {
 }
 #no-results {
   font-size: 25px;
-  margin-left: 30%;
+  margin-left: 32%;
 }
 #my-books-header  {
   font-style: italic;
