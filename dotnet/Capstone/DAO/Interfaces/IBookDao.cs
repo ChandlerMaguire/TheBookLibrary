@@ -15,6 +15,7 @@ namespace Capstone.DAO.Interfaces
         bool AddBook(Book bookToAdd);
         public List<Book> GetNewReleases();
         public List<Book> GetStaffPicks();
+        public List<Book> GetHotTopics();
 
     }
 }

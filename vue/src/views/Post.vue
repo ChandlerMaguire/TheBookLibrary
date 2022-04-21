@@ -1,4 +1,5 @@
 <template>
+<div class="comment-container">
   <div class="post">
     <table>
       <tbody>
@@ -38,11 +39,15 @@
       <font-awesome-icon id="x" icon="fa-solid fa-xmark" @click="showForm = false"/>
     </form>
   </div>
+    <div class = "comment-topic-list">
+    <hot-topics id="comment-topics" />
+   </div>
+   </div>
 </template>
 
 <script>
 import forumService from "@/services/ForumService.js";
-
+import HotTopics from "@/components/HotTopics.vue";
 export default {
   name: "Post",
   data() {
@@ -54,6 +59,7 @@ export default {
       },
     };
   },
+components: {HotTopics},
   created() {
     forumService.getPost(this.$store.state.post.postId).then((response) => {
       if (response.status == 200) {
@@ -183,5 +189,17 @@ tr:nth-child(odd) {
 textarea {
   margin: 10px;
 }
+.comment-container{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:"post post comment-topics"
+  "post post comment-topics";
+}
+.comment-topic-list{
+  grid-area: comment-topics;
 
+}
+.post{
+  grid-area: post;
+}
 </style>

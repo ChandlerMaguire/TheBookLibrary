@@ -18,7 +18,7 @@ export default {
   getNewReleases() {
     return axios.get('/newreleases')
   },
-  updateIsSubscribed() {
-    return axios.put('/newsletter')
-  },
+  getHotTopics() {
+    return axios.get('/hottopics')
+  }
 }

@@ -47,6 +47,8 @@ namespace Capstone.DAO
 
         private string sqlGetNewReleases = "select * from books b INNER JOIN author a ON b.author_id = a.author_id INNER JOIN genre g ON g.genre_id = b.genre_id  WHERE isNewRelease = 1;";
 
+        private string sqlGetHotTopics = "select * from books b INNER JOIN author a ON b.author_id = a.author_id INNER JOIN genre g ON g.genre_id = b.genre_id  WHERE isHotTopic = 1;";
+
 
 
 
@@ -204,7 +206,34 @@ namespace Capstone.DAO
 
             return newReleases;
         }
+        public List<Book> GetHotTopics()
+        {
+            List<Book> hotTopics = new List<Book>();
 
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetHotTopics, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        Book returnBook = GetBookFromReader(reader);
+                        hotTopics.Add(returnBook);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return hotTopics;
+        }
         public void updateMyBooks(List<Book> myBooks, string userId)
         {
             List<string> isbnList = new List<string>();
@@ -294,6 +323,7 @@ namespace Capstone.DAO
             book.DateAdded = book.DateAdded.Substring(0, 9);
             book.IsStaffPick = Convert.ToBoolean(reader["isStaffPick"]);
             book.IsNewRelease = Convert.ToBoolean(reader["isNewRelease"]);
+            book.IsHotTopic = Convert.ToBoolean(reader["isHotTopic"]);
 
             return book;
         }

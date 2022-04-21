@@ -93,6 +93,11 @@ export default {
         this.$store.commit("GET_NEW_RELEASES", response.data);
       }
     });
+      bookService.getHotTopics().then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("GET_HOT_TOPICS", response.data);
+      }
+    });
   },
 };
 </script>

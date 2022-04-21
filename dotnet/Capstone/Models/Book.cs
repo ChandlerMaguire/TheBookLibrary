@@ -18,6 +18,7 @@ namespace Capstone.Models
         public string DateAdded { get; set; }
         public bool IsStaffPick { get; set; }
         public bool IsNewRelease { get; set; }
+        public bool IsHotTopic { get; set; }
 
     }
 }
