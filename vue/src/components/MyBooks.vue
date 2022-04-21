@@ -2,8 +2,9 @@
   <div>
     <div id="myBooksTitle">
     <h2 id="no-results" v-show="$store.state.myBooks.length == 0">Search for books to add them to your collection.</h2>
-    <h2 id="my-books-header" v-show="$store.state.myBooks.length > 0">My Books</h2></div>
-    <table>
+    <h2 id="my-books-header" v-show="$store.state.myBooks.length > 0">My Books <font-awesome-icon class="my-books-book-icon" icon="fa-solid fa-book-open"
+      /></h2></div>
+    <table id="my-books-table">
       <td v-for="book in $store.state.myBooks" v-bind:key="book.isbn">
         <img
           v-bind:src="
@@ -79,7 +80,7 @@ img {
 td {
   margin: 10px;
   word-break: break-word;
-  max-width: 180px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 182, 46, 1);
@@ -91,23 +92,35 @@ td:hover {
   color: #fff;
   transition: all 0.9s ease 0s;
 }
-table {
+#my-books-table {
   width: 73vw;
   align-self: left;
   justify-self: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   border: 0;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: -17px;
 }
 .book-title{
   padding: 5px
 }
 #no-results {
-  margin-top: 100px;
+  font-size: 25px;
+  margin-left: 30%;
 }
-#my-books-header{
-  margin-top: 60px;
+#my-books-header  {
+  font-style: italic;
+  font-size: 25px;
+  margin-top: -5px;
+  margin-left: 10px;
+  text-align: left;
+}
+.my-books-book-icon{
+  color: var(--blue);
+ 
+ filter: opacity(1) drop-shadow(0px 5px 1px rgb(219, 182, 102)) drop-shadow(3px 0px 2px rgb(82, 125, 218)) drop-shadow(-3px 0px 2px rgb(255, 255, 255)) drop-shadow(0px -4px 2px rgb(218, 201, 201));
 }
 </style>

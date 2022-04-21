@@ -1,7 +1,7 @@
 <template>
   <div>
     <form id="topics">
-    <h5 id="forum-topic">What's Your Take</h5>
+    <h5 id="forum-topic">What's Your Take? <font-awesome-icon class="hot-topic-icon" icon="fa-solid fa-comments" /></h5>
       <h6 id ="topic-2">Listed down below are some thought provoking and "controversial" books. What do you all think? What did you take away? Share your thoughts and add a post! </h6>
     <h6 id ="topic-2">If you haven't read these books yet 
       Add them to you'r reading list today!!</h6>
@@ -97,12 +97,10 @@ color: var(--navy);
   flex-wrap: wrap;
   border-color: none;
 }
-form {
-  margin-top: 13px;
-  
+#topics {
+  margin-top: 68px;
   padding: 5px;
   border: 1px solid var(--red);
-    margin-top: 10px;
   margin-right: 50px;
   margin-left: 50px;
   border-radius: 10px;
@@ -120,7 +118,11 @@ form {
 .hot-topic-td{
 padding: -20px;
 }
-
+.hot-topic-icon{
+  color: var(--blue);
+ 
+ filter: opacity(10) drop-shadow(0px 5px 1px rgb(25, 69, 94)) drop-shadow(3px 0px 2px rgb(255, 255, 255));
+}
 
 
 </style>

@@ -61,12 +61,20 @@
     <div class="container">
       <Search
         class="search"
+<<<<<<< HEAD
         v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
       ></Search>
       <newsletter
         class="newsletter"
         v-if="this.$route.name != 'login' && this.$route.name != 'add-book'"
       />
+=======
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book' && this.$route.name != 'newsletterpage' && this.$route.name !='Forum' && this.$route.name !='Post'"
+      ></Search>
+      <newsletter
+        class="newsletter"
+        v-if="this.$route.name != 'login' && this.$route.name != 'add-book'  && this.$route.name != 'newsletterpage'  && this.$route.name !='Forum' && this.$route.name !='Post'"/>
+>>>>>>> 3b86ecd34b8ff46601d65a9bf14436c269f3ff9c
     </div>
     <router-view />
   </div>
@@ -224,7 +232,6 @@ img {
   position: absolute;
 }
 
-
 table {
   width: 100%;
   border: 2px solid;
@@ -260,11 +267,9 @@ th {
   transition: all 0.9s ease 0s;
 }
 #addButton {
-  
   min-height: fit-content;
 }
 #removeButton {
-  
   min-height: fit-content;
 }
 form {
@@ -303,10 +308,12 @@ h4 {
   box-shadow: 0px 5px 10px var(--navy);
   color: #fff;
   transform: translateY(-1px);
-  transition: all 0.3s ease 0s; }
+  transition: all 0.3s ease 0s;
+}
+
 
 #username-icon {
-  float:right;
+  float: right;
   margin-top: -22px;
   margin-right: 10px;
   color: #007bff;

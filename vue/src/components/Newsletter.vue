@@ -4,14 +4,28 @@
       <h4>Newsletter</h4>
       <h5 id="news-preview">
         {{ this.$store.state.newsletterText.substring(0, 120) + "..."
-        }}<router-link to='/newsletter'
-          >read more</router-link
-        >
+        }}<router-link to="/newsletter">read more</router-link>
       </h5>
       <!-- <label for="email"></label>
       <input type="email" id="email" name="email" placeholder="Email" /> -->
-      <button v-show="!this.$store.state.isSubscribed" v-on:click.prevent="subscribe" id="signup" value="signup">Subscribe</button>
-      <button v-show="this.$store.state.isSubscribed" v-on:click.prevent="unsubscribe" id="signup" value="signup">Unsubscribe</button>
+      <div id="signup">
+        <button
+          id="signup"
+          v-show="!this.$store.state.isSubscribed"
+          v-on:click.prevent="subscribe"
+          value="signup"
+        >
+          Subscribe
+        </button>
+        <button
+          id="signup"
+          v-show="this.$store.state.isSubscribed"
+          v-on:click.prevent="unsubscribe"
+          value="signup"
+        >
+          Unsubscribe
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -20,14 +34,13 @@
 export default {
   name: "newsletter",
   methods: {
-    subscribe(){
+    subscribe() {
       this.$store.commit("SUBSCRIBE");
     },
-    unsubscribe(){
+    unsubscribe() {
       this.$store.commit("UNSUBSCRIBE");
-    }
-  }, 
-  
+    },
+  },
 };
 </script>
 
@@ -40,7 +53,7 @@ export default {
   margin-right: 20px;
   border-radius: 10px;
 }
-#news-preview{
+#news-preview {
   text-indent: 20px;
 }
 #email {
@@ -60,7 +73,7 @@ export default {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   width: 100px;
-  margin-left: 30%;
+  margin: auto;
 }
 #signup:hover {
   background-color: var(--blue);

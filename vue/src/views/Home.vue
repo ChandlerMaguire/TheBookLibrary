@@ -30,16 +30,6 @@ export default {
 
 <style>
 
-.container {
-  display: grid;
-  width: 100vw;
-  grid-template-columns: auto;
-  grid-template-areas:
-    "home search"
-    "home search";
-  margin: 0;
-}
-
 .home {
   width: 75vw;
   grid-area: "home";
@@ -47,19 +37,7 @@ export default {
     "staff-picks"
     "new-releases";
 }
-.search {
-  width: 25vw;
-  grid-area: "search";
-  padding: 5%;
-  min-width: fit-content;
-  margin-right: 20%;
-}
-.newsletter {
-  padding-left: 5%;
-  padding-right: 5%;
-  margin-top: -5%;
-  width: 25vw;
-}
+
 #staff-picks {
   grid-area: "staff-picks";
   filter: drop-shadow(0 0 2px white) drop-shadow(0 0 2px white); 
@@ -69,6 +47,7 @@ export default {
  
  filter: opacity(1) drop-shadow(0px 5px 1px darkred) drop-shadow(3px 0px 2px darkorange) drop-shadow(-3px 0px 2px darkorange) drop-shadow(0px -4px 2px yellow); 
 }
+
 .hand {
  color: var(--blue);
  filter: drop-shadow(0px -4px 2px yellow) drop-shadow(0px 4px 2px var(--red)); 

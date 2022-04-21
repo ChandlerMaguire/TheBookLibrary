@@ -1,6 +1,6 @@
 <template>
   <div class ="newBooksContainer">
-    <h2 v-if="this.newBooks.length == 0">No New Books.</h2>
+    <h2 id="no-new-books" v-if="this.newBooks.length == 0">No New Books.</h2>
     <table v-if="this.newBooks.length > 0">
       <tr>
         <th></th>
@@ -109,17 +109,15 @@ h2 {
 }
 table {
   margin-top: 70px;
-  width: 100%;
+  width: 98%;
   border: 2px solid;
   border-color: var(--red);
   color: var(--blue);
   text-align: center;
   table-layout: fixed;
-
 }
 tr {
   border: 1px solid var(--pink);
-  
 }
 tr:nth-child(odd) {
   background-color: rgba(255, 182, 46, .9);
@@ -130,5 +128,10 @@ tr:nth-child(even) {
 th {
   padding: 5px;
   border-bottom: 2px solid var(--red);
+}
+#no-new-books{
+  margin-top: 70px;
+  font-size: 25px;
+  margin-left: 33%;
 }
 </style>
