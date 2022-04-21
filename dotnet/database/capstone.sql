@@ -50,6 +50,11 @@ INSERT INTO author (first_name, last_name) VALUES ('Heather', 'Graham');
 INSERT INTO author (first_name, last_name) VALUES ('David', 'Baldacci');
 INSERT INTO author (first_name, last_name) VALUES ('Lisa', 'Scottoline');
 INSERT INTO author (first_name, last_name) VALUES ('Dav', 'Pilkey');
+INSERT INTO author (first_name, last_name) VALUES ('Angie', 'Thomas');
+INSERT INTO author (first_name, last_name) VALUES ('Margaret', 'Atwood');
+INSERT INTO author (first_name, last_name) VALUES ('Todd', 'Strasser');
+INSERT INTO author (first_name, last_name) VALUES ('Ron', 'Powers');
+
 
 
 
@@ -71,6 +76,9 @@ INSERT INTO genre (genre_name) VALUES ('Mystery');
 INSERT INTO genre (genre_name) VALUES ('Horror');
 INSERT INTO genre (genre_name) VALUES ('Action');
 INSERT INTO genre (genre_name) VALUES ('Adventure');
+INSERT INTO genre (genre_name) VALUES ('Urban Fiction');
+INSERT INTO genre (genre_name) VALUES ('Crime Fiction');
+INSERT INTO genre (genre_name) VALUES ('Autobiography');
 
 CREATE TABLE books (
 	book_id int IDENTITY(1,1) NOT NULL,
@@ -84,30 +92,34 @@ CREATE TABLE books (
 	[location] nvarchar(MAX) NULL,
 	isStaffPick bit NOT NULL,
 	isNewRelease bit NOT NULL,
+	isHotTopic bit NOT NULL,
 	CONSTRAINT PK_book_id PRIMARY KEY (book_id),
 	CONSTRAINT FK_author_id FOREIGN KEY (author_id) REFERENCES [author] (author_id),
 	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES [genre] (genre_id),
 )
 
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Pride and Prejudice', '1', '0143105426', '3', '2022-04-11 12:40:50','','','', 1, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Transcendent Kingdom', '2', '0525658181', '3','2022-04-11 12:40:59','','','', 1, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('The Song of Achilles','6','0062060627','4','2022-04-11 12:41:10','','','', 1, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Graceling','5','0547258305','1','2022-04-11 12:41:20','','','', 1, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease)VALUES ('Bitterblue','5','0142426016','1','2022-04-11 12:41:30', 'Power, Identity', 'Queen Bitterblue, Thiel, Sapphire, Teddy, Tilda, Bren, Madlen, Rood', 'Graceling Realm, Monsea', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Fire','5','0803734611','1','2022-04-11 12:41:30', 'Power, Identity', 'Lady Fire, Prince Brigan, Archer, Brocker, Cansrel, Nash, Hanna, Clara, Garan, Nax, Queen Roen, Leck', 'Graceling Realm, King City', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Chamber of Secrets','3','0439064872','1','2022-04-11 12:41:12','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Prisoner of Azkaban','3','0747542155','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Sorcerers Stone','3','0590353403','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Deathly Hallows','3','0545010225','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Goblet of Fire','3','0439139600','1','2022-04-11 12:41:29','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Half-Blood Prince','3','0747581088','1','2022-04-11 12:41:31','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Harry Potter and the Order of the Phoenix','3','0747551006','1','2022-04-11 12:41:32','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('The Great Gatsby','4','1982146702','3','2022-04-11 12:41:40', 'Wealth, Class, Love, Romance, Idealism', 'Nick Carraway, Jay Gatsby, Daisy Buchanan, Thomas Buchanan, Jordan Baker, George B. Wilson, Myrtle Wilson', 'New York City', 1, 0);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('The Investigator', '7', '059332868X', '5', '2022-04-19 12:40:50','','','', 0, 1);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Crimson Summer', '8', '0778311821', '5', '2022-04-19 12:40:50','','','', 0, 1);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Dream Town', '9', '1538719770', '5', '2022-04-19 12:40:50','','','', 0, 1);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('What Happened to the Bennetts', '10', '0525539670', '5', '2022-04-19 12:40:50','','','', 0, 1);
-INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease) VALUES ('Cat Kid Comic Club: On Purpose', '11', '1338801945', '10', '2022-04-20 12:40:50','','','', 0, 1);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Pride and Prejudice', '1', '0143105426', '3', '2022-04-11 12:40:50','','','', 1, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Transcendent Kingdom', '2', '0525658181', '3','2022-04-11 12:40:59','','','', 1, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('The Song of Achilles','6','0062060627','4','2022-04-11 12:41:10','','','', 1, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Graceling','5','0547258305','1','2022-04-11 12:41:20','','','', 1, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic)VALUES ('Bitterblue','5','0142426016','1','2022-04-11 12:41:30', 'Power, Identity', 'Queen Bitterblue, Thiel, Sapphire, Teddy, Tilda, Bren, Madlen, Rood', 'Graceling Realm, Monsea', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Fire','5','0803734611','1','2022-04-11 12:41:30', 'Power, Identity', 'Lady Fire, Prince Brigan, Archer, Brocker, Cansrel, Nash, Hanna, Clara, Garan, Nax, Queen Roen, Leck', 'Graceling Realm, King City', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Chamber of Secrets','3','0439064872','1','2022-04-11 12:41:12','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Prisoner of Azkaban','3','0747542155','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Sorcerers Stone','3','0590353403','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Deathly Hallows','3','0545010225','1','2022-04-11 12:41:20','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Goblet of Fire','3','0439139600','1','2022-04-11 12:41:29','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Half-Blood Prince','3','0747581088','1','2022-04-11 12:41:31','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Harry Potter and the Order of the Phoenix','3','0747551006','1','2022-04-11 12:41:32','Magic, Wizards, Witches', 'Harry Potter, Hermione Granger, Ron Weasley, Severus Snape, Albus Dumbledore, Rubeus Hagrid, Drako Malfoy, Tom Riddle, Voldemort', 'Hogwarts', 0, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('The Great Gatsby','4','1982146702','3','2022-04-11 12:41:40', 'Wealth, Class, Love, Romance, Idealism', 'Nick Carraway, Jay Gatsby, Daisy Buchanan, Thomas Buchanan, Jordan Baker, George B. Wilson, Myrtle Wilson', 'New York City', 1, 0, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('The Investigator', '7', '059332868X', '5', '2022-04-19 12:40:50','','','', 0, 1, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Crimson Summer', '8', '0778311821', '5', '2022-04-19 12:40:50','','','', 0, 1, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Dream Town', '9', '1538719770', '5', '2022-04-19 12:40:50','','','', 0, 1, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('What Happened to the Bennetts', '10', '0525539670', '5', '2022-04-19 12:40:50','','','', 0, 1, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease, isHotTopic) VALUES ('Cat Kid Comic Club: On Purpose', '11', '1338801945', '10', '2022-04-20 12:40:50','','','', 0, 1, 0);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('The Hate U Give', '12', '0062498533', '11', '2022-04-20 12:40:50','','','', 0, 0, 1);
+INSERT INTO books (title, author_id, isbn, genre_id, added, keyword, [character], [location], isStaffPick, isNewRelease,isHotTopic) VALUES ('The Handmaids Tale', '13', '0307264602', '1', '2022-04-20 12:40:50','','','', 0, 0, 1);
+
 
 
 
