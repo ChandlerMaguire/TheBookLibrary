@@ -88,7 +88,10 @@ tr {
   border: 1px solid var(--pink);
 }
 tr:nth-child(odd) {
-  background-color: rgba(255, 182, 46, 1);
+  background-color: rgba(255, 182, 46, .9);
+}
+tr:nth-child(even) {
+  background-color: rgba(255, 195, 82, 0.9);
 }
 th {
   padding: 5px;
